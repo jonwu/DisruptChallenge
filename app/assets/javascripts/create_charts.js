@@ -27,8 +27,8 @@ var data = {
 };
 
 jQuery(document).ready(function($) {
-	var ctx = $("#myChart").get(0).getContext("2d");
-	initializeRadar(data,ctx)
+	// var ctx = $("#myChart").get(0).getContext("2d");
+	// initializeRadar(data,ctx)
 });
 
 
