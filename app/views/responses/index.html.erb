@@ -31,7 +31,14 @@
                     <div class="panel panel-default">
                       <div class="panel-heading">Does your software support relational databases?</div>
                       <div class="panel-body">
-                        <textarea class="form-control" rows="3"></textarea> 
+                        <textarea id="some-textarea" class="form-control" placeholder="Enter text ..."></textarea>
+
+                        <script type="text/javascript">
+                            $.fn.wysihtml5.defaultOptions['toolbar']['image']
+                            console.log($.fn.wysihtml5.defaultOptions)
+                            $('#some-textarea').wysihtml5();
+                        </script>
+
                       </div>
                     </div>
                         

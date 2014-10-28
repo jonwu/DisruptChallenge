@@ -43,4 +43,5 @@ gem 'devise'
 # 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'bootstrap-wysihtml5-rails'
 
