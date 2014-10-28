@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027061823) do
+ActiveRecord::Schema.define(version: 20141028095847) do
+
+  create_table "questions", force: true do |t|
+    t.integer  "rfi_id"
+    t.boolean  "qual"
+    t.boolean  "quant"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "text"
+  end
+
+  create_table "rfis", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

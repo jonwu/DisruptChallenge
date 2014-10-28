@@ -1,0 +1,44 @@
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav ">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Quantitative</a>
+                </li>
+                <li>
+                    <a href="#">Qualitative</a>
+                </li>
+                <li>
+                    <a href="#">Raw Data</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div>
+                    <% @rfi.questions.each do |q| %>
+                        <p><%=q.qual %></p>
+                        <p><%=q.quant %></p>
+                        <p><%=q.category %></p>
+                        <p><%=q.text %></p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+
+</body>
+

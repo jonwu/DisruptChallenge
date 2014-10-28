@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rfi: 1
+  qual: false
+  quant: false
+  category: MyString
+
+two:
+  rfi: 1
+  qual: false
+  quant: false
+  category: MyString

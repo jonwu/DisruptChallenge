@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
   end
+  resources :creations
   
   root 'homepage#index'
   # The priority is based upon order of creation: first created -> highest priority.
