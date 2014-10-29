@@ -25,3 +25,9 @@ Question.create(  rfi_id: rfi.id,
                   quant: true,
                   category: "",
                   text: "Can your technology do Y? If so, explain.")
+
+Question.create(  rfi_id: rfi.id,
+                  qual: true,
+                  quant: true,
+                  category: "",
+                  text: "Does your software support relational databases?")
