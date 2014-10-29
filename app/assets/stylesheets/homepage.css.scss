@@ -1,0 +1,35 @@
+
+
+$body-bg:                           #ecf0f1;
+$navbar-height:                     50px;
+$navbar-default-bg:                 #2c3e50;
+$navbar-default-brand-color:      	white;
+$navbar-default-link-color:			white;
+$navbar-default-link-hover-color:  	yellow;
+$brand-primary:                     #c0392b;
+
+@import "bootstrap-sprockets";
+@import 'bootstrap';
+
+
+.navbar-brand {
+     font-weight: bold;
+}
+
+.header{
+	top: 0px;
+	width: 100%;
+	position: fixed;
+	z-index: 2
+	
+}
+.header .content{
+	position: relative;
+	float:right;
+	top: 50%; 
+	
+}
+
+
+
+
