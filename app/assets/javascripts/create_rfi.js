@@ -10,6 +10,6 @@ function addQuestion() {
   $("#create_form").prepend(
     $('<li>').append(
       $('<div>').append(
-        "<%= label_tag 'Question 1'%><%= text_field_tag :q1 %>")
+        "New Question")
     ));
 }

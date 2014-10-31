@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   post "creations/check_question", to: "creations#check_question", as: 'check_question'
   post "creations/add_question", to: "creations#add_question", as: 'add_question'
   resources :creations
-
   
   root 'homepage#index'
   resources :responses
