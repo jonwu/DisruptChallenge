@@ -7,7 +7,11 @@ class CreationsController < ApplicationController
     @active_category = @categories.first
   end
 
-  def update_category
+  def update_active_category
+    @active_category = Category.find_by_id(params[:category])
+  end
+
+  def make_category_form
     @active_category = Category.find_by_id(params[:category])
   end
 
@@ -30,7 +34,7 @@ class CreationsController < ApplicationController
                                   text: @text,
                                   impact: @impact)
     if @question.save
-      redirect_to action: 'update_category', category: @category_id
+      redirect_to action: 'update_active_category', category: @category_id
     end
   end
 end

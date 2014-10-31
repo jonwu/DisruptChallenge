@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     get "logout", to: "devise/sessions#destroy"
   end
 
-  get "creations/update_category", to: "creations#update_category", as: 'update_category'
+  get "creations/update_active_category", to: "creations#update_active_category", as: 'update_active_category'
+  get "creations/make_category_form", to: "creations#make_category_form", as: 'make_category_form'
   post "creations/check_question", to: "creations#check_question", as: 'check_question'
   post "creations/add_question", to: "creations#add_question", as: 'add_question'
   resources :creations
