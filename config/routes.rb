@@ -6,10 +6,16 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
   end
+
+  get "creations/update_category", to: "creations#update_category", as: 'update_category'
+  post "creations/check_question", to: "creations#check_question", as: 'check_question'
+  post "creations/add_question", to: "creations#add_question", as: 'add_question'
   resources :creations
+
   
   root 'homepage#index'
   resources :responses
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

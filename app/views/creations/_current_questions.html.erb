@@ -1,0 +1,4 @@
+<h1><%= @active_category.text %></h1>
+<% @active_category.questions.each do |q| %>
+    <h3><span class="label label-default"><%= q.text %></span></h3>
+<% end %>

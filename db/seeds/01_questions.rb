@@ -1,33 +1,49 @@
 ################################## Questions ###################################
 
 rfi = Rfi.create!
+category = Category.create(   rfi_id: rfi.id,
+                              text: "default")
+category2 = Category.create(   rfi_id: rfi.id,
+                              text: "awesome")
 
-Question.create(  rfi_id: rfi.id,
+Question.create(  category_id: category.id,
                   qual: true, 
                   quant: false,
-                  category: "",
-                  text: "List your contact information.")
+                  text: "List your contact information.",
+                  impact: "Low")
 
-Question.create(  rfi_id: rfi.id,
+Question.create(  category_id: category.id,
                   qual: true,
                   quant: false,
-                  category: "",
-                  text: "What features does your technology provide?")
+                  text: "What features does your technology provide?",
+                  impact: "High")
 
-Question.create(  rfi_id: rfi.id,
+Question.create(  category_id: category.id,
                   qual: false,
                   quant: true,
-                  category: "",
-                  text: "Can your technology do X?")
+                  text: "Can your technology do X?",
+                  impact: "Medium")
 
-Question.create(  rfi_id: rfi.id,
+Question.create(  category_id: category.id,
                   qual: true,
                   quant: true,
-                  category: "",
-                  text: "Can your technology do Y? If so, explain.")
+                  text: "Can your technology do Y? If so, explain.",
+                  impact: "Medium")
 
-Question.create(  rfi_id: rfi.id,
+Question.create(  category_id: category.id,
                   qual: true,
-                  quant: true,
-                  category: "",
-                  text: "Does your software support relational databases?")
+                  quant: false,
+                  text: "Does your software support relational databases?",
+                  impact: "High")
+
+Question.create(  category_id: category2.id,
+                  qual: true,
+                  quant: false,
+                  text: "How awesome is this category?",
+                  impact: "High")
+
+Question.create(  category_id: category2.id,
+                  qual: true,
+                  quant: false,
+                  text: "How high does this category rank for you?",
+                  impact: "Medium")
