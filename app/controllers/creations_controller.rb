@@ -4,7 +4,7 @@ class CreationsController < ApplicationController
   def index
     @rfi = Rfi.first
     @categories = @rfi.categories.all
-    @active_category = @categories.first # maybe this is reason why it is always one. The js doesn't change this variable.
+    @active_category = @categories.first
   end
 
   def update_category
