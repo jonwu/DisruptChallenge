@@ -1,16 +1,16 @@
 text = $.trim($('.some-textarea').val())
 
 if(text){
-  console.log("TESTTTT " + "<%= @active_category %>");
-  category_id = $('.some-textarea').attr('id')
-  saveQuestions(text, category_id)
+  console.log("TESTTTT " + "<%= @active_category_id %>");
+  // category_id = $('.some-textarea').attr('id')
+  saveQuestions(text)
 }  
   
-function saveQuestions(text, category_id){
+function saveQuestions(text){
   $.ajax({
     url: '/creations/add_question',
     type: 'POST',
-    data: {"text": text, "qual": true, "quant": true, "category": category_id, "impact": "high"},
+    data: {"text": text, "qual": true, "quant": true, "category": <%= @active_category_id %>, "impact": "high"},
   })
   .done(function() {
     console.log("success");

@@ -4,7 +4,7 @@ class CreationsController < ApplicationController
   def index
     @rfi = Rfi.first
     @categories = @rfi.categories.all
-    @active_category = @categories.first
+    @active_category = @categories.first # maybe this is reason why it is always one. The js doesn't change this variable.
   end
 
   def update_category
@@ -12,7 +12,7 @@ class CreationsController < ApplicationController
   end
 
   def check_question
-    @active_category = params[:category]
+    @active_category_id = params[:category]
   end
 
   def add_question
@@ -29,8 +29,6 @@ class CreationsController < ApplicationController
                                   quant: @quant,
                                   text: @text,
                                   impact: @impact)
-
-    @active_category = Category.find_by_id(@category_id)
     if @question.save
       redirect_to action: 'update_category', category: @category_id
     end

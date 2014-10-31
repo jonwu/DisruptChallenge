@@ -2,3 +2,18 @@
 <% @active_category.questions.each do |q| %>
     <h3><span class="label label-default"><%= q.text %></span></h3>
 <% end %>
+<div class="panel panel-default">
+    <div class="panel-heading">Add A New Question:</div>
+    <div class="panel-body">
+        <textarea class="some-textarea form-control" placeholder="Enter text ..."></textarea>
+    </div>
+</div>
+<%= button_to "Add Question", check_question_path(category: @active_category.id), remote: true, :class => 'btn btn-primary btn-lg' %>
+
+
+
+<script type="text/javascript">
+$.fn.wysihtml5.defaultOptions['toolbar']['image']
+console.log($.fn.wysihtml5.defaultOptions)
+$('.some-textarea').wysihtml5();
+</script>
