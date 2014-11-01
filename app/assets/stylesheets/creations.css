@@ -1,4 +1,19 @@
+
 div.category_title a:link, div.category_title a:visited, div.category_title a:hover, div.category_title a:active { 
-    text-decoration:none; 
+    text-decoration:none !important; 
+}
+div.category_title a{
+	color: #81261D;
+}
+
+div.questions .question-panel{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	margin-left: 250px;
+	margin-bottom: 0px; 
+	width: 100%;
+	height: 200px;
+
 }
 
