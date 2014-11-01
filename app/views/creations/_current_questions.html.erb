@@ -1,11 +1,13 @@
 <div class="category_title"><%= render partial: "category_title", object: @active_category %></div>
+
+
 <% @active_category.questions.each do |q| %>
     <h3><span class="label label-default"><%= q.text %></span></h3>
 <% end %>
 <div class="panel panel-default">
     <div class="panel-heading">Add A New Question:</div>
     <div class="panel-body">
-        <textarea class="some-textarea form-control" placeholder="Enter text ..."></textarea>
+        <textarea class="question-form form-control" placeholder="Enter text ..."></textarea>
     </div>
 </div>
 <%= button_to "Add Question", check_question_path(category: @active_category.id), remote: true, :class => 'btn btn-primary btn-lg' %>
@@ -13,7 +15,7 @@
 
 
 <script type="text/javascript">
-$.fn.wysihtml5.defaultOptions['toolbar']['image']
-console.log($.fn.wysihtml5.defaultOptions)
-$('.some-textarea').wysihtml5();
+	$.fn.wysihtml5.defaultOptions['toolbar']['image'] = false;
+	console.log($.fn.wysihtml5.defaultOptions)
+	$('.question-form').wysihtml5();
 </script>
