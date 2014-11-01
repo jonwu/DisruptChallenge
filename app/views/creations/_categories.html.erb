@@ -1,0 +1,10 @@
+<li class="sidebar-brand">
+    <a href="#">
+        Categories
+    </a>
+</li>
+<% @categories.each do |c| %>
+    <li>
+      <%= link_to c.text, update_active_category_path(category: c.id), remote: true %>
+    </li>
+<% end %>

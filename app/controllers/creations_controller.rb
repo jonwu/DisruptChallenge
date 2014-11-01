@@ -2,7 +2,7 @@ class CreationsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @rfi = Rfi.first
+    @rfi = get_current_rfi
     @categories = @rfi.categories.all
     @active_category = @categories.first
   end
@@ -13,6 +13,14 @@ class CreationsController < ApplicationController
 
   def make_category_form
     @active_category = Category.find_by_id(params[:category])
+  end
+
+  def update_category_titles
+    @active_category = Category.find_by_id(params[:category_id])
+    @active_category.update_attributes(:text => params[:category_title])
+    # get current Rfi
+    @rfi = get_current_rfi
+    @categories = @rfi.categories.all
   end
 
   def check_question
@@ -37,4 +45,9 @@ class CreationsController < ApplicationController
       redirect_to action: 'update_active_category', category: @category_id
     end
   end
+
+  private
+    def get_current_rfi
+      return Rfi.first
+    end
 end
