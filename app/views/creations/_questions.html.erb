@@ -1,19 +1,9 @@
 <div class="content">
 	<div class="category_title"><%= render partial: "category_title", object: @active_category %></div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">Add A New Question:</div>
-    <div class="panel-body">
-        <textarea class="question-form form-control" placeholder="Enter text ..."></textarea>
-    </div>
-</div>
-
 <% @active_category.questions.each do |q| %>
     <h3><span class="label label-default"><%= q.text.html_safe %></span></h3>
 <% end %>
-
-
-
 
 <div class="panel panel-danger question-panel">
 	<div class="panel-heading">
