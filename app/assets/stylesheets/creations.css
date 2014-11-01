@@ -1,0 +1,4 @@
+div.category_title a:link, div.category_title a:visited, div.category_title a:hover, div.category_title a:active { 
+    text-decoration:none; 
+}
+

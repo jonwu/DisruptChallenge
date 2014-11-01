@@ -1,0 +1,5 @@
+alert(1)
+$(document).on("click", "div.category_title", function(event) {
+  console.log("HELLO " + <%= @active_category %>)
+  $("div.category_title").html("<%= j (render partial: 'category_form', object: @active_category) %>")
+});
