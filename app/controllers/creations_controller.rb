@@ -46,6 +46,11 @@ class CreationsController < ApplicationController
     end
   end
 
+  def delete_question
+    Question.destroy(params[:question_id])
+    redirect_to action: 'update_active_category', category: params[:category_id]
+  end
+
   private
     def get_current_rfi
       return Rfi.first

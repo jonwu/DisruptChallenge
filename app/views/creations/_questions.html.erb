@@ -2,7 +2,12 @@
 	<div class="category_title"><%= render partial: "category_title", object: @active_category %></div>
 
 <% @active_category.questions.each do |q| %>
-    <h3><span class="label label-default"><%= q.text.html_safe %></span></h3>
+    <p>
+      <h3><span class="label label-default"><%= q.text.html_safe %></span></h3>
+      <%= link_to delete_question_path(question_id: q.id, category_id: @active_category.id), remote: true do %>
+        <p>X</p>
+      <% end %>
+    </p>
 <% end %>
 
 <div class="panel panel-danger question-panel">
