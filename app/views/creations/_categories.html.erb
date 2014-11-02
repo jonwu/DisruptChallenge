@@ -1,5 +1,3 @@
-
-
 <ul class="nav nav-pills nav-stacked" role="tablist">
 	<% @categories.each do |c| %>
 		<% if c != @active_category %>
@@ -12,4 +10,5 @@
 		    </li>
 		<% end %>	    
 	<% end %>
+  <%= button_to "Add Category", add_new_category_path, remote: true, class: 'btn btn-primary' %>
 </ul>

@@ -8,6 +8,16 @@ class CreationsController < ApplicationController
     @active_category = @categories.first
   end
 
+  def add_new_category
+    count = Category.count + 1
+    @active_category = Category.create!( rfi_id: get_current_rfi.id,
+                  text: "default" + count.to_s)
+    # get current Rfi
+    @rfi = get_current_rfi
+    @categories = @rfi.categories.all
+
+  end 
+
   def update_active_category
     @active_category = Category.find_by_id(params[:category])
   end
@@ -54,6 +64,6 @@ class CreationsController < ApplicationController
 
   private
     def get_current_rfi
-      return Rfi.first
+      return current_user.rfis.first
     end
 end
