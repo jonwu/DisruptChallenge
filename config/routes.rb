@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   post "creations/check_question", to: "creations#check_question", as: 'check_question'
   post "creations/add_question", to: "creations#add_question", as: 'add_question'
   get "creations/delete_question", to: "creations#delete_question", as: 'delete_question'
+  post "dashboard/create_rfi", to: "dashboard#create_rfi", as: 'create_rfi'
   resources :creations
-  
-  root 'homepage#index'
+  resources :dashboard
   resources :responses
+  root 'homepage#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

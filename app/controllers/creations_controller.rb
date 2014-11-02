@@ -1,6 +1,7 @@
 class CreationsController < ApplicationController
   respond_to :html, :js
-
+  before_action :authenticate_user!
+  
   def index
     @rfi = get_current_rfi
     @categories = @rfi.categories.all
