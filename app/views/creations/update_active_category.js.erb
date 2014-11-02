@@ -1,2 +1,8 @@
+
 $('div.questions').html("<%= j (render partial: 'questions', object: @active_category) %>")
-$('.question-form').data("wysihtml5").editor.clear();
+
+
+$('.active').removeClass('active')
+$("div.categories #<%= @active_category.id %>").addClass('active')
+
+

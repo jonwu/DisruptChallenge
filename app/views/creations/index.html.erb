@@ -1,12 +1,14 @@
 <%= javascript_include_tag 'creations' %>  
 
 <body>
+
     <div id="wrapper">
+
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav ">
                 <div class="categories">
-                    <%= render partial: "categories", object: @categories %>
+                    <%= render partial: "categories", object: [@categories, @active_category] %>
                 </div>
             </ul>
         </div>

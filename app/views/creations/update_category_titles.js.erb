@@ -1,2 +1,2 @@
-$('div.categories').html("<%= j (render partial: 'categories', object: @categories) %>")
+$('div.categories').html("<%= j (render partial: 'categories', object: [@categories, @active_category] ) %>")
 $('div.category_title').html("<%= j (render partial: 'category_title', object: @active_category) %>")

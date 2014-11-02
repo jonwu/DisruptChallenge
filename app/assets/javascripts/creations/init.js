@@ -17,4 +17,9 @@ function initializeForm(){
 	$('.question-form').wysihtml5();
 
 }
-
+function tabListener(){
+	$('.categories ul li').click(function (e) {
+		// $('.active').removeClass('active')
+		// $(this).addClass('active')
+	})	
+}
