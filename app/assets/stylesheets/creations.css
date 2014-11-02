@@ -6,7 +6,7 @@ div.category_title a{
 	color: #81261D;
 }
 
-div.questions .question-panel{
+#page-content-wrapper .question-panel{
 	position: fixed;
 	left: 0;
 	bottom: 0;
