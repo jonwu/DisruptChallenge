@@ -24,3 +24,10 @@ div.categories .nav li a{
 	-moz-border-radius: 0;
 	border-radius: 0;
 }
+div.questions h3{
+	display: inline
+}
+
+div.questions p{
+	display: inline
+}
