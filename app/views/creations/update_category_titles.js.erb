@@ -1,5 +1,11 @@
+// Both update categories list
 renderCategories()
 renderCategoryTitle()
+
+// And active categories. Can we eliminate the repetition?
+setActiveTab()
+changeButtonId()
+renderQuestions()
 
 /**
  * Render categories in sidebar
@@ -15,4 +21,28 @@ function renderCategories(){
  */
 function renderCategoryTitle(){
   $('div.category_title').html("<%= j (render partial: 'category_title', object: @active_category) %>")
+}
+
+
+/**
+ * Set colors for active tabs
+ * @return {void} 
+ */
+function setActiveTab(){
+  $('.active').removeClass('active')
+  $("div.categories #<%= @active_category.id %>").addClass('active')  
+}
+/**
+ * Change Send question id to current category id
+ * @return {void} 
+ */
+function changeButtonId(){
+  $('.add-question').attr("id", <%= @active_category.id %>) 
+}
+/**
+ * Render questions for category
+ * @return {void} 
+ */
+function renderQuestions(){
+  $('div.questions').html("<%= j (render partial: 'questions', object: @active_category) %>")
 }

@@ -97,7 +97,7 @@ class CreationsController < ApplicationController
     end
 
     def find_available_text(categories, text)
-      count = 1
+      count = 0
       while categories.where(text: "_"*count + text).count > 0 do
         count = count + 1
       end
