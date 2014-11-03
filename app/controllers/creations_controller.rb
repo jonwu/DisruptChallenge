@@ -2,6 +2,24 @@ class CreationsController < ApplicationController
   respond_to :html, :js
   before_action :authenticate_user!
   
+  def create_rfi
+    @rfi = Rfi.new(user_id: current_user.id)
+    if @rfi.save
+      category = Category.create( rfi_id: @rfi.id,
+                                  text: "default")
+      set_rfi(@rfi)
+      redirect_to creations_path
+      return
+    end
+  end
+
+  def load_rfi
+    @rfi = Rfi.find_by_id(params[:rfi_id])
+    set_rfi(@rfi)
+    redirect_to creations_path
+    return
+  end
+
   def index
     @rfi = get_current_rfi
     @categories = @rfi.categories.all
@@ -48,8 +66,6 @@ class CreationsController < ApplicationController
     @quant = params[:quant]
     @text = params[:text]
     @impact = params[:impact]
-    p "*"*80
-    p @category
 
     @question = Question.new( category_id: @category_id,
                                   qual: @qual,
@@ -69,8 +85,15 @@ class CreationsController < ApplicationController
   end
 
   private
+    $rfi
+
+    def set_rfi(rfi)
+      $rfi = rfi
+    end
+
     def get_current_rfi
-      return current_user.rfis.first
+      return $rfi
+      # return current_user.rfis.first
     end
 
     def find_available_text(categories, text)
@@ -80,4 +103,5 @@ class CreationsController < ApplicationController
       end
       return "_"*count + text
     end
+
 end

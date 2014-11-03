@@ -1,1 +1,4 @@
+<% @rfis.each do |rfi| %>
+  <%= link_to rfi.title, load_rfi_path(rfi_id: rfi.id) %>
+<% end %>
 <%= button_to "Create RFI", create_rfi_path, :class => "btn btn-primary" %>

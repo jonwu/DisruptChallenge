@@ -3,7 +3,8 @@ user = User.create(     email: 'howardg988@gmail.com',
                         password: 'password',
                         password_confirmation: 'password')
 
-rfi = Rfi.create( user_id: user.id)
+rfi = Rfi.create( user_id: user.id,
+                  title: "test")
 category = Category.create(   rfi_id: rfi.id,
                               text: "default")
 category2 = Category.create(   rfi_id: rfi.id,
