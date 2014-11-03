@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 
   post "creations/create_rfi", to: "creations#create_rfi", as: 'create_rfi'
-  get "creations/load_rfi", to: "creations#load_rfi", as: 'load_rfi'
+  get "creations/load_rfi/:rfi_id", to: "creations#load_rfi", as: 'load_rfi'
   post "creations/add_new_category", to: "creations#add_new_category", as: 'add_new_category'
   get "creations/update_active_category", to: "creations#update_active_category", as: 'update_active_category'
   post "creations/update_category_titles", to: "creations#update_category_titles", as: 'update_category_titles'

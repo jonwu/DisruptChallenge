@@ -14,16 +14,20 @@ class CreationsController < ApplicationController
   end
 
   def load_rfi
-    @rfi = Rfi.find_by_id(params[:rfi_id])
-    set_rfi(@rfi)
-    redirect_to creations_path
-    return
+  
+    @rfi = Rfi.find_by(id: params[:rfi_id], user_id: current_user.id)
+    if (@rfi == nil)
+      redirect_to dashboard_index_path
+      return
+    end
+
+    @categories = @rfi.categories.all
+    @active_category = @categories.first
+    render :index
   end
 
   def index
-    @rfi = get_current_rfi
-    @categories = @rfi.categories.all
-    @active_category = @categories.first
+    redirect_to dashboard_index_path
   end
 
   def add_new_category
