@@ -7,22 +7,22 @@ class CreationsController < ApplicationController
     if @rfi.save
       category = Category.create( rfi_id: @rfi.id,
                                   text: "default")
-      set_rfi(@rfi)
-      redirect_to creations_path
+      redirect_to load_rfi_path(@rfi.id)
       return
     end
   end
 
   def load_rfi
-  
-    @rfi = Rfi.find_by(id: params[:rfi_id], user_id: current_user.id)
+    @rfi = Rfi.find_rfi(params[:rfi_id], current_user.id)
     if (@rfi == nil)
       redirect_to dashboard_index_path
       return
     end
 
+    set_rfi(@rfi)
     @categories = @rfi.categories.all
     @active_category = @categories.first
+
     render :index
   end
 
