@@ -20,9 +20,8 @@ class CreationsController < ApplicationController
     end
 
     set_rfi(@rfi)
-    @categories = @rfi.categories.all
-    @active_category = @categories.first
-
+    @categories = get_categories
+    @active_category = set_active_category(get_categories.first)
     render :index
   end
 
@@ -33,31 +32,34 @@ class CreationsController < ApplicationController
   def add_new_category
     # get current Rfi
     @rfi = get_current_rfi
-    @categories = @rfi.categories.all
+    @categories = get_categories
     text = find_available_text(@categories, "default")
-    @active_category = Category.create!( rfi_id: get_current_rfi.id,
-                  text: text)
+    @active_category = set_active_category(Category.create!( rfi_id: get_current_rfi.id,
+                  text: text))
+    redirect_to action: 'page_update'
   end 
 
   def update_active_category
-    @active_category = Category.find_by_id(params[:category])
+    @active_category = set_active_category(Category.find_by_id(params[:category]))
+    redirect_to action: 'page_update'
   end
 
   def make_category_form
-    @active_category = Category.find_by_id(params[:category])
+    @active_category = set_active_category(Category.find_by_id(params[:category]))
   end
 
   def update_category_titles
     # get current Rfi
     @rfi = get_current_rfi
-    @categories = @rfi.categories.all
-    @active_category = Category.find_by_id(params[:category_id])
+    @categories = get_categories
+    @active_category = set_active_category(Category.find_by_id(params[:category_id]))
     text = params[:category_title]
     # only update if the name actually changed
     if @active_category.text.to_s != params[:category_title].to_s
       text = find_available_text(@categories, text)
       @active_category.update_attributes(:text => text)
     end
+    redirect_to action: 'page_update'
   end
 
   def check_question
@@ -88,8 +90,14 @@ class CreationsController < ApplicationController
     return
   end
 
+  def page_update
+    @categories = get_categories
+    @active_category = get_active_category
+  end
+
   private
     $rfi
+    $active_category
 
     def set_rfi(rfi)
       $rfi = rfi
@@ -98,6 +106,19 @@ class CreationsController < ApplicationController
     def get_current_rfi
       return $rfi
       # return current_user.rfis.first
+    end
+
+    def set_active_category(active_category)
+      $active_category = active_category
+      return $active_category
+    end
+
+    def get_active_category
+      return $active_category
+    end
+
+    def get_categories
+      return $rfi.categories.all
     end
 
     def find_available_text(categories, text)

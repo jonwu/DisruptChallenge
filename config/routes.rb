@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post "creations/check_question", to: "creations#check_question", as: 'check_question'
   post "creations/add_question", to: "creations#add_question", as: 'add_question'
   get "creations/delete_question", to: "creations#delete_question", as: 'delete_question'
+  get "creations/page_update", to: "creations#page_update", as: 'page_update'
   resources :creations
   resources :dashboard
   resources :responses
