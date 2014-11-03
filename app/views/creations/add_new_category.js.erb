@@ -1,2 +1,45 @@
-$('div.categories').html("<%= j (render partial: 'categories', object: [@categories, @active_category] ) %>")
-$('div.category_title').html("<%= j (render partial: 'category_title', object: @active_category) %>")
+renderCategories()
+renderCategoryTitle()
+setActiveTab()
+changeButtonId()
+renderQuestions()
+
+/**
+ * Render categories in sidebar
+ * @return {void} 
+ */
+function renderCategories(){
+  $('div.categories').html("<%= j (render partial: 'categories', object: [@categories, @active_category] ) %>")
+}
+
+/**
+ * Render title in category
+ * @return {void} 
+ */
+function renderCategoryTitle(){
+  $('div.category_title').html("<%= j (render partial: 'category_title', object: @active_category) %>")
+}
+
+
+/**
+ * Set colors for active tabs
+ * @return {void} 
+ */
+function setActiveTab(){
+  $('.active').removeClass('active')
+  $("div.categories #<%= @active_category.id %>").addClass('active')  
+}
+/**
+ * Change Send question id to current category id
+ * @return {void} 
+ */
+function changeButtonId(){
+  $('.add-question').attr("id", <%= @active_category.id %>) 
+}
+/**
+ * Render questions for category
+ * @return {void} 
+ */
+function renderQuestions(){
+  $('div.questions').html("<%= j (render partial: 'questions', object: @active_category) %>")
+}

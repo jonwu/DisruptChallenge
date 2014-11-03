@@ -1,1 +1,9 @@
-$('div.category_title').html("<%= j (render partial: 'category_form', object: @active_category ) %>")
+renderCategoryForm()
+
+/**
+ * Render questions for category
+ * @return {void} 
+ */
+function renderCategoryForm(){
+  $('div.category_title').html("<%= j (render partial: 'category_form', object: @active_category ) %>")
+}

@@ -1,2 +1,18 @@
-$('div.categories').html("<%= j (render partial: 'categories', object: [@categories, @active_category] ) %>")
-$('div.category_title').html("<%= j (render partial: 'category_title', object: @active_category) %>")
+renderCategories()
+renderCategoryTitle()
+
+/**
+ * Render categories in sidebar
+ * @return {void} 
+ */
+function renderCategories(){
+  $('div.categories').html("<%= j (render partial: 'categories', object: [@categories, @active_category] ) %>")
+}
+
+/**
+ * Render title in category
+ * @return {void} 
+ */
+function renderCategoryTitle(){
+  $('div.category_title').html("<%= j (render partial: 'category_title', object: @active_category) %>")
+}
