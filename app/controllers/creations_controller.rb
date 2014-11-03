@@ -6,7 +6,7 @@ class CreationsController < ApplicationController
     @rfi = Rfi.new(user_id: current_user.id)
     if @rfi.save
       category = Category.create( rfi_id: @rfi.id,
-                                  text: "default")
+                                  text: "New Category")
       redirect_to load_rfi_path(@rfi.id)
       return
     end
@@ -33,10 +33,11 @@ class CreationsController < ApplicationController
     # get current Rfi
     @rfi = get_current_rfi
     @categories = get_categories
-    text = find_available_text(@categories, "default")
+    text = find_available_text(@categories, "New Category")
     @active_category = set_active_category(Category.create!( rfi_id: get_current_rfi.id,
                   text: text))
     redirect_to action: 'page_update'
+
   end 
 
   def update_active_category
@@ -122,11 +123,19 @@ class CreationsController < ApplicationController
     end
 
     def find_available_text(categories, text)
-      count = 0
-      while categories.where(text: "_"*count + text).count > 0 do
-        count = count + 1
-      end
-      return "_"*count + text
+       count = 0
+       text = text.strip
+
+       if categories.find_by(text: text) != nil
+          count = 1
+          while categories.find_by(text: text +" ("+count.to_s+")") != nil do
+           count = count + 1
+         end  
+       else
+         return text
+       end
+         
+       return text +" ("+count.to_s+")"
     end
 
 end
