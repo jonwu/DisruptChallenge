@@ -1,3 +1,5 @@
-<%= link_to make_category_form_path(category: @active_category.id), remote: true do %>
-  <h1><%= @active_category.text %></h1>
+<% if @active_category != nil %>
+  <%= link_to make_category_form_path(category: @active_category.id), remote: true do %>
+    <h1><%= @active_category.text %></h1>
+  <% end %>
 <% end %>

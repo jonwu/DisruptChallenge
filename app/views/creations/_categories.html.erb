@@ -2,13 +2,13 @@
 	<% @categories.each do |c| %>
 		<% if c != @active_category %>
 			<li role="presentation" id="<%= c.id %>">
-		      <%= link_to c.text, update_active_category_path(category: c.id), remote: true%>
-		    </li>
+		    <%= link_to c.text, update_active_category_path(category: c.id), remote: true%>
+		  </li>
 		<% else %>
 			<li class="active" role="presentation" id="<%= c.id %>">
-		      <%= link_to c.text, update_active_category_path(category: c.id), remote: true%>
-		    </li>
-		<% end %>	    
+		    <%= link_to c.text, update_active_category_path(category: c.id), remote: true%>
+		  </li>
+		<% end %>  
 	<% end %>
   <%= button_to "Add Category", add_new_category_path, remote: true, class: 'btn btn-primary' %>
 </ul>

@@ -37,8 +37,13 @@ class CreationsController < ApplicationController
     @active_category = set_active_category(Category.create!( rfi_id: get_current_rfi.id,
                   text: text))
     redirect_to action: 'page_update'
-
   end 
+
+  def delete_category
+    id = params[:category_id]
+    @active_category = set_active_category(find_next_category_and_delete(id))
+    redirect_to action: 'page_update'
+  end
 
   def update_active_category
     @active_category = set_active_category(Category.find_by_id(params[:category]))
@@ -136,6 +141,19 @@ class CreationsController < ApplicationController
        end
          
        return text +" ("+count.to_s+")"
+    end
+
+    def find_next_category_and_delete(current_category_id)
+      # render no category page
+      ret = nil
+      if get_categories.count > 1
+        ret = Category.where("id < " + current_category_id).last
+        if ret == nil
+          ret = Category.where("id > " + current_category_id).first
+        end
+      end
+      Category.destroy(current_category_id)
+      return ret
     end
 
 end

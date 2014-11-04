@@ -1,8 +1,6 @@
-// Both update categories list
 renderCategories()
 renderCategoryTitle()
 
-// And active categories. Can we eliminate the repetition?
 setActiveTab()
 changeButtonId()
 renderQuestions()
@@ -20,7 +18,9 @@ function renderCategories(){
  * @return {void} 
  */
 function renderCategoryTitle(){
-  $('div.category_title').html("<%= j (render partial: 'category_title', object: @active_category) %>")
+  <% if @active_category != nil %>
+    $('div.category_title').html("<%= j (render partial: 'category_title', object: @active_category) %>")
+  <% end %>
 }
 
 
@@ -29,20 +29,28 @@ function renderCategoryTitle(){
  * @return {void} 
  */
 function setActiveTab(){
-  $('.active').removeClass('active')
-  $("div.categories #<%= @active_category.id %>").addClass('active')  
+  <% if @active_category != nil %>
+    $('.active').removeClass('active')
+    $("div.categories #<%= @active_category.id %>").addClass('active')
+  <% end %>
 }
 /**
  * Change Send question id to current category id
  * @return {void} 
  */
 function changeButtonId(){
-  $('.add-question').attr("id", <%= @active_category.id %>) 
+  <% if @active_category != nil %>
+    $('.add-question').attr("id", <%= @active_category.id %>) 
+  <% end %>
 }
 /**
  * Render questions for category
  * @return {void} 
  */
 function renderQuestions(){
-  $('div.questions').html("<%= j (render partial: 'questions', object: @active_category) %>")
+  <% if @active_category == nil %>
+    $('div.questions').html("<%= j (render partial: 'empty_questions') %>")
+  <% else %>
+    $('div.questions').html("<%= j (render partial: 'questions', object: @active_category) %>")
+  <% end %>
 }
