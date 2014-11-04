@@ -47,7 +47,7 @@ class CreationsController < ApplicationController
 
   def update_active_category
     @active_category = set_active_category(Category.find_by_id(params[:category]))
-    redirect_to action: 'page_update'
+    redirect_to action: 'page_update', no_refresh: true
   end
 
   def make_category_form
@@ -99,6 +99,7 @@ class CreationsController < ApplicationController
   def page_update
     @categories = get_categories
     @active_category = get_active_category
+    @no_refresh = params[:no_refresh]
   end
 
   private
