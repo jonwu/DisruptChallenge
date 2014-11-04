@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get "creations/update_active_category", to: "creations#update_active_category", as: 'update_active_category'
   post "creations/update_category_titles", to: "creations#update_category_titles", as: 'update_category_titles'
   get "creations/make_category_form", to: "creations#make_category_form", as: 'make_category_form'
-  post "creations/check_question", to: "creations#check_question", as: 'check_question'
   post "creations/add_question", to: "creations#add_question", as: 'add_question'
   get "creations/delete_question", to: "creations#delete_question", as: 'delete_question'
   get "creations/page_update", to: "creations#page_update", as: 'page_update'

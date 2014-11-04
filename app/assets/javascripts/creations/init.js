@@ -21,21 +21,24 @@ function initializeForm(){
 
 function addQuestionListener(){
 	$(".add-question").click(function(event) {
-		$.ajax({
-			url: '/creations/check_question',
-			type: 'POST',
-			data: {"category": this.id},
-		})
-		.done(function() {
-			$(".question-form").val('')
-			console.log("success");
-		})
-		.fail(function() {
-			console.log("error");
-		})
-		.always(function() {
-			console.log("complete");
-		});
-		
+		text = $.trim($('.question-form').val())
+		if(text){
+		  saveQuestions(text)
+		}
+	});
+}
+
+function saveQuestions(text){
+	$.ajax({
+		url: '/creations/add_question',
+		type: 'POST',
+		data: {"text": text, "qual": true, "quant": true, "impact": "high"},
+	}).done(function() {
+		$(".question-form").val('')
+		console.log("success");
+	}).fail(function() {
+		console.log("error");
+	}).always(function() {
+		console.log("complete");
 	});
 }

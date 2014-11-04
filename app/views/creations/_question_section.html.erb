@@ -4,15 +4,11 @@
     </div>
     <div class="panel-body">
         <textarea class="question-form form-control" rows="2" placeholder="Ask a question"></textarea>
-        
+
     </div>
     
     <div class="panel-footer">     
-        <% if @active_category != nil %>
-            <button class="btn btn-primary btn-lg add-question" id="<%= @active_category.id %>">Add Question</button>
-        <% else %>
-            <button class="btn btn-primary btn-lg add-question" id="-1">Add Question</button>
-        <% end %> 
+        <button class="btn btn-primary btn-lg add-question">Add Question</button>
     </div>
 </div>
  

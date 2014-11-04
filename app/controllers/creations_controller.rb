@@ -68,12 +68,8 @@ class CreationsController < ApplicationController
     redirect_to action: 'page_update'
   end
 
-  def check_question
-    @active_category_id = params[:category]
-  end
-
   def add_question
-    @category_id = params[:category] 
+    @category_id = get_active_category.id
     @qual = params[:qual]
     @quant = params[:quant]
     @text = params[:text]
