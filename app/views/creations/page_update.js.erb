@@ -2,6 +2,7 @@ renderCategories()
 renderCategoryTitle()
 
 setActiveTab()
+setQuestionFooter()
 changeButtonId()
 renderQuestions()
 
@@ -34,6 +35,16 @@ function setActiveTab(){
     $("div.categories #<%= @active_category.id %>").addClass('active')
   <% end %>
 }
+
+function setQuestionFooter(){
+  <% if @active_category != nil%>
+    if (!$(".question-panel").is(":visible")){      
+      $(".question-panel").show()
+    }
+  <% else%>
+    $(".question-panel").hide() 
+  <% end %>
+}
 /**
  * Change Send question id to current category id
  * @return {void} 
@@ -41,6 +52,8 @@ function setActiveTab(){
 function changeButtonId(){
   <% if @active_category != nil %>
     $('.add-question').attr("id", <%= @active_category.id %>) 
+  <% else %>
+    $('.add-question').attr("id", "-1") 
   <% end %>
 }
 /**
