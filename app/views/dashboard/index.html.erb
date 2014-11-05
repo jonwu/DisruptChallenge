@@ -6,5 +6,5 @@
 
 <h2>Shared Rfis</h2>
 <% @shared_rfis.each do |rfi| %>
-  <%= link_to rfi.title, load_rfi_path(rfi_id: rfi.id) %>
+  <%= link_to rfi.title, load_rfi_response_path(rfi_id: rfi.id) %>
 <% end %>

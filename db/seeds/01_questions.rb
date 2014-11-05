@@ -18,44 +18,48 @@ category = Category.create(   rfi_id: rfi.id,
 category2 = Category.create(   rfi_id: rfi.id,
                               text: "awesome")
 
-Question.create(  category_id: category.id,
+q1 = Question.create(  category_id: category.id,
                   qual: true, 
                   quant: false,
                   text: "List your contact information.",
                   impact: "Low")
 
-Question.create(  category_id: category.id,
+q2 = Question.create(  category_id: category.id,
                   qual: true,
                   quant: false,
                   text: "What features does your technology provide?",
                   impact: "High")
 
-Question.create(  category_id: category.id,
+q3 = Question.create(  category_id: category.id,
                   qual: false,
                   quant: true,
                   text: "Can your technology do X?",
                   impact: "Medium")
 
-Question.create(  category_id: category.id,
+q4 = Question.create(  category_id: category.id,
                   qual: true,
                   quant: true,
                   text: "Can your technology do Y? If so, explain.",
                   impact: "Medium")
 
-Question.create(  category_id: category.id,
+q5 = Question.create(  category_id: category.id,
                   qual: true,
                   quant: false,
                   text: "Does your software support relational databases?",
                   impact: "High")
 
-Question.create(  category_id: category2.id,
+q6 = Question.create(  category_id: category2.id,
                   qual: true,
                   quant: false,
                   text: "How awesome is this category?",
                   impact: "High")
 
-Question.create(  category_id: category2.id,
+q7 = Question.create(  category_id: category2.id,
                   qual: true,
                   quant: false,
                   text: "How high does this category rank for you?",
                   impact: "Medium")
+
+Response.create(  question_id: q1.id,
+                  user_id: user2.id,
+                  text: "Berkeley Baby")

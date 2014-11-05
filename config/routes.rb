@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post "creations/add_question", to: "creations#add_question", as: 'add_question'
   get "creations/delete_question", to: "creations#delete_question", as: 'delete_question'
   get "creations/page_update", to: "creations#page_update", as: 'page_update'
+
+  get "responses/load_rfi_response/:rfi_id", to: "responses#load_rfi_response", as: 'load_rfi_response'
   resources :creations
   resources :dashboard
   resources :responses
