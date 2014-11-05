@@ -3,7 +3,8 @@ class CreationsController < ApplicationController
   before_action :authenticate_user!
   
   def create_rfi
-    @rfi = Rfi.new(user_id: current_user.id)
+    @rfi = Rfi.new( user_id: current_user.id, 
+                    title: "default")
     if @rfi.save
       category = Category.create( rfi_id: @rfi.id,
                                   text: "New Category")

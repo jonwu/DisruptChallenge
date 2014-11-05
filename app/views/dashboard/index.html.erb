@@ -1,4 +1,10 @@
+<h2> Your Rfis</h2>
 <% @rfis.each do |rfi| %>
   <%= link_to rfi.title, load_rfi_path(rfi_id: rfi.id) %>
 <% end %>
 <%= button_to "Create RFI", create_rfi_path, :class => "btn btn-primary" %>
+
+<h2>Shared Rfis</h2>
+<% @shared_rfis.each do |rfi| %>
+  <%= link_to rfi.title, load_rfi_path(rfi_id: rfi.id) %>
+<% end %>

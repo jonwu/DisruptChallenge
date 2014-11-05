@@ -3,8 +3,16 @@ user = User.create(     email: 'howardg988@gmail.com',
                         password: 'password',
                         password_confirmation: 'password')
 
+user2 = User.create(    email: 'howardg988@berkeley.edu',
+                        password: 'password',
+                        password_confirmation: 'password')
+
 rfi = Rfi.create( user_id: user.id,
                   title: "test")
+
+collab = Collaborator.create( user_id: user2.id,
+                              rfi_id: rfi.id)
+
 category = Category.create(   rfi_id: rfi.id,
                               text: "default")
 category2 = Category.create(   rfi_id: rfi.id,
