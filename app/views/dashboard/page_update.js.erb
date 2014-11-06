@@ -1,0 +1,21 @@
+renderRfiList()
+renderContent()
+/**
+ * Render the rfi list
+ * @return {void} 
+ */
+function renderRfiList(){
+	<% if @rfis != nil %>
+		$('div.rfi-list').html("<%= j (render partial: 'your_rfis', object: [@rfis, @current_rfi]) %>")
+	<% end %>
+}
+
+/**
+ * Render content of chosen RFI
+ * @return {void} 
+ */
+function renderContent(){
+	<% if @current_rfi != nil %>
+		$('div.content').html("<%= j (render partial: 'content', object: @current_rfi) %>")
+	<% end %>
+}

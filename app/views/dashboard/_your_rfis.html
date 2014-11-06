@@ -1,0 +1,15 @@
+<h2> Your Rfis</h2>
+<ul class="nav nav-pills nav-stacked" role="tablist">
+	<% @rfis.each do |rfi| %>
+		<% if rfi != @current_rfi %>
+			<li role="presentation">
+		    	<%= link_to rfi.title, page_update_dashboard_path(rfi_id: rfi.id), remote: true%>
+		  	</li>
+		<% else %>
+			<li class="active" role="presentation">
+		    	<%= link_to rfi.title, page_update_dashboard_path(rfi_id: rfi.id), remote: true%>
+		  	</li>
+		<% end %>
+	<% end %>
+</ul>
+<%= button_to "Create RFI", create_rfi_path, :class => "btn btn-primary" %>
