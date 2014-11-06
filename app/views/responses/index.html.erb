@@ -1,4 +1,3 @@
-
 <body>
     <div id="wrapper">
         <!-- Sidebar -->
@@ -26,31 +25,14 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-11">
-                        <% @questions.each do |q| %>
-                            <div class="panel panel-default">
-                              <div class="panel-heading"><%= q.text %></div>
-                              <div class="panel-body">
-                                <textarea class="some-textarea form-control" placeholder="Enter text ..."></textarea>
-                                <button class="submit">Submit</button>
-                              </div>
-                            </div>
-                        <% end %>
+                    <div class="col-lg-11">˜
+                        <%= render partial: "questions", object: @questions %>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
     </div>
-
-
 </body>
-
-<script type="text/javascript">
-    $.fn.wysihtml5.defaultOptions['toolbar']['image']
-    console.log($.fn.wysihtml5.defaultOptions)
-    $('.some-textarea').wysihtml5();
-</script>
 
 

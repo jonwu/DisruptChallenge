@@ -1,0 +1,20 @@
+<% @questions.each do |q| %>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= q.text %></div>
+      <div class="panel-body">
+      <% if @responses.find_by_question_id(q.id) == nil %>
+        <textarea class="some-textarea form-control" placeholder="Enter text ..."></textarea>
+      <% else %>
+        <textarea class="some-textarea form-control" placeholder="Enter text ..."><%= @responses.find_by_question_id(q.id).text%></textarea>
+      <% end %>
+        <button class="submit">Submit</button>
+      </div>
+    </div>
+<% end %>
+
+
+<script type="text/javascript">
+    $.fn.wysihtml5.defaultOptions['toolbar']['image']
+    console.log($.fn.wysihtml5.defaultOptions)
+    $('.some-textarea').wysihtml5();
+</script>
