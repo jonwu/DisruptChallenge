@@ -1,10 +1,36 @@
-<h2> Your Rfis</h2>
-<% @rfis.each do |rfi| %>
-  <%= link_to rfi.title, load_rfi_path(rfi_id: rfi.id) %>
-<% end %>
-<%= button_to "Create RFI", create_rfi_path, :class => "btn btn-primary" %>
 
-<h2>Shared Rfis</h2>
-<% @shared_rfis.each do |rfi| %>
-  <%= link_to rfi.title, load_rfi_response_path(rfi_id: rfi.id) %>
-<% end %>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav ">
+                <div class="rfi-list">
+                    <%= render partial: "your_rfis", object: [@rfis, @current_rfi] %> 
+                </div>
+                <h1>Shared RFI</h1>
+            	<% @shared_rfis.each do |rfi| %>
+					<%= link_to rfi.title, load_rfi_response_path(rfi_id: rfi.id) %>
+				<% end %>
+	            
+            </ul>
+        </div>
+
+
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <div class="content">
+                            <%= render partial: "content", object: @current_rfi %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
