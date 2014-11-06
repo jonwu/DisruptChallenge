@@ -7,6 +7,7 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav ">
+                <%= button_to "Add Category", add_new_category_path, remote: true, class: 'btn btn-primary' %>
                 <div class="categories">
                     <%= render partial: "categories", object: [@categories, @active_category] %>
                 </div>
