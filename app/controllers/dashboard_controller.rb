@@ -41,6 +41,14 @@ class DashboardController < ApplicationController
 		p @current_rfi
 		p @rfis
 	end
+
+	def make_title_form
+		@current_rfi = get_current_rfi
+	end
+	def update_rfi_title
+		get_current_rfi.update(:title => params[:rfi_title])
+		redirect_to action: 'page_update'
+	end
 	
 	private
 		$current_rfi

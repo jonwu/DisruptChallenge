@@ -1,4 +1,8 @@
-<h2>Shared Rfis</h2>
+<div class="rfi-title">
+	<%= link_to make_title_form_path, remote: true do %>
+		<h1><%= @current_rfi.title %></h1>
+	<% end %>
+</div>
 
 <%= form_tag share_rfi_path do %>
 	<%= email_field_tag :email %>

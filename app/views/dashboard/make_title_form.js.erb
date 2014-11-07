@@ -1,0 +1,9 @@
+renderTitleForm();
+
+/**
+ * Render questions for rfi title
+ * @return {void} 
+ */
+function renderTitleForm(){
+  $('div.rfi-title').html("<%= j (render partial: 'title_form', object: @current_rfi ) %>")
+}

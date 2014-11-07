@@ -18,10 +18,14 @@ Rails.application.routes.draw do
   post "creations/add_question", to: "creations#add_question", as: 'add_question'
   get "creations/delete_question", to: "creations#delete_question", as: 'delete_question'
   get "creations/page_update", to: "creations#page_update", as: 'page_update'
+  
+
   get "dashboard/page_update", to: "dashboard#page_update", as: 'page_update_dashboard'
   post "dashboard/share_rfi", to: "dashboard#share_rfi", as: 'share_rfi'
   post "dashboard/delete_rfi", to: "dashboard#delete_rfi", as: 'delete_rfi'
   get "dashboard/navigate_rfi", to: "dashboard#navigate_rfi", as: 'navigate_rfi'
+  get "dashboard/make_title_form", to: "dashboard#make_title_form", as: 'make_title_form'
+  post "dashboard/update_rfi_title", to: "dashboard#update_rfi_title", as: 'update_rfi_title'
 
   get "responses/load_rfi_response/:rfi_id", to: "responses#load_rfi_response", as: 'load_rfi_response'
   resources :creations

@@ -1,7 +1,6 @@
-// Place all the styles related to the Dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
+div.rfi-title a:link, div.category_title a:visited, div.category_title a:hover, div.category_title a:active { 
+    text-decoration:none; 
+}
 
 div.rfi-list .nav li a{
 	line-height: 25px;
