@@ -1,0 +1,9 @@
+<h1>Shared RFI</h1>
+<ul class="nav nav-pills nav-stacked" role="tablist">
+	<% @shared_rfis.each do |rfi| %>
+		<li role="presentation">
+			<%= link_to rfi.title, load_rfi_response_path(rfi_id: rfi.id) %>
+		</li>
+	<% end %>
+</ul>
+<%= button_to "Create RFI", create_rfi_path, :class => "btn btn-primary" %>

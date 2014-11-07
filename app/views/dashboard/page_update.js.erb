@@ -15,7 +15,5 @@ function renderRfiList(){
  * @return {void} 
  */
 function renderContent(){
-	<% if @current_rfi != nil %>
-		$('div.content').html("<%= j (render partial: 'content', object: @current_rfi) %>")
-	<% end %>
+	$('div.content').html("<%= j (render partial: 'content', object: @current_rfi) %>")
 }

@@ -9,10 +9,10 @@
                 <div class="rfi-list">
                     <%= render partial: "your_rfis", object: [@rfis, @current_rfi] %> 
                 </div>
-                <h1>Shared RFI</h1>
-            	<% @shared_rfis.each do |rfi| %>
-					<%= link_to rfi.title, load_rfi_response_path(rfi_id: rfi.id) %>
-				<% end %>
+                
+                <div class="shared-rfi-list">
+                    <%= render partial: "shared_rfis", object: @shared_rfis %> 
+                </div>
 	            
             </ul>
         </div>

@@ -1,10 +1,14 @@
 <h2>Shared Rfis</h2>
 
 <%= form_tag share_rfi_path do %>
-	<%= text_field_tag :email %>
+	<%= email_field_tag :email %>
 	<%= submit_tag 'Share', class: 'submit' %>
 <% end %>
 
-<%= link_to "Edit", load_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary'%>
+<% if @current_rfi != nil %>
+	<%= link_to "Edit", load_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary'%>
+	<%= button_to "Delete", delete_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary', remote: true %>
+<% end %>
+
 
 

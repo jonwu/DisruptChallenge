@@ -7,5 +7,10 @@ class Rfi < ActiveRecord::Base
   	@rfi = Rfi.find_by(id: id, user_id: current_user_id)
   end
 
+  def self.delete_rfi(id)
+  	output = Rfi.destroy(id)
+  	Collaborator.delete_by_rfi_id(id)
+  end
+
 
 end

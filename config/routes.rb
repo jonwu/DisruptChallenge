@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get "creations/page_update", to: "creations#page_update", as: 'page_update'
   get "dashboard/page_update", to: "dashboard#page_update", as: 'page_update_dashboard'
   post "dashboard/share_rfi", to: "dashboard#share_rfi", as: 'share_rfi'
+  post "dashboard/delete_rfi", to: "dashboard#delete_rfi", as: 'delete_rfi'
+  get "dashboard/navigate_rfi", to: "dashboard#navigate_rfi", as: 'navigate_rfi'
 
   get "responses/load_rfi_response/:rfi_id", to: "responses#load_rfi_response", as: 'load_rfi_response'
   resources :creations
