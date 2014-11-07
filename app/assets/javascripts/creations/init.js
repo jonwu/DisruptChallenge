@@ -25,6 +25,7 @@ function addQuestionListener(){
 		if(text){
 		  saveQuestions(text)
 		}
+		return false
 	});
 }
 
@@ -35,6 +36,7 @@ function saveQuestions(text){
 		data: {"text": text, "qual": true, "quant": true, "impact": "high"},
 	}).done(function() {
 		$(".question-form").val('')
+		$('body').animate({ scrollTop: $('body')[0].scrollHeight}, 500);
 		console.log("success");
 	}).fail(function() {
 		console.log("error");
