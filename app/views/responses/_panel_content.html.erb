@@ -2,7 +2,7 @@
 <% if @current_question == @is_active %>
 	<div class="panel-body">
 		<% if !@current_response.nil? %>
-			<textarea class="response-textarea form-control" placeholder="Enter text ..."><%= @current_response.text %></textarea>
+			<textarea class="response-textarea form-control" placeholder="Enter text ..."><%= @current_response.text.html_safe %></textarea>
 		<% else %>
 			<textarea class="response-textarea form-control" placeholder="Enter text ..."></textarea>
 		<% end %>
@@ -10,7 +10,7 @@
 <% else %>
 	<% if !@current_response.nil? %>
 		<div class="panel-body">
-			<div><%= @current_response.text %></div>
+			<div><%= @current_response.text.html_safe %></div>
 		</div>
 	<% end %>
 <% end %>
