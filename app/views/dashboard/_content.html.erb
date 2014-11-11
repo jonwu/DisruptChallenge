@@ -1,17 +1,19 @@
-<div class="rfi-title">
-	<%= link_to make_title_form_path, remote: true do %>
-		<h1><%= @current_rfi.title %></h1>
+<% if !@current_rfi.nil? %>
+	<div class="rfi-title">
+		<%= link_to make_title_form_path, remote: true do %>
+			<h1><%= @current_rfi.title %></h1>
+		<% end %>
+	</div>
+
+	<%= form_tag share_rfi_path do %>
+		<%= email_field_tag :email %>
+		<%= submit_tag 'Share', class: 'submit' %>
 	<% end %>
-</div>
 
-<%= form_tag share_rfi_path do %>
-	<%= email_field_tag :email %>
-	<%= submit_tag 'Share', class: 'submit' %>
-<% end %>
-
-<% if @current_rfi != nil %>
-	<%= link_to "Edit", load_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary'%>
-	<%= button_to "Delete", delete_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary', remote: true %>
+	<% if @current_rfi != nil %>
+		<%= link_to "Edit", load_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary'%>
+		<%= button_to "Delete", delete_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary', remote: true %>
+	<% end %>
 <% end %>
 
 
