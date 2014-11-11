@@ -1,0 +1,31 @@
+renderCategories()
+setActiveTab()
+renderQuestions()
+
+/**
+ * Render categories in sidebar
+ * @return {void} 
+ */
+function renderCategories(){
+  $('div.categories').html("<%= j (render partial: 'categories', object: [@categories, @active_category] ) %>")
+}
+
+
+/**
+ * Set colors for active tabs
+ * @return {void} 
+ */
+function setActiveTab(){
+  <% if @active_category != nil %>
+    $('.active').removeClass('active')
+    $("div.categories #<%= @active_category.id %>").addClass('active')
+  <% end %>
+}
+
+/**
+ * Render questions for category
+ * @return {void} 
+ */
+function renderQuestions(){
+  $('div.questions').html("<%= j (render partial: 'questions', object: [@questions, @responses]) %>")
+}

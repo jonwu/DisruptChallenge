@@ -1,0 +1,14 @@
+<ul class="nav nav-pills nav-stacked" role="tablist">
+  <% @categories.each do |c| %>
+    <% if c != @active_category %>
+      <li role="presentation" id="<%= c.id %>">
+        <%= link_to c.text, update_active_category_response_path(category: c.id), remote: true%>
+      </li>
+    <% else %>
+      <li class="active" role="presentation" id="<%= c.id %>">
+        <%= link_to c.text, update_active_category_response_path(category: c.id), remote: true%>
+      </li>
+    <% end %>  
+  <% end %>
+  
+</ul>

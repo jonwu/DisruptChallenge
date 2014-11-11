@@ -3,20 +3,9 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav ">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Quantitative</a>
-                </li>
-                <li>
-                    <a href="#">Qualitative</a>
-                </li>
-                <li>
-                    <a href="#">Raw Data</a>
-                </li>
+                <div class="categories">
+                    <%= render partial: "categories", object: [@categories, @active_category] %>
+                </div>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -26,7 +15,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-11">
-                        <%= render partial: "questions", object: @questions %>
+                        <div class="questions">
+                            <%= render partial: "questions", object: [@questions, @responses] %>
+                        </div>
                     </div>
                 </div>
             </div>
