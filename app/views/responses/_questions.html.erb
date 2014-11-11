@@ -3,9 +3,13 @@
     <% @current_question = question %>
     <div class="panel panel-info">
       <div class="panel-heading">
-        <%= link_to edit_content_path(question_id: question.id), class: "fill-div", remote: true do %>
+
+      <!-- Click listener for questions -->
+
+        <%= link_to edit_content_path(question_id: question.id, prev_question_id: @is_active), class: "fill-div", remote: true do %>
           <%= question.text %>
         <% end %>
+
       </div>
 
 

@@ -1,5 +1,44 @@
-renderPanelContent()
+sendPreviousTextArea()
+updateResponsePage()
 
-function renderPanelContent(){
-  $('div.questions').html("<%= j (render partial: 'questions', object: [@questions, @responses, @is_active] ) %>")
+function sendPreviousTextArea(){
+
+	var response = $(".response-textarea").val()
+	if (response != null){
+		saveContent(response, "<%= @prev_question_id %>")
+	}
+}
+
+function saveContent(text, qid){
+	$.ajax({
+		url: '/responses/save_content',
+		type: 'POST',
+		async: false,
+		data: {"text": text, "question_id": qid},
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});	
+}
+
+function updateResponsePage(){
+	$.ajax({
+		url: '/responses/response_page_update',
+		type: 'GET',
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});	
 }

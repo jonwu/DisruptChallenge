@@ -7,4 +7,6 @@ class Response < ActiveRecord::Base
     user_responses = Response.where("user_id = " + user_id.to_s + " AND question_id IN (?)", question_ids)
     return user_responses
   end
+
+  
 end

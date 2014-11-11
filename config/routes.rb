@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get "responses/update_active_category_response", to: "responses#update_active_category_response", as: 'update_active_category_response'
   get "responses/response_page_update", to: "responses#response_page_update", as: 'response_page_update'
   get "responses/edit_content", to: "responses#edit_content", as: 'edit_content'
+  post "responses/save_content", to: "responses#save_content", as: 'save_content'
   
   resources :creations
   resources :dashboard

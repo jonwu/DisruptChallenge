@@ -1,6 +1,7 @@
 renderCategories()
 setActiveTab()
 renderQuestions()
+renderPanelContent()
 
 /**
  * Render categories in sidebar
@@ -28,4 +29,8 @@ function setActiveTab(){
  */
 function renderQuestions(){
   $('div.questions').html("<%= j (render partial: 'questions', object: [@questions, @responses]) %>")
+}
+
+function renderPanelContent(){
+  $('div.questions').html("<%= j (render partial: 'questions', object: [@questions, @responses, @is_active] ) %>")
 }

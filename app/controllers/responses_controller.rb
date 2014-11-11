@@ -32,18 +32,35 @@ class ResponsesController < ApplicationController
     @active_category = get_active_category
     @questions = set_questions(@active_category.questions.all)
     @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
+    @is_active = get_active_question
   end
 
   def index
     
   end
   def edit_content
-    p "*"*80
-    p params
-    question_id = params[:question_id]
-    @is_active = Question.find_by(id: question_id)
+    @prev_question_id = params[:prev_question_id]
+    @question_id = params[:question_id]
+    @is_active = Question.find_by(id: @question_id)
+    set_active_question(@is_active)
     @questions = get_questions
+    @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
+    
+  end
+
+  def save_content
+    question_id = params[:question_id]
+    text = params[:text]
     @responses = get_responses
+
+    # Assume @responses comes from current user
+    response = @responses.find_by_question_id(question_id)
+    if response.nil?
+      Response.create(question_id: question_id, user_id: current_user.id, text: text)
+    else
+      response.update(text:text)
+    end
+    render :nothing => true
   end
 
 
@@ -52,7 +69,16 @@ class ResponsesController < ApplicationController
     $questions
     $responses
     $active_category
+    $active_question
 
+    def set_active_question(active_question)
+      $active_question = active_question
+      return $active_question
+    end
+
+    def get_active_question
+      return $active_question
+    end
     def set_active_category(active_category)
       $active_category = active_category
       return $active_category
