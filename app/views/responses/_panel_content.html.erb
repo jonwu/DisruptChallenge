@@ -1,0 +1,18 @@
+
+<% if @current_question == @is_active %>
+	<div class="panel-body">
+		<% if !@current_response.nil? %>
+			<textarea class="response-textarea form-control" placeholder="Enter text ..."><%= @current_response.text %></textarea>
+		<% else %>
+			<textarea class="response-textarea form-control" placeholder="Enter text ..."></textarea>
+		<% end %>
+	</div>
+<% else %>
+	<% if !@current_response.nil? %>
+		<div class="panel-body">
+			<div><%= @current_response.text %></div>
+		</div>
+	<% end %>
+<% end %>
+
+

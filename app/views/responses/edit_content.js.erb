@@ -1,0 +1,5 @@
+renderPanelContent()
+
+function renderPanelContent(){
+  $('div.questions').html("<%= j (render partial: 'questions', object: [@questions, @responses, @is_active] ) %>")
+}

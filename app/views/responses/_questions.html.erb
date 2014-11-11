@@ -1,24 +1,26 @@
-<% @questions.each do |q| %>
+<% @questions.each do |question| %>
+    <% @current_response = @responses.find_by_question_id(question.id) %>
+    <% @current_question = question %>
     <div class="panel panel-info">
       <div class="panel-heading">
-        <%= link_to edit_content_path, class: "fill-div", remote: true do %>
-          <%= q.text %>
+        <%= link_to edit_content_path(question_id: question.id), class: "fill-div", remote: true do %>
+          <%= question.text %>
         <% end %>
       </div>
-      <!-- <div class="panel-body"></div>  -->
-      <!-- <% if @responses.find_by_question_id(q.id) == nil %>
-        <textarea class="some-textarea form-control" placeholder="Enter text ..."></textarea>
-      <% else %>
-        <textarea class="some-textarea form-control" placeholder="Enter text ..."><%= @responses.find_by_question_id(q.id).text%></textarea>
-      <% end %> -->
-        
-      <!-- </div> -->
+
+
+      <div class="panel-content">
+        <%= render partial: "panel_content", object: [@is_active, @current_response, @current_question] %>
+      </div>
+      
+      
     </div>
 <% end %>
+
 
 
 <script type="text/javascript">
     $.fn.wysihtml5.defaultOptions['toolbar']['image']
     console.log($.fn.wysihtml5.defaultOptions)
-    $('.some-textarea').wysihtml5();
+    $('.response-textarea').wysihtml5();
 </script>

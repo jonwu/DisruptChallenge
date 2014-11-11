@@ -3,9 +3,10 @@ class ResponsesController < ApplicationController
   before_action :authenticate_user!
   
   def load_rfi_response
-    p "*"*80
     @rfi = Rfi.find_by_id(params[:rfi_id]) or not_found
     @collaborator_ids = @rfi.collaborators.all.pluck(:user_id)
+    @is_active = nil
+
     if @collaborator_ids.include?(current_user.id)
       set_rfi(@rfi)
       # @questions = get_current_rfi.questions
@@ -34,9 +35,15 @@ class ResponsesController < ApplicationController
   end
 
   def index
+    
   end
   def edit_content
-  
+    p "*"*80
+    p params
+    question_id = params[:question_id]
+    @is_active = Question.find_by(id: question_id)
+    @questions = get_questions
+    @responses = get_responses
   end
 
 
