@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get "responses/load_rfi_response/:rfi_id", to: "responses#load_rfi_response", as: 'load_rfi_response'
   get "responses/update_active_category_response", to: "responses#update_active_category_response", as: 'update_active_category_response'
   get "responses/response_page_update", to: "responses#response_page_update", as: 'response_page_update'
+  get "responses/edit_content", to: "responses#edit_content", as: 'edit_content'
+  
   resources :creations
   resources :dashboard
   resources :responses

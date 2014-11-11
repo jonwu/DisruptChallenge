@@ -1,14 +1,18 @@
 <% @questions.each do |q| %>
-    <div class="panel panel-default">
-      <div class="panel-heading"><%= q.text %></div>
-      <div class="panel-body">
-      <% if @responses.find_by_question_id(q.id) == nil %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <%= link_to edit_content_path, class: "fill-div", remote: true do %>
+          <%= q.text %>
+        <% end %>
+      </div>
+      <!-- <div class="panel-body"></div>  -->
+      <!-- <% if @responses.find_by_question_id(q.id) == nil %>
         <textarea class="some-textarea form-control" placeholder="Enter text ..."></textarea>
       <% else %>
         <textarea class="some-textarea form-control" placeholder="Enter text ..."><%= @responses.find_by_question_id(q.id).text%></textarea>
-      <% end %>
-        <button class="submit">Submit</button>
-      </div>
+      <% end %> -->
+        
+      <!-- </div> -->
     </div>
 <% end %>
 

@@ -35,6 +35,10 @@ class ResponsesController < ApplicationController
 
   def index
   end
+  def edit_content
+  
+  end
+
 
   private
     $rfi
