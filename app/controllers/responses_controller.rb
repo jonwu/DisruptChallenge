@@ -40,6 +40,15 @@ class ResponsesController < ApplicationController
   end
 
   def collapse_content
+    
+    text = params[:text]
+    p "*"*80
+    p text
+    if !text.nil?
+      question_id = get_active_question.id
+      update_text(question_id,text)
+    end
+
     set_active_question(nil)
     redirect_to action: 'response_page_update'
   end
@@ -54,16 +63,7 @@ class ResponsesController < ApplicationController
   def save_content
     question_id = params[:question_id]
     text = params[:text]
-    @responses = get_responses
-
-    # Assume @responses comes from current user
-    response = @responses.find_by_question_id(question_id)
-
-    if response.nil?
-      Response.create(question_id: question_id, user_id: current_user.id, text: text)
-    else
-      response.update(text:text)
-    end
+    update_text(question_id,text)
     render :nothing => true
   end
 
@@ -74,6 +74,12 @@ class ResponsesController < ApplicationController
     $responses
     $active_category
     $active_question
+
+    def update_text(question_id, text)
+      # Assume @responses comes from current user
+      response = get_responses.find_by_question_id(question_id)
+      response.update(text:text)
+    end
 
     def set_active_question(active_question)
       $active_question = active_question
