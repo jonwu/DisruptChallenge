@@ -5,7 +5,8 @@ class ResponsesController < ApplicationController
   def load_rfi_response
     @rfi = Rfi.find_by_id(params[:rfi_id]) or not_found
     @collaborator_ids = @rfi.collaborators.all.pluck(:user_id)
-    @is_active = nil
+    @is_active = set_active_question(nil)
+
 
     if @collaborator_ids.include?(current_user.id)
       set_rfi(@rfi)
@@ -33,6 +34,8 @@ class ResponsesController < ApplicationController
     @questions = set_questions(@active_category.questions.all)
     @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
     @is_active = get_active_question
+    p "*"*80
+    p @is_active
   end
 
   def index
@@ -43,9 +46,6 @@ class ResponsesController < ApplicationController
     @question_id = params[:question_id]
     @is_active = Question.find_by(id: @question_id)
     set_active_question(@is_active)
-    @questions = get_questions
-    @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
-    
   end
 
   def save_content
@@ -55,6 +55,7 @@ class ResponsesController < ApplicationController
 
     # Assume @responses comes from current user
     response = @responses.find_by_question_id(question_id)
+    
     if response.nil?
       Response.create(question_id: question_id, user_id: current_user.id, text: text)
     else
