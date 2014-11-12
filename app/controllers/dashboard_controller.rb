@@ -12,14 +12,19 @@ class DashboardController < ApplicationController
 	end
 
 	def share_rfi
-		user = User.find_by(email:params[:email])
-		if user != nil
-			user_id = User.find_by(email:params[:email]).id	
+		collaborator = User.find_by(email:params[:email])
+		if collaborator != nil
+			collaborator_id = User.find_by(email:params[:email]).id	
 			rfi_id = get_current_rfi.id
-			Collaborator.new_collaborator(user_id,rfi_id)
+			Collaborator.new_collaborator(collaborator_id,rfi_id)
+			
+			questions = get_current_rfi.questions
+			Response.set_empty_responses(questions, collaborator_id)
 		end
 		render :json => {success:1}
 	end
+
+
 
 	def delete_rfi
 		Rfi.delete_rfi(get_current_rfi.id)
