@@ -1,7 +1,7 @@
 <% @questions.each do |question| %>
     <% @current_response = @responses.find_by_question_id(question.id) %>
     <% @current_question = question %>
-    <div class="panel panel-info">
+    <div class="panel panel-info response-panel">
       <div class="panel-heading">
 
       <!-- Click listener for questions -->
@@ -17,16 +17,11 @@
         <%= render partial: "panel_content", object: [@is_active, @current_response, @current_question] %>
       </div>
       
-      
     </div>
 <% end %>
 
 <script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $.fn.wysihtml5.defaultOptions['toolbar']['image']
-        $.fn.wysihtml5.defaultOptions
-        $('.response-textarea').wysihtml5();        
-  });   
+  initTextArea()
 </script>
 
 

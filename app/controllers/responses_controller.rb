@@ -7,7 +7,6 @@ class ResponsesController < ApplicationController
     @collaborator_ids = @rfi.collaborators.all.pluck(:user_id)
     @is_active = set_active_question(nil)
 
-
     if @collaborator_ids.include?(current_user.id)
       set_rfi(@rfi)
       # @questions = get_current_rfi.questions
@@ -34,13 +33,17 @@ class ResponsesController < ApplicationController
     @questions = set_questions(@active_category.questions.all)
     @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
     @is_active = get_active_question
-    p "*"*80
-    p @is_active
   end
 
   def index
     
   end
+
+  def collapse_content
+    set_active_question(nil)
+    redirect_to action: 'response_page_update'
+  end
+
   def edit_content
     @prev_question_id = params[:prev_question_id]
     @question_id = params[:question_id]
@@ -55,7 +58,7 @@ class ResponsesController < ApplicationController
 
     # Assume @responses comes from current user
     response = @responses.find_by_question_id(question_id)
-    
+
     if response.nil?
       Response.create(question_id: question_id, user_id: current_user.id, text: text)
     else
