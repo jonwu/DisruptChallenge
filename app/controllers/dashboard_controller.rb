@@ -26,8 +26,6 @@ class DashboardController < ApplicationController
 		render :json => {success:1}
 	end
 
-
-
 	def delete_rfi
 		Rfi.delete_rfi(get_current_rfi.id)
 		set_current_rfi(current_user.rfis.first)
