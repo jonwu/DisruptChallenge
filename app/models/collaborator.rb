@@ -35,5 +35,4 @@ class Collaborator < ActiveRecord::Base
   end
 
 end
-
-
+ 

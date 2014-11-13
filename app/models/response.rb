@@ -12,7 +12,7 @@ class Response < ActiveRecord::Base
   def self.set_empty_responses(questions, collaborators)
   	for collaborator in collaborators
       for question in questions
-    		Response.create(question_id: question.id, user_id: collaborator.user.id)
+    		Response.create(question_id: question.id, user_id: collaborator.user.id) # text by default is empty
     	end
     end
   end
