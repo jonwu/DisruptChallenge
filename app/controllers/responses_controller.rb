@@ -9,15 +9,12 @@ class ResponsesController < ApplicationController
 
     if @collaborator_ids.include?(current_user.id)
       set_rfi(@rfi)
-      # @questions = get_current_rfi.questions
-      # @responses = Response.get_rfi_responses(@questions, current_user.id)
       @categories = get_categories
       @active_category = set_active_category(get_categories.first)
       @questions = set_questions(@active_category.questions.all)
       @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
       render :index
     else
-      # unauthorized access
       not_found
     end
   end

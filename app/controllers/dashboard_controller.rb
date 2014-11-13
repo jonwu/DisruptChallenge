@@ -7,8 +7,11 @@ class DashboardController < ApplicationController
 	def index
 		@rfis = current_user.rfis.all
 		@shared_rfis = Collaborator.find_collaborated_rfis(current_user.id)
+		
 		set_current_rfi(@rfis.first)
 		@current_rfi = get_current_rfi
+		
+		@collaborators = Collaborator.get_collaborators(@current_rfi)
 	end
 
 	def share_rfi
@@ -17,7 +20,6 @@ class DashboardController < ApplicationController
 			collaborator_id = User.find_by(email:params[:email]).id	
 			rfi_id = get_current_rfi.id
 			Collaborator.new_collaborator(collaborator_id,rfi_id)
-			
 			questions = get_current_rfi.questions
 			Response.set_empty_responses(questions, collaborator_id)
 		end
@@ -42,9 +44,9 @@ class DashboardController < ApplicationController
 	def page_update 
 		@current_rfi = get_current_rfi
 		@rfis = current_user.rfis.all
-		p "*"*80
-		p @current_rfi
-		p @rfis
+		@shared_rfis = Collaborator.find_collaborated_rfis(current_user.id)
+		@collaborators = Collaborator.get_collaborators(@current_rfi)
+		
 	end
 
 	def make_title_form

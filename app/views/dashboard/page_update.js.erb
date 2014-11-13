@@ -17,3 +17,9 @@ function renderRfiList(){
 function renderContent(){
 	$('div.content').html("<%= j (render partial: 'content', object: @current_rfi) %>")
 }
+
+function renderSharedRfiList(){
+	<% if @shared_rfis != nil %>
+		$('div.rfi-list').html("<%= j (render partial: 'your_rfis', object: @shared_rfis) %>")
+	<% end %>
+}

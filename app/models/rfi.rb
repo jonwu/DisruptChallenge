@@ -1,6 +1,6 @@
 class Rfi < ActiveRecord::Base
-  has_many :categories
-  has_many :collaborators
+  has_many :categories, dependent: :destroy
+  has_many :collaborators, dependent: :destroy
   has_many :questions, through: :categories
 
   def self.find_rfi(id, current_user_id)
@@ -9,7 +9,6 @@ class Rfi < ActiveRecord::Base
 
   def self.delete_rfi(id)
   	output = Rfi.destroy(id)
-  	Collaborator.delete_by_rfi_id(id)
   end
 
 

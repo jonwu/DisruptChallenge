@@ -1,8 +1,9 @@
 class Collaborator < ActiveRecord::Base
-  has_one :user
-  belongs_to :rfi
+  belongs_to :user
+  belongs_to :rfi 
   validates :user_id, presence: true
   validates :rfi_id, presence: true
+  validates_uniqueness_of :user_id, :scope => :rfi_id
 
   def self.find_collaborated_rfis(user_id)
     @rfis = []
@@ -21,6 +22,15 @@ class Collaborator < ActiveRecord::Base
   def self.delete_by_rfi_id(rfi_id)
     Collaborator.delete_all(rfi_id: rfi_id)
   end
+
+  # Get all collaborators with RFI object
+  def self.get_collaborators(rfi)
+    if !rfi.nil?
+      return Collaborator.where(rfi_id: rfi.id)
+    end
+    return nil
+  end
+
 end
 
 
