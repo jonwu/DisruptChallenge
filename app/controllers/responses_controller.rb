@@ -37,17 +37,19 @@ class ResponsesController < ApplicationController
   end
 
   def collapse_content
-    
     text = params[:text]
-    p "*"*80
-    p text
     if !text.nil?
       question_id = get_active_question.id
       update_text(question_id,text)
     end
-
-    set_active_question(nil)
-    redirect_to action: 'response_page_update'
+    
+    if !get_active_question.nil?
+      set_active_question(nil)
+      redirect_to action: 'response_page_update'
+    else
+      render :nothing => true
+    end
+    
   end
 
   def edit_content

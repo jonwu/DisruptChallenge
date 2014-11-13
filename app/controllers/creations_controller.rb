@@ -82,6 +82,7 @@ class CreationsController < ApplicationController
                                   text: @text,
                                   impact: @impact)
     if @question.save
+      Response.set_empty_responses([@question], get_current_rfi.collaborators)
       redirect_to action: 'update_active_category', category: @category_id
       return
     end

@@ -1,14 +1,23 @@
+
+
+
 jQuery(document).ready(function($) {
     clickListenerOutsidePanel()
+    // removeListenerOnPageChange()
+    
 });
 
+function removeListenerOnPageChange(){
+    $(document).on('page:change', function () {
+        $(document).unbind('mouseup')
+    });
+}
 /**
  * Click listener that is not response-panel
  * @return {void} 
  */
 function clickListenerOutsidePanel(){
-    $(document).mouseup(function (e)
-    {
+    $('#page-content-wrapper').click(function(e) {
         var container = $(".response-panel");
 
         if (!container.is(e.target) // if the target of the click isn't the container...

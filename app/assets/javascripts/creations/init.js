@@ -4,6 +4,7 @@ jQuery(document).ready(function($) {
 	addQuestionListener();
 });
 
+
 function titleListener(){
 	$('#category_title_input').keydown(function(evnt){
     if(evnt.keyCode === 13){
