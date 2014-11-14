@@ -63,3 +63,16 @@ q7 = Question.create(  category_id: category2.id,
 Response.create(  question_id: q1.id,
                   user_id: user2.id,
                   text: "Berkeley Baby")
+
+Response.create(  question_id: q2.id,
+                  user_id: user2.id)
+Response.create(  question_id: q3.id,
+                  user_id: user2.id)
+Response.create(  question_id: q4.id,
+                  user_id: user2.id)
+Response.create(  question_id: q5.id,
+                  user_id: user2.id)
+Response.create(  question_id: q6.id,
+                  user_id: user2.id)
+Response.create(  question_id: q7.id,
+                  user_id: user2.id)

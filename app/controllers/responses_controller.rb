@@ -3,12 +3,12 @@ class ResponsesController < ApplicationController
   before_action :authenticate_user!
   
   def load_rfi_response
-    @rfi = Rfi.find_by_id(params[:rfi_id]) or not_found
-    @collaborator_ids = @rfi.collaborators.all.pluck(:user_id)
+    @current_rfi = Rfi.find_by_id(params[:rfi_id]) or not_found
+    @collaborator_ids = @current_rfi.collaborators.all.pluck(:user_id)
     @is_active = set_active_question(nil)
 
     if @collaborator_ids.include?(current_user.id)
-      set_rfi(@rfi)
+      set_current_rfi(@current_rfi)
       @categories = get_categories
       @active_category = set_active_category(get_categories.first)
       @questions = set_questions(@active_category.questions.all)
@@ -101,7 +101,7 @@ class ResponsesController < ApplicationController
       return $rfi.categories.all
     end
 
-    def set_rfi(rfi)
+    def set_current_rfi(rfi)
       $rfi = rfi
     end
 

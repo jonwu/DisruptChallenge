@@ -11,3 +11,21 @@
 	background-color: #C4E3F3
 
 }
+
+.submit-panel{
+	position: fixed;
+	/*left: 0;*/
+	bottom: 0;
+	/*margin-left: 250px;*/
+	margin-bottom: 0px; 
+	width: calc(100% - 250px);	
+	background-color: whitesmoke;
+}
+
+
+.submit-panel .submit-response{
+	float: right;
+	margin-bottom: 10px;
+
+
+}
