@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get "responses/edit_content", to: "responses#edit_content", as: 'edit_content'
   post "responses/save_content", to: "responses#save_content", as: 'save_content'
   post "responses/collapse_content", to: "responses#collapse_content", as: 'collapse_content'
+  post "responses/submit", to: "responses#submit", as: 'submit'
   
   resources :creations
   resources :dashboard

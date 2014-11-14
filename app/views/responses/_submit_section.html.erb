@@ -1,9 +1,10 @@
 <div class="panel panel-danger submit-panel">
-    
-    
-        <div class="panel-footer">     
-            <button type="submit" class="btn btn-primary btn-lg submit-response">Submit</button>
-        </div>
+
+    <div class="panel-footer">     
+    	<%= button_to "Submit", {action: "submit"}, {class: 'btn btn-primary btn-lg submit-response', remote: true} %>
+    	
+        
+    </div>
     
 </div>
  

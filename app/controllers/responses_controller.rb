@@ -4,11 +4,14 @@ class ResponsesController < ApplicationController
   
   def load_rfi_response
     @current_rfi = Rfi.find_by_id(params[:rfi_id]) or not_found
-    @collaborator_ids = @current_rfi.collaborators.all.pluck(:user_id)
+    set_current_rfi(@current_rfi)
+    p"*" *80
+    p @current_rfi
     @is_active = set_active_question(nil)
+    current_collaborator = @current_rfi.collaborators.find_by(user_id: current_user.id)
+    set_current_collaborator(current_collaborator)
 
-    if @collaborator_ids.include?(current_user.id)
-      set_current_rfi(@current_rfi)
+    if !get_current_collaborator.nil?
       @categories = get_categories
       @active_category = set_active_category(get_categories.first)
       @questions = set_questions(@active_category.questions.all)
@@ -66,6 +69,19 @@ class ResponsesController < ApplicationController
     render :nothing => true
   end
 
+  def submit
+    responses = get_responses
+    collaborator = get_current_collaborator
+    for response in responses
+      score = 0
+      text = response.text
+      p text
+      submission = Submission.find_or_initialize_by(collaborator_id: collaborator.id, response_id: response.id, score: score, text: text)
+      submission.update(text: text)
+    end
+    render :nothing => true
+  end
+
 
   private
     $rfi
@@ -73,11 +89,21 @@ class ResponsesController < ApplicationController
     $responses
     $active_category
     $active_question
+    $current_collaborator
 
     def update_text(question_id, text)
       # Assume @responses comes from current user
       response = get_responses.find_by_question_id(question_id)
       response.update(text:text)
+    end
+
+    def set_current_collaborator(collaborator)
+      $collaborator = collaborator
+      return $collaborator
+    end
+
+    def get_current_collaborator
+      return $collaborator
     end
 
     def set_active_question(active_question)
