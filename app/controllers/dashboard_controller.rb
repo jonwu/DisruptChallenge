@@ -1,20 +1,26 @@
 class DashboardController < ApplicationController
 	respond_to :html, :js
 	before_action :authenticate_user!
+	
 
-
+	def dashboard
+		set_current_rfi(nil)
+		redirect_to action: 'page_update'
+	end
 	
 	def index
 		@rfis = current_user.rfis.all
 		@shared_rfis = Collaborator.find_collaborated_rfis(current_user.id)
 		
-		set_current_rfi(@rfis.first)
+		set_current_rfi(nil)
 		@current_rfi = get_current_rfi
-		
+
 		@collaborators = Collaborator.get_collaborators(@current_rfi)
+
 	end
 
 	def share_rfi
+		
 		collaborator_user = User.find_by(email:params[:email])
 		if collaborator_user != nil
 			# Collaborator's user id
@@ -27,7 +33,7 @@ class DashboardController < ApplicationController
 				Response.set_empty_responses(questions, [collaborator])
 			end
 		end
-		render :json => {success: 1}
+		redirect_to action: 'page_update'
 	end
 
 	def delete_rfi

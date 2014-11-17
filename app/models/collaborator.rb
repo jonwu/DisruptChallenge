@@ -1,6 +1,7 @@
 class Collaborator < ActiveRecord::Base
   belongs_to :user
   belongs_to :rfi 
+  has_many :submissions
   validates :user_id, presence: true
   validates :rfi_id, presence: true
   validates_uniqueness_of :user_id, :scope => :rfi_id

@@ -6,6 +6,9 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav ">
+                <%= link_to dashboard_path, remote: true do%>
+                    <h3>Dashboard</h3>
+                <% end %>
                 <div class="rfi-list">
                     <%= render partial: "your_rfis", object: [@rfis, @current_rfi] %> 
                 </div>
@@ -20,7 +23,29 @@
 
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" class="dashboard">
+            <div class="menu-wrapper">
+                <div class="menu">
+                    <div class="menu-option-wrapper">
+                        
+                        <%= link_to create_rfi_path, method: :post do%>
+                            <div class="menu-option">
+                                <img src="assets/add_rfi.png" class="menu-button" alt="">
+                                <p>Create New</p>
+                            </div>
+                        <% end %>
+                        <div class="menu-option"></div>
+                        <div class="menu-option"></div>
+                        <div class="menu-option"></div>
+                        <div class="menu-option"></div>
+                    </div>
+                    
+                </div>
+                <div class="offset">
+                    
+                </div>
+            </div>
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-11">

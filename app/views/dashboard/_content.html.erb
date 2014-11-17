@@ -6,7 +6,7 @@
 		<% end %>
 	</div>
 	<!-- Share with collaborators -->
-	<%= form_tag share_rfi_path do %>
+	<%= form_tag share_rfi_path, remote: true do %>
 		<%= email_field_tag :email %>
 		<%= submit_tag 'Share', class: 'submit' %>
 	<% end %>
@@ -16,13 +16,16 @@
 		<%= link_to "Edit", load_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary'%>
 		<%= button_to "Delete", delete_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary', remote: true %>
 	<% end %>
+	
 
 	<h1>Collaborators</h1>
 	<ul>
 		<% if @collaborators != nil %>
 			<% @collaborators.each do |collaborator| %>
 				<li>
-					<a href=""><%= collaborator.user.email %></a>
+				
+					<%= link_to collaborator.user.email, evaluation_path(collaborator_id: collaborator.id) %>
+
 				</li>
 			<% end %>
 		<% else %>

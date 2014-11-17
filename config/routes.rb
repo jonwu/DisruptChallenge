@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get "dashboard/navigate_rfi", to: "dashboard#navigate_rfi", as: 'navigate_rfi'
   get "dashboard/make_title_form", to: "dashboard#make_title_form", as: 'make_title_form'
   post "dashboard/update_rfi_title", to: "dashboard#update_rfi_title", as: 'update_rfi_title'
+  get "dashboard/front", to: "dashboard#dashboard", as: 'dashboard'
 
   get "responses/load_rfi_response/:rfi_id", to: "responses#load_rfi_response", as: 'load_rfi_response'
   get "responses/update_active_category_response", to: "responses#update_active_category_response", as: 'update_active_category_response'
@@ -35,6 +36,9 @@ Rails.application.routes.draw do
   post "responses/collapse_content", to: "responses#collapse_content", as: 'collapse_content'
   post "responses/submit", to: "responses#submit", as: 'submit'
   
+
+  get "evaluation/:collaborator_id", to: "evaluation#index", as: 'evaluation'
+  resources :evaluation
   resources :creations
   resources :dashboard
   resources :responses

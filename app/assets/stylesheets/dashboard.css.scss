@@ -1,0 +1,66 @@
+@import 'colors';
+
+div.rfi-title a:link, div.category_title a:visited, div.category_title a:hover, div.category_title a:active { 
+    text-decoration:none; 
+}
+
+div.rfi-list .nav li a{
+	line-height: 25px;
+	text-indent: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+div.shared-rfi-list .nav li a{
+	line-height: 25px;
+	text-indent: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+div.dashboard .menu-wrapper{
+	height: 250px;
+	width: 100%;
+
+}
+div.dashboard .menu-wrapper .menu{
+	width: 70%;
+	height: 100%;
+	float: left;
+	background-color: $red;
+	position: relative;
+}
+
+div.dashboard .menu-wrapper .offset{
+	width: 30%;
+	height: 100%;
+	float: left;
+	background-color: $light_red;
+	
+}
+
+div.dashboard .menu-wrapper .menu .menu-option-wrapper{
+	height: 100px;
+	bottom: 0;
+	width: 100%;
+	position: absolute;
+}
+div.dashboard .menu-wrapper .menu .menu-button{
+	width: 75px;
+	height: 75px;
+	
+}
+div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option{
+	height: 100%;
+	width: 120px;
+	float: left;
+	margin-right: 1px;
+	background-color: $light_red;
+	color: white;
+	text-align: center;
+}
+div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option:hover{
+	
+}

@@ -1,4 +1,4 @@
-<h2> Your Rfis</h2>
+<h3> Active RFIs</h3>
 <ul class="nav nav-pills nav-stacked" role="tablist">
 	<% @rfis.each do |rfi| %>
 		<% if rfi != @current_rfi %>
@@ -12,4 +12,3 @@
 		<% end %>
 	<% end %>
 </ul>
-<%= button_to "Create RFI", create_rfi_path, :class => "btn btn-primary" %>

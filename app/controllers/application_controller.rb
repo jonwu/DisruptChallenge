@@ -3,7 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  rescue_from ActionView::MissingTemplate do |exception|
+    redirect_to dashboard_index_path
+    # use exception.path to extract the path information
+    # This does not work for partials
+  end
   def not_found
     raise ActionController::RoutingError.new('Not Found')
+
   end
 end

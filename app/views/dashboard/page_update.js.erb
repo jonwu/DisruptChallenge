@@ -1,5 +1,6 @@
 renderRfiList()
 renderContent()
+animateMenu()
 /**
  * Render the rfi list
  * @return {void} 
@@ -22,4 +23,12 @@ function renderSharedRfiList(){
 	<% if @shared_rfis != nil %>
 		$('div.rfi-list').html("<%= j (render partial: 'your_rfis', object: @shared_rfis) %>")
 	<% end %>
+}
+
+function animateMenu(){
+	<% if !@current_rfi.nil? %>
+		$(".menu-wrapper").animate({"height": 100}, 500)
+	<% else %>
+		$(".menu-wrapper").animate({"height": 250}, 500)
+	<% end  %>
 }
