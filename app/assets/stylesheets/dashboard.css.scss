@@ -47,10 +47,10 @@ div.dashboard .menu-wrapper .menu .menu-option-wrapper{
 	width: 100%;
 	position: absolute;
 }
-div.dashboard .menu-wrapper .menu .menu-button{
-	width: 75px;
-	height: 75px;
-	
+div.dashboard .menu-wrapper .menu .menu-option img{
+	width: 60px;
+	height: 60px;
+
 }
 div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option{
 	height: 100%;
@@ -60,7 +60,11 @@ div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option{
 	background-color: $light_red;
 	color: white;
 	text-align: center;
+	
+	
+	
 }
+
 div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option:hover{
 	
 }

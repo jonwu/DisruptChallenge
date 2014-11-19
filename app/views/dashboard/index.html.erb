@@ -6,17 +6,25 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav ">
-                <%= link_to dashboard_path, remote: true do%>
-                    <h3>Dashboard</h3>
-                <% end %>
-                <div class="rfi-list">
-                    <%= render partial: "your_rfis", object: [@rfis, @current_rfi] %> 
-                </div>
+
+                <ul class="nav nav-pills nav-stacked" role="tablist">
                 
-                <div class="shared-rfi-list">
-                    <%= render partial: "shared_rfis", object: @shared_rfis %> 
-                </div>
-	            
+                        
+                    <li class="active" role="presentation">
+                        <%= link_to dashboard_path, remote: true do%>
+                            <h3>Dashboard</h3>
+                        <% end %>        
+                    </li>
+                    
+                    
+                    <div class="rfi-list">
+                        <%= render partial: "your_rfis", object: [@rfis, @current_rfi] %> 
+                    </div>
+                    
+                    <div class="shared-rfi-list">
+                        <%= render partial: "shared_rfis", object: @shared_rfis %> 
+                    </div>
+	            </ul>
             </ul>
         </div>
 
@@ -27,17 +35,7 @@
             <div class="menu-wrapper">
                 <div class="menu">
                     <div class="menu-option-wrapper">
-                        
-                        <%= link_to create_rfi_path, method: :post do%>
-                            <div class="menu-option">
-                                <img src="assets/add_rfi.png" class="menu-button" alt="">
-                                <p>Create New</p>
-                            </div>
-                        <% end %>
-                        <div class="menu-option"></div>
-                        <div class="menu-option"></div>
-                        <div class="menu-option"></div>
-                        <div class="menu-option"></div>
+                        <%= render partial: "menu_options", object: @current_rfi %> 
                     </div>
                     
                 </div>

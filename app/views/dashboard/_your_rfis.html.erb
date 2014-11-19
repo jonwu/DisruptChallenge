@@ -1,14 +1,14 @@
 <h3> Active RFIs</h3>
-<ul class="nav nav-pills nav-stacked" role="tablist">
-	<% @rfis.each do |rfi| %>
-		<% if rfi != @current_rfi %>
-			<li role="presentation">
-		    	<%= link_to rfi.title, navigate_rfi_path(rfi_id: rfi.id), remote: true%>
-		  	</li>
-		<% else %>
-			<li class="active" role="presentation">
-		    	<%= link_to rfi.title, navigate_rfi_path(rfi_id: rfi.id), remote: true%>
-		  	</li>
-		<% end %>
+
+<% @rfis.each do |rfi| %>
+	<% if rfi != @current_rfi %>
+		<li role="presentation">
+	    	<%= link_to rfi.title, navigate_rfi_path(rfi_id: rfi.id), remote: true%>
+	  	</li>
+	<% else %>
+		<li class="active" role="presentation">
+	    	<%= link_to rfi.title, navigate_rfi_path(rfi_id: rfi.id), remote: true%>
+	  	</li>
 	<% end %>
-</ul>
+<% end %>
+

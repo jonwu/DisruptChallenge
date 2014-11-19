@@ -23,9 +23,7 @@
 		<% if @collaborators != nil %>
 			<% @collaborators.each do |collaborator| %>
 				<li>
-				
-					<%= link_to collaborator.user.email, evaluation_path(collaborator_id: collaborator.id) %>
-
+					<%= collaborator.user.email %>
 				</li>
 			<% end %>
 		<% else %>

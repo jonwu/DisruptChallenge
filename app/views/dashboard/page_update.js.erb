@@ -1,5 +1,6 @@
 renderRfiList()
 renderContent()
+renderMenuOptions()
 animateMenu()
 /**
  * Render the rfi list
@@ -25,6 +26,18 @@ function renderSharedRfiList(){
 	<% end %>
 }
 
+/**
+ * Render menu options
+ * @return {void} 
+ */
+function renderMenuOptions(){
+	$('div.menu-option-wrapper').html("<%= j (render partial: 'menu_options', object: @current_rfi) %>")
+}
+
+/**
+ * Animate menu when switching between dashboard and rifs
+ * @return {void} 
+ */
 function animateMenu(){
 	<% if !@current_rfi.nil? %>
 		$(".menu-wrapper").animate({"height": 100}, 500)

@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 	respond_to :html, :js
 	before_action :authenticate_user!
-	
+	$current_page = "dashboard"
 
 	def dashboard
 		set_current_rfi(nil)

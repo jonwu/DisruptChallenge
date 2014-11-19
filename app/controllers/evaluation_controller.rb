@@ -1,12 +1,11 @@
 class EvaluationController < ApplicationController
 	def index
-		p "*"*80
-		p params[:collaborator_id]
+		current_rfi = Rfi.find_by(id: params[:rfi_id])
+		
+		# Check if RFI is from current user
+		if current_rfi.user_id == current_user.id 
+			collaborators = current_rfi.collaborators
 
-		collaborator = Collaborator.find_by(id: params[:collaborator_id])
-		p collaborator.rfi
-		if !collaborator.nil? && (current_user.id == collaborator.rfi.user_id)
-			
 		else
 			redirect_to dashboard_index_path
 		end

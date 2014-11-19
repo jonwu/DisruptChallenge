@@ -37,7 +37,8 @@ Rails.application.routes.draw do
   post "responses/submit", to: "responses#submit", as: 'submit'
   
 
-  get "evaluation/:collaborator_id", to: "evaluation#index", as: 'evaluation'
+  get "evaluation/:rfi_id", to: "evaluation#index", as: 'evaluation'
+  
   resources :evaluation
   resources :creations
   resources :dashboard
