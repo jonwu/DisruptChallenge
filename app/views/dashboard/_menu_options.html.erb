@@ -1,17 +1,19 @@
 <%= link_to create_rfi_path, method: :post do%>
     <div class="menu-option">
-        <img src="assets/add_rfi.png" class="menu-button" alt="">
-        <p>Create New</p>
+        <div class="content">
+            <img src="assets/add_rfi.png" class="menu-button" alt="">
+            <p>Create New</p>        
+        </div>
     </div>
 <% end %>
 
 <% if !@current_rfi.nil?  %>
     <%= link_to load_rfi_evaluation_path(rfi_id: @current_rfi.id) do %>
         <div class="menu-option">
-            
-            <img src="assets/score_rfi.png" class="menu-button" alt="">
-            <p>Score RFI</p>
-            
+            <div class="content">   
+                <img src="assets/score_rfi.png" class="menu-button" alt="">
+                <p>Score RFI</p>
+            </div>
         </div>
     <% end %>
 <% end %>
