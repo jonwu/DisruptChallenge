@@ -31,6 +31,7 @@ class EvaluationController < ApplicationController
   	@active_question = set_active_question(Question.find_by_id(params[:question]))
   	# update current_submissions
   	@current_submissions = set_current_submissions(Submission.find_submissions_from_collaborators(get_active_question, get_collaborators))
+  	p @current_submissions
   	redirect_to action: 'evaluation_page_update'
   end
 

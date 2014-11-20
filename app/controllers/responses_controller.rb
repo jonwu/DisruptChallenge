@@ -70,9 +70,9 @@ class ResponsesController < ApplicationController
   end
 
   def submit
-    responses = get_responses
+    all_responses = Response.get_all_rfi_responses(get_categories, current_user.id)
     collaborator = get_current_collaborator
-    for response in responses
+    for response in all_responses
       score = 0
       text = response.text
       p text
@@ -86,6 +86,8 @@ class ResponsesController < ApplicationController
   private
     $rfi
     $questions
+    # responses under only a certain category!
+    # For all responses, use Response.get_all_rfi_responses
     $responses
     $active_category
     $active_question
@@ -133,7 +135,6 @@ class ResponsesController < ApplicationController
 
     def get_current_rfi
       return $rfi
-      # return current_user.rfis.first
     end
 
     def set_questions(questions)

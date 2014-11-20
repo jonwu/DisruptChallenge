@@ -7,7 +7,7 @@ user2 = User.create(    email: 'howardg988@berkeley.edu',
                         password: 'password',
                         password_confirmation: 'password')
 
-user3 = User.create(    email: 'jonwu@berkeley.edu',
+user3 = User.create(    email: 'jonwu92@berkeley.edu',
                         password: 'password',
                         password_confirmation: 'password')
 
@@ -15,6 +15,8 @@ rfi = Rfi.create( user_id: user.id,
                   title: "test")
 
 collab = Collaborator.create( user_id: user2.id,
+                              rfi_id: rfi.id)
+collab = Collaborator.create( user_id: user3.id,
                               rfi_id: rfi.id)
 
 category = Category.create(   rfi_id: rfi.id,
@@ -91,3 +93,12 @@ Response.create(  question_id: q2.id,
 Response.create(  question_id: q3.id,
                   user_id: user3.id,
                   text: "Nope")
+Response.create(  question_id: q4.id,
+                  user_id: user3.id)
+Response.create(  question_id: q5.id,
+                  user_id: user3.id)
+Response.create(  question_id: q6.id,
+                  user_id: user3.id)
+Response.create(  question_id: q7.id,
+                  user_id: user3.id)
+

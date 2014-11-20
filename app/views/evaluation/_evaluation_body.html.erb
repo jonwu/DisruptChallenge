@@ -1,12 +1,10 @@
 <% @current_submissions.each do |submission| %>
-  <% if submission.text != "" %>
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <%= submission.collaborator.user.email %>
-      </div>
-      <div class="panel-content">
-        <%= submission.text %>
-      </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <%= submission.collaborator.user.email %>
     </div>
-  <% end %>
+    <div class="panel-content">
+      <%= submission.text %>
+    </div>
+  </div>
 <% end %>
