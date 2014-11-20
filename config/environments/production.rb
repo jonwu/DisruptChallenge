@@ -77,4 +77,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.assets.precompile += %w( creations.js )
   config.assets.precompile += %w( responses.js )
+  config.assets.precompile += %w( evaluations.js )
 end

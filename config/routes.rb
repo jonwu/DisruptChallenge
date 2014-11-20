@@ -36,8 +36,10 @@ Rails.application.routes.draw do
   post "responses/collapse_content", to: "responses#collapse_content", as: 'collapse_content'
   post "responses/submit", to: "responses#submit", as: 'submit'
   
-
-  get "evaluation/:rfi_id", to: "evaluation#index", as: 'evaluation'
+  get "evaluation/load_rfi_evaluation/:rfi_id", to: "evaluation#load_rfi_evaluation", as: 'load_rfi_evaluation'
+  get "evaluation/toggle_category", to: "evaluation#toggle_category", as: 'toggle_category'
+  get "evaluation/update_active_question", to: "evaluation#update_active_question", as: 'update_active_question'
+  get "evaluation/evaluation_page_update", to: "evaluation#evaluation_page_update", as: 'evaluation_page_update'
   
   resources :evaluation
   resources :creations

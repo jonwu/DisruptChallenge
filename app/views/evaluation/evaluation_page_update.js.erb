@@ -1,0 +1,19 @@
+renderCategories()
+renderSubmissions()
+
+/**
+ * Render categories in sidebar
+ * @return {void} 
+ */
+function renderCategories(){
+  $('div.categories').html("<%= j (render partial: 'categories', object: [@categories, @active_category, @active_question] ) %>")
+}
+
+/**
+ * Render submissions for the active question
+ * @return {void} 
+ */
+function renderSubmissions(){
+  $('div.submissions').html("<%= j (render partial: 'evaluation_body', object: @current_submissions ) %>")
+}
+

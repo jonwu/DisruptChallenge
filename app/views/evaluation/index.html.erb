@@ -1,0 +1,32 @@
+<%= javascript_include_tag 'evaluations' %>  
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav ">
+                <div class="categories">
+                    <%= render partial: "categories", object: [@categories, @active_category, @active_question] %>
+                </div>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <div class="submissions">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="submit-section">
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+    </div>
+</body>

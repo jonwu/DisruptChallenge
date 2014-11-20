@@ -76,7 +76,7 @@ class ResponsesController < ApplicationController
       score = 0
       text = response.text
       p text
-      submission = Submission.find_or_initialize_by(collaborator_id: collaborator.id, response_id: response.id, score: score, text: text)
+      submission = Submission.find_or_initialize_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id, score: score, text: text)
       submission.update(text: text)
     end
     render :nothing => true

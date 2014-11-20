@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114204502) do
+ActiveRecord::Schema.define(version: 20141120002129) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20141114204502) do
     t.integer  "response_id"
     t.integer  "score"
     t.string   "text"
+    t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

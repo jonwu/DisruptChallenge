@@ -5,6 +5,7 @@ class CreateSubmission < ActiveRecord::Migration
       t.integer :response_id
       t.integer :score
       t.string :text
+      t.integer :question_id
 
       t.timestamps
     end

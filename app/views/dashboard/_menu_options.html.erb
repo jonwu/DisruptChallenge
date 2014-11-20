@@ -6,7 +6,7 @@
 <% end %>
 
 <% if !@current_rfi.nil?  %>
-    <%= link_to evaluation_path(rfi_id: @current_rfi.id) do %>
+    <%= link_to load_rfi_evaluation_path(rfi_id: @current_rfi.id) do %>
         <div class="menu-option">
             
             <img src="assets/score_rfi.png" class="menu-button" alt="">

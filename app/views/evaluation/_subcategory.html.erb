@@ -1,0 +1,20 @@
+<% if @c != @active_category %>
+  <li role="presentation" id="<%= @c.id %>">
+    <%= link_to @c.text, toggle_category_path(category: @c.id), remote: true%>
+  </li>
+<% else %>
+  <li class="active" role="presentation" id="<%= @c.id %>">
+    <%= link_to @c.text, toggle_category_path(category: @c.id), remote: true%>
+  </li>
+  <% @c.questions.each do |q| %>
+    <% if q == @active_question %>
+      <li class="active" role="presentation" id="<%= q.id %>">
+        <%= link_to q.text, update_active_question_path(question: q.id), remote: true%>
+      </li>
+    <% else %>
+      <li role="presentation" id="<%= q.id %>">
+        <%= link_to q.text, update_active_question_path(question: q.id), remote: true%>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>  

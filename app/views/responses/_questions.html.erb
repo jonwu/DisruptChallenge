@@ -1,15 +1,11 @@
 <% @questions.each do |question| %>
     <% @current_response = @responses.find_by_question_id(question.id) %>
     <% @current_question = question %>
-    <div class="panel panel-info response-panel">
+    <div class="panel panel-info">
       <div class="panel-heading">
-
-      <!-- Click listener for questions -->
-
-        <%= link_to edit_content_path(question_id: question.id, prev_question_id: @is_active), class: "fill-div", remote: true do %>
+        <%= link_to edit_content_path(question_id: question.id), class: "fill-div", remote: true do %>
           <%= question.text %>
         <% end %>
-
       </div>
 
 
@@ -17,12 +13,14 @@
         <%= render partial: "panel_content", object: [@is_active, @current_response, @current_question] %>
       </div>
       
+      
     </div>
 <% end %>
 
+
+
 <script type="text/javascript">
-  initTextArea()
+    $.fn.wysihtml5.defaultOptions['toolbar']['image']
+    console.log($.fn.wysihtml5.defaultOptions)
+    $('.response-textarea').wysihtml5();
 </script>
-
-
-
