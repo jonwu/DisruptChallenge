@@ -1,6 +1,5 @@
 renderCategories()
 renderCategoryTitle()
-setActiveTab()
 setQuestionFooter()
 renderQuestions()
 
@@ -23,16 +22,6 @@ function renderCategoryTitle(){
 }
 
 
-/**
- * Set colors for active tabs
- * @return {void} 
- */
-function setActiveTab(){
-  <% if @active_category != nil %>
-    $('.active').removeClass('active')
-    $("div.categories #<%= @active_category.id %>").addClass('active')
-  <% end %>
-}
 
 /**
  * Toggle question footer

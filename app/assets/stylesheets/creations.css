@@ -8,11 +8,13 @@ div.category_title a{
 
 #page-content-wrapper .question-panel{
 	position: fixed;
-	left: 0;
+	/*left: 0;*/
 	bottom: 0;
-	margin-left: 250px;
+	/*margin-left: 250px;*/
 	margin-bottom: 0px; 
-	width: 100%;	
+	width: calc(100% - 250px);	
+
+
 
 }
 
@@ -29,4 +31,13 @@ div.questions h3{
 
 div.questions p{
 	display: inline
+}
+
+.question-panel .panel-footer .content{
+	float: right;
+	
+	
+}
+.question-panel .panel-footer{
+	overflow: hidden;
 }

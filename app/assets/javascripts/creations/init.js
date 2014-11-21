@@ -24,17 +24,18 @@ function addQuestionListener(){
 	$(".add-question").click(function(event) {
 		text = $.trim($('.question-form').val())
 		if(text){
-		  saveQuestions(text)
+			impact = $(".impact .active").text()
+			saveQuestions(text, impact)
 		}
 		return false
 	});
 }
 
-function saveQuestions(text){
+function saveQuestions(text, impact){
 	$.ajax({
 		url: '/creations/add_question',
 		type: 'POST',
-		data: {"text": text, "qual": true, "quant": true, "impact": "high"},
+		data: {"text": text, "qual": true, "quant": true, "impact": impact},
 	}).done(function() {
 		$(".question-form").val('')
 		$('body').animate({ scrollTop: $('body')[0].scrollHeight}, 500);

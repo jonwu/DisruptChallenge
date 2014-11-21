@@ -6,7 +6,7 @@
 
   <% @active_category.questions.each do |q| %>
       <p>
-        <h3><span class="label label-default"><%= q.text.html_safe %></span></h3>
+        <h3><span class="label label-default"><%= q.text.html_safe %></span> <%= q.impact %></h3>
         <%= link_to delete_question_path(question_id: q.id, category_id: @active_category.id), remote: true do %>
           <p>X</p>
         <% end %>
