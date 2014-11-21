@@ -75,8 +75,9 @@ class ResponsesController < ApplicationController
     for response in all_responses
       score = 0
       text = response.text
+      p "*"*80
       p text
-      submission = Submission.find_or_initialize_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id, score: score, text: text)
+      submission = Submission.find_or_initialize_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id, score: score)
       submission.update(text: text)
     end
     render :nothing => true
