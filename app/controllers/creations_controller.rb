@@ -38,6 +38,7 @@ class CreationsController < ApplicationController
     @active_category = set_active_category(Category.create!( rfi_id: get_current_rfi.id,
                   text: text))
     redirect_to action: 'page_update'
+
   end 
 
   def delete_category
