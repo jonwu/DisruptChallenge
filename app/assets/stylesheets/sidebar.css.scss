@@ -75,12 +75,13 @@
     border-radius: 0;
 }
 
-.sidebar-nav li a:hover {
+.nav > li> a:hover, .nav > li> a:focus{
     text-decoration: none;
-    color: #fff;
     background: none;
+    color: white;
 
 }
+
 
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
