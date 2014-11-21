@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
 
 function numericInputListener() {
     // TODO: Can pull from a max range value
-    max_range = 100
+    max_range = 10
 
     // Prevent copy and paste
     $('.submissions').on('cut copy paste', 'input.response-rating', function(e) {
@@ -21,7 +21,7 @@ function numericInputListener() {
         var key = e.keyCode ? e.keyCode : e.which;
         var rating = $(e.target).val()
         // Doesn't allow for non integer values and if the value pushes the input greater than the max allowed.
-        if (rating * 10 + parseInt(String.fromCharCode(key)) > max_range || isNaN( String.fromCharCode(key) )) {
+        if (rating * max_range + parseInt(String.fromCharCode(key)) > max_range || isNaN( String.fromCharCode(key) )) {
             return false;
         }
     });
