@@ -1,7 +1,12 @@
-renderRfiList()
+// renderRfiList()
+renderSidebarMenu()
 renderContent()
 renderMenuOptions()
 animateMenu()
+
+function renderSidebarMenu(){
+	$('ul.sidebar-nav').html("<%= j (render partial: 'sidebar_menu', object: [@rfis, @current_rfi, @shared_rfis]) %>")
+}
 /**
  * Render the rfi list
  * @return {void} 
@@ -39,9 +44,16 @@ function renderMenuOptions(){
  * @return {void} 
  */
 function animateMenu(){
+	news_feed_h = $(".news-feed").height()
 	<% if !@current_rfi.nil? %>
-		$(".menu-wrapper").animate({"height": 100}, 500)
+		if($(".menu-wrapper").height() == 250){
+			$(".menu-wrapper").animate({"height": 100}, 500)
+			$(".news-feed").animate({"height": news_feed_h + 150}, 500)
+		}
 	<% else %>
-		$(".menu-wrapper").animate({"height": 250}, 500)
+		if($(".menu-wrapper").height() == 100){
+			$(".menu-wrapper").animate({"height": 250}, 500)
+			$(".news-feed").animate({"height": news_feed_h - 150}, 500)
+		}
 	<% end  %>
 }

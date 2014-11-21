@@ -1,0 +1,29 @@
+
+            
+<li <% if @current_page == "dashboard" %> class = active <% end %> role="presentation">
+    <%= link_to dashboard_path, remote: true do%>
+        Dashboard
+    <% end %>        
+</li>
+
+<li <% if @current_page == "active_rfis" %> class = active <% end %>  role="presentation">
+    <%= link_to active_rfis_path, remote: true do%>
+        Active RFIs
+    <% end %>   
+
+    <div class="rfi-list">
+        <%= render partial: "your_rfis", object: [@rfis, @current_rfi] %> 
+    </div>
+</li>
+
+
+<li <% if @current_page == "shared_rfis" %> class = active <% end %>  role="presentation">
+    <%= link_to active_rfis_path, remote: true do%>
+        Shared RFIs
+    <% end %>   
+
+    <div class="shared-rfi-list">
+        <%= render partial: "shared_rfis", object: @shared_rfis %> 
+    </div>
+</li>
+

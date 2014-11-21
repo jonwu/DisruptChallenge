@@ -18,7 +18,29 @@
     <% end %>
 <% end %>
 
+<% if !@current_rfi.nil?  %>
+    <%= link_to load_rfi_path(rfi_id: @current_rfi.id) do %>
+        <div class="menu-option">
+            <div class="content">   
+                <img src="assets/add_rfi.png" class="menu-button" alt="">
+                <p>Edit RFI</p>
+            </div>
+        </div>
+    <% end %>
+<% end %>
 
-<div class="menu-option"></div>
-<div class="menu-option"></div>
-<div class="menu-option"></div>
+<% if !@current_rfi.nil?  %>
+    <%= link_to delete_rfi_path(rfi_id: @current_rfi.id), method: :post do %>
+        <div class="menu-option">
+            <div class="content">   
+                <img src="assets/add_rfi.png" class="menu-button" alt="">
+                <p>Delete</p>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+
+<!-- <div class="menu-option"></div> -->
+<!-- <div class="menu-option"></div> -->
+<!-- <div class="menu-option"></div> -->

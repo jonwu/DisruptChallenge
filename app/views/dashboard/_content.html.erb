@@ -11,11 +11,7 @@
 		<%= submit_tag 'Share', class: 'submit' %>
 	<% end %>
 	
-	<!-- Edit or Delete a RFI -->
-	<% if @current_rfi != nil %>
-		<%= link_to "Edit", load_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary'%>
-		<%= button_to "Delete", delete_rfi_path(rfi_id: @current_rfi.id), class: 'btn btn-primary', remote: true %>
-	<% end %>
+	
 	
 
 	<h1>Collaborators</h1>

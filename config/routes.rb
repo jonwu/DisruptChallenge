@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   get "dashboard/navigate_rfi", to: "dashboard#navigate_rfi", as: 'navigate_rfi'
   get "dashboard/make_title_form", to: "dashboard#make_title_form", as: 'make_title_form'
   post "dashboard/update_rfi_title", to: "dashboard#update_rfi_title", as: 'update_rfi_title'
-  get "dashboard/front", to: "dashboard#dashboard", as: 'dashboard'
+  get "dashboard/home", to: "dashboard#dashboard", as: 'dashboard'
+  get "dashboard/active_rfis", to: "dashboard#active_rfis", as: 'active_rfis'
 
   get "responses/load_rfi_response/:rfi_id", to: "responses#load_rfi_response", as: 'load_rfi_response'
   get "responses/update_active_category_response", to: "responses#update_active_category_response", as: 'update_active_category_response'

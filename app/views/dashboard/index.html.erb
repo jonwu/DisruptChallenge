@@ -5,26 +5,8 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav ">
-
-                <ul class="nav nav-pills nav-stacked" role="tablist">
-                
-                        
-                    <li class="active" role="presentation">
-                        <%= link_to dashboard_path, remote: true do%>
-                            <h3>Dashboard</h3>
-                        <% end %>        
-                    </li>
-                    
-                    
-                    <div class="rfi-list">
-                        <%= render partial: "your_rfis", object: [@rfis, @current_rfi] %> 
-                    </div>
-                    
-                    <div class="shared-rfi-list">
-                        <%= render partial: "shared_rfis", object: @shared_rfis %> 
-                    </div>
-	            </ul>
+            <ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
+                <%= render partial: "sidebar_menu", object: [@rfis, @current_rfi, @shared_rfis] %> 
             </ul>
         </div>
 
@@ -50,9 +32,15 @@
                         <div class="content">
                             <%= render partial: "content", object: @current_rfi %>
                         </div>
+                        
                     </div>
                 </div>
             </div>
+            <div class="news-feed">
+                       
+            </div>
+            
+
         </div>
         
     </div>
