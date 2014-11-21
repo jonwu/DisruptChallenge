@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get "evaluation/toggle_category", to: "evaluation#toggle_category", as: 'toggle_category'
   get "evaluation/update_active_question", to: "evaluation#update_active_question", as: 'update_active_question'
   get "evaluation/evaluation_page_update", to: "evaluation#evaluation_page_update", as: 'evaluation_page_update'
+  post "evaluation/save_rating", to: "evaluation#save_rating", as: 'save_rating'
   
   resources :evaluation
   resources :creations

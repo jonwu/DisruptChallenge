@@ -45,6 +45,14 @@ class EvaluationController < ApplicationController
     # @is_active = get_active_question
   end
 
+  def save_rating
+  	submission_id = params[:submission_id]
+  	rating = params[:rating]
+  	submission = Submission.find_by_id(submission_id)
+  	submission.update(score: rating)
+    render :nothing => true
+  end
+
 	private
     $rfi
     $active_category
