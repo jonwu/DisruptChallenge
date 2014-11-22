@@ -36,7 +36,7 @@ class Submission < ActiveRecord::Base
     impact = submission.question.impact
     scale = convert_impact_to_scale(submission, impact)
     # need to set max score in rfi schema
-    return submission.score.to_f / 10 * scale * 50
+    return submission.score.to_f / 10 * scale
   end
 
   def self.convert_impact_to_scale(submission, impact)

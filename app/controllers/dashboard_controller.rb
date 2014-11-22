@@ -79,12 +79,13 @@ class DashboardController < ApplicationController
 		@collaborator_scores = []
 		@categories = get_current_rfi.categories
 		for collaborator in @collaborators
-			# key is collaborator
 			collab_scores = Submission.calculate_score_for_all_categories(@categories, collaborator)
-			# hash = {}
-			# hash[collaborator.user.email] = collab_scores
-			@collaborator_scores.push(collab_scores)
+			hash = {}
+			hash["score"] = collab_scores
+			hash["label"] = collaborator.user.email
+			@collaborator_scores.push(hash)
 		end
+		p @collaborator_scores
 	end
 	
 	private
