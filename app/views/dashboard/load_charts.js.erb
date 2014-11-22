@@ -1,0 +1,65 @@
+var rails_categories = [<%= raw @categories.map(&:text) %>]
+var categories = String(rails_categories[0]).split(',')
+// var red = 0;
+// var green = 0;
+// var blue = 0;
+p @collaborator_scores.first.keys.first
+
+var data = {
+    labels: categories,
+    datasets: [
+        <% for scores in @collaborator_scores %>
+        {
+            label: "Hi",
+            fillColor: "rgba(" + Math.floor(Math.random() * 255) + "," 
+                + Math.floor(Math.random() * 255) + ","
+                + Math.floor(Math.random() * 255) + ",0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: String(<%= scores.first %>).split(',')
+        },
+        <% end %>
+    ]
+};
+
+var ctx = $("#myChart").get(0).getContext("2d");
+initializeRadar(data,ctx)
+
+/**
+ * initialize a Radar chart
+ * @param  {hashmap} data
+ * @param  {class} ctx
+ * @param  {hashmap} options
+ * @return {void}
+ */
+function initializeRadar(data, ctx, options){
+  options = typeof options !== 'undefined' ? options : null;
+  var myRadarChart = new Chart(ctx).Radar(data, options);
+  legend(document.getElementById("chart"), data)
+  // $('#chart').append(myRadarChart.generateLegend())
+}
+
+
+function legend(parent, data) {
+    parent.className = 'legend';
+    var datas = data.hasOwnProperty('datasets') ? data.datasets : data;
+
+    // remove possible children of the parent
+    while(parent.hasChildNodes()) {
+        parent.removeChild(parent.lastChild);
+    }
+
+    datas.forEach(function(d) {
+        var title = document.createElement('span');
+        title.className = 'title';
+        title.style.borderColor = d.hasOwnProperty('fillColor') ? d.fillColor : d.color;
+        title.style.borderStyle = 'solid';
+        parent.appendChild(title);
+
+        var text = document.createTextNode(d.label);
+        title.appendChild(text);
+    });
+}

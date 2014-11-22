@@ -1,6 +1,6 @@
 <% @current_submissions.each do |submission| %>
   <div class="submission-body">
-    <%= number_field_tag submission.id, submission.score, in: 1...11, class: 'response-rating' %>
+    <%= number_field_tag submission.id, submission.score, class: 'response-rating' %>
     <div class="submission-panel">
       <div class="panel panel-info">
         <div class="panel-heading">

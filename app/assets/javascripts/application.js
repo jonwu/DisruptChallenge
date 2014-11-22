@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales
+//= require Chart
 //= require_tree ./global

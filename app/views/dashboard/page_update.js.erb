@@ -23,6 +23,9 @@ function renderRfiList(){
  */
 function renderContent(){
 	$('div.content').html("<%= j (render partial: 'content', object: @current_rfi) %>")
+  <% if !@current_rfi.nil? %>
+    loadCharts()
+  <% end %>
 }
 
 function renderSharedRfiList(){
@@ -56,4 +59,21 @@ function animateMenu(){
 			$(".news-feed").animate({"height": news_feed_h - 150}, 500)
 		}
 	<% end  %>
+}
+
+function loadCharts(){
+  $.ajax({
+    url: '/dashboard/load_charts',
+    type: 'GET',
+  })
+  .done(function() {
+    // console.log("success");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+  
 }

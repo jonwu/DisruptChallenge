@@ -68,9 +68,23 @@ class DashboardController < ApplicationController
 	def make_title_form
 		@current_rfi = get_current_rfi
 	end
+
 	def update_rfi_title
 		get_current_rfi.update(:title => params[:rfi_title])
 		redirect_to action: 'page_update'
+	end
+
+	def load_charts
+		@collaborators = Collaborator.get_collaborators(get_current_rfi)
+		@collaborator_scores = []
+		@categories = get_current_rfi.categories
+		for collaborator in @collaborators
+			# key is collaborator
+			collab_scores = Submission.calculate_score_for_all_categories(@categories, collaborator)
+			# hash = {}
+			# hash[collaborator.user.email] = collab_scores
+			@collaborator_scores.push(collab_scores)
+		end
 	end
 	
 	private
