@@ -48,7 +48,7 @@ initializeRadar(data,ctx)
 function initializeRadar(data, ctx, options){
   options = typeof options !== 'undefined' ? options : null;
   var myRadarChart = new Chart(ctx).Radar(data, options);
-  legend(document.getElementById("chart"), data)
+  legend(document.getElementById("legend"), data)
 }
 
 
