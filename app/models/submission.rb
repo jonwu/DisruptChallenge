@@ -10,6 +10,7 @@ class Submission < ActiveRecord::Base
     return Submission.where("collaborator_id IN (?) AND question_id = " + question.id.to_s, collaborator_ids)
   end
 
+  # Given a collaborator, returns a list of scores, one for each category in rfi
   def self.calculate_score_for_all_categories(categories, collaborator)
     scores = []
     # data assumes labels in chart are in same order as given here!
@@ -20,6 +21,7 @@ class Submission < ActiveRecord::Base
     return scores
   end
 
+  # Calculates the score for a single category
   def self.calculate_score_for_category(category, collaborator)
     score = 0
     for question in category.questions.all
@@ -32,6 +34,7 @@ class Submission < ActiveRecord::Base
     return score
   end
 
+  # Score for a single question
   def self.calculate_score_from_submission(submission)
     impact = submission.question.impact
     scale = convert_impact_to_scale(submission, impact)
@@ -39,6 +42,7 @@ class Submission < ActiveRecord::Base
     return submission.score.to_f / 10 * scale
   end
 
+  # Retrieves int values for a question's impact levels
   def self.convert_impact_to_scale(submission, impact)
     rfi = submission.question.category.rfi
     if impact.to_s == "low"

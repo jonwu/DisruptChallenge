@@ -1,3 +1,4 @@
+<h2><%= @active_question.text %></h2>
 <% @current_submissions.each do |submission| %>
   <div class="submission-body">
     <%= number_field_tag submission.id, submission.score, class: 'response-rating' %>

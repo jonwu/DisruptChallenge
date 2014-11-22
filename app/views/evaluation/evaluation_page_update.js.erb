@@ -14,6 +14,6 @@ function renderCategories(){
  * @return {void} 
  */
 function renderSubmissions(){
-  $('div.submissions').html("<%= j (render partial: 'evaluation_body', object: @current_submissions ) %>")
+  $('div.submissions').html("<%= j (render partial: 'evaluation_body', object: [@current_submissions, @active_question] ) %>")
 }
 
