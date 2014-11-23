@@ -1,6 +1,8 @@
 renderCategories()
 setActiveTab()
 renderQuestions()
+renderLastUpdated()
+
 
 /**
  * Render categories in sidebar
@@ -30,3 +32,13 @@ function renderQuestions(){
   $('div.questions').html("<%= j (render partial: 'questions', object: [@questions, @responses, @is_active] ) %>")
 }
 
+function renderQuestions(){
+  $('div.questions').html("<%= j (render partial: 'questions', object: [@questions, @responses, @is_active] ) %>")
+}
+
+
+function renderLastUpdated(){
+	<% if !@last_updated.nil?  %>
+  		$('#last_updated').text("<%= @last_updated %>");
+  	<% end %>
+}

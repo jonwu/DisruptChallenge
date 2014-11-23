@@ -86,16 +86,23 @@ div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option{
 div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option:hover{
 	
 }
-div.dashboard .container-fluid{
+div.dashboard .container-fluid {
+	width: 100%;
+	height: auto;
+	
+	// float: left;
+}
+div.dashboard .container-fluid .row{
 	width: 70%;
 	float: left;
 }
-div.dashboard div.news-feed{
-
-	min-height: calc(100% - 250px);
+div.dashboard .container-fluid .news-feed{
+	
+	height: 100%;
 	float: right;
-	background-color: lightgray;
 	width: 30%;
+	background-color: darkgray;
+
 	position: relative;
-	// position: absolute;
+	// position: fixed;
 }

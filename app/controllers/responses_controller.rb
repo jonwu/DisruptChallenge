@@ -16,6 +16,7 @@ class ResponsesController < ApplicationController
       @active_category = set_active_category(get_categories.first)
       @questions = set_questions(@active_category.questions.all)
       @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
+      @last_updated = Submission.get_last_updated(get_current_collaborator)
       render :index
     else
       not_found
@@ -33,6 +34,9 @@ class ResponsesController < ApplicationController
     @questions = set_questions(@active_category.questions.all)
     @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
     @is_active = get_active_question
+    @last_updated = Submission.get_last_updated(get_current_collaborator)
+    
+    
   end
 
   def index
@@ -75,12 +79,11 @@ class ResponsesController < ApplicationController
     for response in all_responses
       score = 0
       text = response.text
-      p "*"*80
-      p text
       submission = Submission.find_or_create_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id, score: score)
       submission.update(text: text)
     end
-    render :nothing => true
+
+    redirect_to action: 'response_page_update'
   end
 
 
@@ -93,11 +96,22 @@ class ResponsesController < ApplicationController
     $active_category
     $active_question
     $current_collaborator
+    $last_updated
 
     def update_text(question_id, text)
       # Assume @responses comes from current user
       response = get_responses.find_by_question_id(question_id)
       response.update(text:text)
+    end
+
+
+    def set_current_last_updated(last_updated)
+      $last_updated = last_updated
+      return $last_updated
+    end
+
+    def get_current_last_updated
+      return $last_updated
     end
 
     def set_current_collaborator(collaborator)

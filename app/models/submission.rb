@@ -53,4 +53,12 @@ class Submission < ActiveRecord::Base
       return rfi.high
     end
   end
+
+  def self.get_last_updated(collaborator)
+    if collaborator.submissions.exists?
+      return collaborator.submissions.order("updated_at DESC").first.updated_at
+    end
+
+    return nil
+  end
 end

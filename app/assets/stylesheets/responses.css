@@ -21,9 +21,15 @@
 	width: calc(100% - 250px);	
 	background-color: whitesmoke;
 }
+.submit-panel .panel-footer{
+	overflow: hidden;
 
-
-.submit-panel .submit-response{
+}
+.submit-panel .panel-footer .content{
 	float: right;
-	margin-bottom: 10px;
+}
+.submit-panel .panel-footer .content p{
+	color: red;
+	margin-right: 10px;
+	display: inline-block;
 }

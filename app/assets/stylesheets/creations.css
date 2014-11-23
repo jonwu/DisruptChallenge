@@ -30,14 +30,14 @@ div.questions h3{
 }
 
 div.questions p{
-	display: inline
+	display: inline;
 }
 
 .question-panel .panel-footer .content{
 	float: right;
-	
-	
 }
+
+
 .question-panel .panel-footer{
 	overflow: hidden;
 }
