@@ -4,10 +4,10 @@ class Submission < ActiveRecord::Base
   belongs_to :question
   belongs_to :collaborator
 
-  # Given a question and list of collaborators, finds the submissions
+  # Given a question and list of collaborators, finds the submissions in descending order by id
   def self.find_submissions_from_collaborators(question, collaborator_list)
     collaborator_ids = collaborator_list.pluck(:id)
-    return Submission.where("collaborator_id IN (?) AND question_id = " + question.id.to_s, collaborator_ids)
+    return Submission.where("collaborator_id IN (?) AND question_id = " + question.id.to_s, collaborator_ids).order("id DESC")
   end
 
   # Given a collaborator, returns a list of scores, one for each category in rfi

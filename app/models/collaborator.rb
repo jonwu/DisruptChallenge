@@ -27,13 +27,12 @@ class Collaborator < ActiveRecord::Base
     Collaborator.delete_all(rfi_id: rfi_id)
   end
 
-  # Get all collaborators with RFI object
+  # Get all collaborators with RFI object, ordered by descending id.
   def self.get_collaborators(rfi)
     if !rfi.nil?
-      return Collaborator.where(rfi_id: rfi.id)
+      return Collaborator.where(rfi_id: rfi.id).order("id DESC")
     end
     return nil
   end
-
 end
  

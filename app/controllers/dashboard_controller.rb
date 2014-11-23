@@ -75,17 +75,36 @@ class DashboardController < ApplicationController
 	end
 
 	def load_charts
+		# need all collaborators to render check boxes
 		@collaborators = Collaborator.get_collaborators(get_current_rfi)
 		@collaborator_scores = []
 		@categories = get_current_rfi.categories
 		for collaborator in @collaborators
-			collab_scores = Submission.calculate_score_for_all_categories(@categories, collaborator)
 			hash = {}
-			hash["score"] = collab_scores
-			hash["label"] = collaborator.user.email
+			if (collaborator.selected)
+				collab_scores = Submission.calculate_score_for_all_categories(@categories, collaborator)
+				hash["score"] = collab_scores
+				hash["label"] = collaborator.user.email
+				hash["selected"] = true
+			else
+				hash["selected"] = false
+			end
+			hash["collaborator"] = collaborator
 			@collaborator_scores.push(hash)
 		end
-		p @collaborator_scores
+	end
+
+	# responsible for updating whether collaborators are selected or not
+	def refresh_charts
+	end
+
+	def update_selected
+		pairs = params[:pairs]
+		for pair in pairs
+			# for some reason, the pairs are in [int, {hash}] form, so I need to index to [1] first
+			Collaborator.find_by_id(pair[1].keys.first).update(selected: pair[1][pair[1].keys.first])
+		end
+		redirect_to action: 'load_charts'
 	end
 	
 	private

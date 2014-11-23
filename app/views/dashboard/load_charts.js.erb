@@ -4,7 +4,7 @@ var rails_categories = [<%= raw @categories.map(&:text) %>]
 var categories = String(rails_categories[0]).split(',')
 
 // Select distinct colors equal to number of graphs.
-var numColors = <%= @collaborator_scores.count %>
+var numColors = <%= @collaborators.count %>
 var colors = []
 for (var i = 0; i < numColors; i++) {
     colors[i] = hexToRgb(rainbow(numColors, i))
@@ -15,28 +15,30 @@ var data = {
     datasets: [
         <% idx = 0 %>
         <% for scores in @collaborator_scores %>
-        {
-            // For strings, need to process rails in quotes! Without quotes, returns int.
-            label: '<%= scores["label"] %>', 
-            fillColor: "rgba(" + colors[<%= idx %>].r + "," 
-                + colors[<%= idx %>].g + ","
-                + colors[<%= idx %>].b + ",0.5)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(" + colors[<%= idx %>].r + "," 
-                + colors[<%= idx %>].g + ","
-                + colors[<%= idx %>].b + ",0.5)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: String(<%= scores["score"] %>).split(',')
-        },
+            <% if scores["selected"] %>
+            {
+                // For strings, need to process rails in quotes! Without quotes, returns int.
+                label: '<%= scores["label"] %>', 
+                fillColor: "rgba(" + colors[<%= idx %>].r + "," 
+                    + colors[<%= idx %>].g + ","
+                    + colors[<%= idx %>].b + ",0.5)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(" + colors[<%= idx %>].r + "," 
+                    + colors[<%= idx %>].g + ","
+                    + colors[<%= idx %>].b + ",0.5)",
+                pointStrokeColor: "#fff", 
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: String(<%= scores["score"] %>).split(',')
+            },
+            <% end %>
         <% idx += 1 %>
         <% end %>
     ]
 };
 
 var ctx = $("#myChart").get(0).getContext("2d");
-initializeRadar(data,ctx)
+initializeRadar(data,ctx, colors)
 
 /**
  * initialize a Radar chart
@@ -45,10 +47,9 @@ initializeRadar(data,ctx)
  * @param  {hashmap} options
  * @return {void}
  */
-function initializeRadar(data, ctx, options){
-  options = typeof options !== 'undefined' ? options : null;
-  var myRadarChart = new Chart(ctx).Radar(data, options);
-  legend(document.getElementById("legend"), data)
+function initializeRadar(data, ctx, colors){
+  var myRadarChart = new Chart(ctx).Radar(data, null);
+  legend(document.getElementById("legend"), colors)
 }
 
 
@@ -58,35 +59,45 @@ function initializeRadar(data, ctx, options){
  * @param  {array} data
  * @return {void}
  */
-function legend(parent, data) {
+function legend(parent, colors) {
     parent.className = 'legend';
-    var datas = data.hasOwnProperty('datasets') ? data.datasets : data;
 
     // remove possible children of the parent
     while(parent.hasChildNodes()) {
         parent.removeChild(parent.lastChild);
     }
 
-    datas.forEach(function(d) {
+    <% idx = 0 %>
+    <% for scores in @collaborator_scores %>
         var title = document.createElement('div');
         title.className = 'title';
-        // title.style.borderColor = d.hasOwnProperty('fillColor') ? d.fillColor : d.color;
-        // title.style.borderStyle = 'solid';
         parent.appendChild(title);
 
-        var colorDiv = document.createElement('div');
-        colorDiv.style.width = 10 + "px"
-        colorDiv.style.height = 10 + "px"
-        colorDiv.style.backgroundColor = d.hasOwnProperty('fillColor') ? d.fillColor : d.color;
+        var checkbox = document.createElement('input');
+        checkbox.type = "checkbox"
+        checkbox.style.width = 10 + "px"
+        checkbox.style.height = 10 + "px"
+        checkbox.style.marginLeft = 5 + "px";
+        checkbox.id = <%= scores["collaborator"].id %>
+        <% if scores["selected"] %>
+        checkbox.checked = true
+        <% end %>
+
+        var colorDiv = document.createElement('div')
+        colorDiv.style.width = 20 + "px"
+        colorDiv.style.height = 20 + "px"
+        colorDiv.style.backgroundColor = "rgba(" + colors[<%= idx %>].r + "," 
+                    + colors[<%= idx %>].g + ","
+                    + colors[<%= idx %>].b + ",0.5)"
         colorDiv.style.display = "inline-block";
         colorDiv.style.marginRight = 10 + "px";
-        // colorDiv.style.borderStyle = 'solid';
+        colorDiv.appendChild(checkbox)
         title.appendChild(colorDiv);
 
-        var text = document.createTextNode(d.label);
+        var text = document.createTextNode('<%= scores["collaborator"].user.email %>');
         title.appendChild(text);
-
-    });
+    <% idx += 1 %>
+    <% end %>
 }
 
 /**

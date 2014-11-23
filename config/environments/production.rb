@@ -78,4 +78,5 @@ Rails.application.configure do
   config.assets.precompile += %w( creations.js )
   config.assets.precompile += %w( responses.js )
   config.assets.precompile += %w( evaluations.js )
+  config.assets.precompile += %w( dashboard.js )
 end

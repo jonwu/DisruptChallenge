@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get "dashboard/home", to: "dashboard#dashboard", as: 'dashboard'
   get "dashboard/active_rfis", to: "dashboard#active_rfis", as: 'active_rfis'
   get "dashboard/load_charts", to: "dashboard#load_charts", as: 'load_charts'
+  post "dashboard/refresh_charts", to: "dashboard#refresh_charts", as: 'refresh_charts'
+  post "dashboard/update_selected", to: "dashboard#update_selected", as: 'update_selected'
 
   get "responses/load_rfi_response/:rfi_id", to: "responses#load_rfi_response", as: 'load_rfi_response'
   get "responses/update_active_category_response", to: "responses#update_active_category_response", as: 'update_active_category_response'
