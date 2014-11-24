@@ -79,6 +79,7 @@ function legend(parent, colors) {
         checkbox.style.height = 10 + "px"
         checkbox.style.marginLeft = 5 + "px";
         checkbox.id = <%= scores["collaborator"].id %>
+        checkbox.className = "toGraph"
         <% if scores["selected"] %>
         checkbox.checked = true
         <% end %>

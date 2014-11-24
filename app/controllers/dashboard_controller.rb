@@ -94,16 +94,10 @@ class DashboardController < ApplicationController
 		end
 	end
 
-	# responsible for updating whether collaborators are selected or not
-	def refresh_charts
-	end
-
 	def update_selected
-		pairs = params[:pairs]
-		for pair in pairs
-			# for some reason, the pairs are in [int, {hash}] form, so I need to index to [1] first
-			Collaborator.find_by_id(pair[1].keys.first).update(selected: pair[1][pair[1].keys.first])
-		end
+		collaborator_id = params[:collaborator_id]
+		is_selected = params[:is_selected]
+		Collaborator.find_by_id(collaborator_id).update(selected: is_selected)
 		redirect_to action: 'load_charts'
 	end
 	
