@@ -52,12 +52,12 @@ function animateMenu(){
 	<% if !@current_rfi.nil? %>
 		if($(".menu-wrapper").height() == 250){
 			$(".menu-wrapper").animate({"height": 100}, 500)
-			$(".news-feed").animate({"height": height}, 500)
+			$(".container-fluid").animate({"height": height+150}, 500)
 		}
 	<% else %>
 		if($(".menu-wrapper").height() == 100){
 			$(".menu-wrapper").animate({"height": 250}, 500)
-			$(".news-feed").animate({"height": height}, 500)
+		$(".container-fluid").animate({"height": height-150}, 500)
 		}
 	<% end  %>
 }
