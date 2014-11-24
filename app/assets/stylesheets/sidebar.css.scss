@@ -24,8 +24,15 @@
 }
 
 #page-content-wrapper .container-fluid {
-    padding-top: 15px;
+    padding: 0;
+    overflow: auto;
 }
+#page-content-wrapper .container-fluid .row{
+    margin: 0;
+    height: 100%;
+    overflow: auto;
+}
+
 
 
 /* Sidebar Styles */
