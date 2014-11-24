@@ -79,16 +79,20 @@ class DashboardController < ApplicationController
 		@collaborators = Collaborator.get_collaborators(get_current_rfi)
 		@collaborator_scores = []
 		@categories = get_current_rfi.categories
+		@empty_categories = []
+		(1..@categories.count).each do |i|
+			@empty_categories.push(0)
+		end
 		for collaborator in @collaborators
 			hash = {}
 			if (collaborator.selected)
 				collab_scores = Submission.calculate_score_for_all_categories(@categories, collaborator)
 				hash["score"] = collab_scores
-				hash["label"] = collaborator.user.email
 				hash["selected"] = true
 			else
 				hash["selected"] = false
 			end
+			hash["label"] = collaborator.user.email
 			hash["collaborator"] = collaborator
 			@collaborator_scores.push(hash)
 		end

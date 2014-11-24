@@ -31,6 +31,22 @@ var data = {
                 pointHighlightStroke: "rgba(220,220,220,1)",
                 data: String(<%= scores["score"] %>).split(',')
             },
+            <% else %>
+            {
+                // For strings, need to process rails in quotes! Without quotes, returns int.
+                label: '<%= scores["label"] %>', 
+                fillColor: "rgba(" + colors[<%= idx %>].r + "," 
+                    + colors[<%= idx %>].g + ","
+                    + colors[<%= idx %>].b + ",0.5)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(" + colors[<%= idx %>].r + "," 
+                    + colors[<%= idx %>].g + ","
+                    + colors[<%= idx %>].b + ",0.5)",
+                pointStrokeColor: "#fff", 
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: String(<%= @empty_categories %>).split(',')
+            },
             <% end %>
         <% idx += 1 %>
         <% end %>
