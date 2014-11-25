@@ -23,9 +23,6 @@ function renderRfiList(){
  */
 function renderContent(){
 	$('div.content').html("<%= j (render partial: 'content', object: @current_rfi) %>")
-  <% if !@current_rfi.nil? %>
-    loadCharts()
-  <% end %>
 }
 
 function renderSharedRfiList(){
@@ -51,30 +48,23 @@ function animateMenu(){
 	height = $(".container-fluid").height()
 	<% if !@current_rfi.nil? %>
 		if($(".menu-wrapper").height() == 250){
-			$(".menu-wrapper").animate({"height": 100}, 500)
-			$(".container-fluid").animate({"height": height+150}, 500)
+			$(".menu-wrapper").animate({"height": 100}, 500, function(){
+			})	
+			
+			// setNewsFeedHeight(getContentHeight())
+			// $(".news-feed").animate({"height": getContentHeight()}, 500)
 		}
 	<% else %>
 		if($(".menu-wrapper").height() == 100){
-			$(".menu-wrapper").animate({"height": 250}, 500)
-		$(".container-fluid").animate({"height": height-150}, 500)
+			$(".menu-wrapper").animate({"height": 250}, 500,function(){
+			})	
+			// setNewsFeedHeight(0)		
+
+			// setNewsFeedHeight(getContentHeight())
+			
+			// setNewsFeedHeight(getContentHeight)
+			// $(".news-feed").animate({"height": getContentHeight()}, 500)
 		}
 	<% end  %>
 }
 
-function loadCharts(){
-  $.ajax({
-    url: '/dashboard/load_charts',
-    type: 'GET',
-  })
-  .done(function() {
-    // console.log("success");
-  })
-  .fail(function() {
-    console.log("error");
-  })
-  .always(function() {
-    console.log("complete");
-  });
-  
-}

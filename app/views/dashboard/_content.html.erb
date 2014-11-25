@@ -1,3 +1,4 @@
+
 <% if !@current_rfi.nil? %>
 	<!-- Title of RFI -->
 	<div class="rfi-title">
@@ -27,11 +28,21 @@
 	</ul>
 
 	<div class="charts">
-		<%= render partial: "charts" %>
+		<canvas id="myChart" width="400" height="400"></canvas>
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<div id="legend"></div>
 	</div> 
 
 
 <% end %>
 
 
-
+<script>
+	<% if !@current_rfi.nil? %>
+    	loadCharts()
+  	<% end %>
+	$(".news-feed").animate({"height": getContentHeight()}, 500)
+</script>
