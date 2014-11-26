@@ -1,13 +1,16 @@
 ################################## Questions ###################################
-user = User.create(     email: 'howardg988@gmail.com', 
+user = User.create(     email: 'howardg988@gmail.com',
+                        name: "Howard", 
                         password: 'password',
                         password_confirmation: 'password')
 
 user2 = User.create(    email: 'howardg988@berkeley.edu',
+                        name: "Hao",
                         password: 'password',
                         password_confirmation: 'password')
 
 user3 = User.create(    email: 'jonwu92@berkeley.edu',
+                        name: "Jonathan",
                         password: 'password',
                         password_confirmation: 'password')
 

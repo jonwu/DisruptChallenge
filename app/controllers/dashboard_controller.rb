@@ -69,7 +69,7 @@ class DashboardController < ApplicationController
 			@sorted_collaborators = @collaborators.order_by_score
 
 			for collaborator in @sorted_collaborators
-				@collaborators_names.push(collaborator.user.email)
+				@collaborators_names.push(collaborator.user.name)
 				@collaborators_scores.push(collaborator.total_score)
 			end 
 		end

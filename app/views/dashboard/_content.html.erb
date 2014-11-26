@@ -20,7 +20,7 @@
 		<% if @collaborators != nil %>
 			<% @collaborators.each do |collaborator| %>
 				<li>
-					<%= collaborator.user.email %>
+					<%= collaborator.user.name %>
 				</li>
 			<% end %>
 		<% else %>
