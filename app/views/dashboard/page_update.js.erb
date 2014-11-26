@@ -40,31 +40,27 @@ function renderMenuOptions(){
 }
 
 /**
- * Animate menu when switching between dashboard and rifs
+ * Animate menu when switching between dashboard and rfis
  * @return {void} 
  */
 function animateMenu(){
-	// window_h = $(window).height()
-	height = $(".container-fluid").height()
-	<% if !@current_rfi.nil? %>
-		if($(".menu-wrapper").height() == 250){
-			$(".menu-wrapper").animate({"height": 100}, 500, function(){
-			})	
-			
-			// setNewsFeedHeight(getContentHeight())
-			// $(".news-feed").animate({"height": getContentHeight()}, 500)
-		}
-	<% else %>
-		if($(".menu-wrapper").height() == 100){
-			$(".menu-wrapper").animate({"height": 250}, 500,function(){
-			})	
-			// setNewsFeedHeight(0)		
 
-			// setNewsFeedHeight(getContentHeight())
-			
-			// setNewsFeedHeight(getContentHeight)
-			// $(".news-feed").animate({"height": getContentHeight()}, 500)
-		}
+	row = $(".container-fluid .row")
+	height = row.height()
+	minHeight = parseInt(row.css('min-height'))
+	
+	<% if @current_page == "dashboard" %>
+		$(".menu-wrapper").animate({"height": 250}, 500)
+		$(".container-fluid").animate({"padding-top": 250}, 500)
+		row.css("min-height", minHeight - 150)
+	<% else %>
+		$(".menu-wrapper").animate({"height": 100}, 500)
+		$(".container-fluid").animate({"padding-top": 100}, 500)
+		row.css("min-height", minHeight + 150)	
 	<% end  %>
+
+	$(".news-feed").animate({"height": getContentHeight()}, 500)
+	
+
 }
 

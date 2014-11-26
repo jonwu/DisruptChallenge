@@ -27,13 +27,23 @@
 		<% end %>
 	</ul>
 
+
+
 	<div class="charts">
 		<canvas id="myChart" width="400" height="400"></canvas>
-		<input type="checkbox">
-		<input type="checkbox">
-		<input type="checkbox">
-		<input type="checkbox">
-		<div id="legend"></div>
+		<% @collaborators.each do |collaborator| %>
+
+			<div class="checkbox">
+			  <label>
+			    <input type="checkbox" value="">
+			    <%= collaborator.user.email %>
+			  </label>
+			</div>
+
+				
+		<% end %>
+		
+		<!-- <div id="legend"></div> -->
 	</div> 
 
 
@@ -44,5 +54,5 @@
 	<% if !@current_rfi.nil? %>
     	loadCharts()
   	<% end %>
-	$(".news-feed").animate({"height": getContentHeight()}, 500)
+	
 </script>

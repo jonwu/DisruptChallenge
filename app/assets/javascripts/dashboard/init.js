@@ -1,14 +1,24 @@
 jQuery(document).ready(function($) {
-    // var viewportHeight = $(window).height();
-    // alert(viewportHeight)
     checkBoxListener()
-    // setNewsFeedHeight(getContentHeight)
+    // fixMenu();
 });
 
-$(window).resize(function() {
-  // var viewportHeight = $(window).height();
-    // alert(viewportHeight)
-});
+
+function fixMenu(){
+  var e = $('.menu-wrapper');
+  var jWindow = $(window);
+  var offsetTop = e.offset().top;
+  var positionTop = e.position().top;
+
+  jWindow.scroll(function()
+  {
+      if(jWindow.scrollTop() > offsetTop)
+          e.css({'position':'fixed', 'top':0});
+      else
+          e.css({'position':'relative', 'top':positionTop});
+  });
+}
+
 
 function checkBoxListener() {
   $("div.content").on("change", "input.toGraph", function(e){

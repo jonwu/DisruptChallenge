@@ -1,79 +1,68 @@
 @import 'colors';
-
-div.rfi-title a:link, div.category_title a:visited, div.category_title a:hover, div.category_title a:active { 
-    text-decoration: none; 
+div.rfi-title a:link, div.category_title a:visited, div.category_title a:hover, div.category_title a:active {
+	text-decoration: none;
 }
-
-div.rfi-list .nav li{
-	// background-color: $active_color;
+div.rfi-list .nav li {
 	margin: 0;
-
 }
-div.rfi-list .nav li a{
+div.rfi-list .nav li a {
 	line-height: 25px;
 	text-indent: 50px;
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
 }
-div.rfi-list .nav li.active a{
+div.rfi-list .nav li.active a {
 	color: white;
 }
-
-.rfi-list .nav > li.active > a, .rfi-list .nav > li.active > a:hover, .rfi-list .nav > li.active > a:focus{
-    background-color: transparent;    
-} 
-
-div.shared-rfi-list .nav li a{
+.rfi-list .nav > li.active > a, .rfi-list .nav > li.active > a:hover, .rfi-list .nav > li.active > a:focus {
+	background-color: transparent;
+}
+div.shared-rfi-list .nav li a {
 	line-height: 25px;
 	text-indent: 50px;
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
 }
-
-div.dashboard .menu-wrapper{
+div.dashboard .menu-wrapper {
 	height: 250px;
-	width: 100%;
-
+	z-index: 1;
+	width: calc(100% - 250px);
+	position: fixed;
 }
-div.dashboard .menu-wrapper .menu{
+div.dashboard .menu-wrapper .menu {
 	width: 70%;
 	height: 100%;
 	float: left;
 	background-color: $red;
 	position: relative;
 }
-
-div.dashboard .menu-wrapper .offset{
+div.dashboard .menu-wrapper .offset {
 	width: 30%;
 	height: 100%;
 	float: left;
 	background-color: $light_red;
-	
 }
-
-div.dashboard .menu-wrapper .menu .menu-option-wrapper{
+div.dashboard .menu-wrapper .menu .menu-option-wrapper {
 	height: 100px;
 	bottom: 0;
 	width: 100%;
 	position: absolute;
 }
-div.dashboard .menu-wrapper .menu .menu-option img{
+div.dashboard .menu-wrapper .menu .menu-option img {
 	width: 60px;
 	height: 60px;
 	margin-bottom: 3px;
-  	
 }
-div.dashboard .menu-wrapper .menu .menu-option .content{
+div.dashboard .menu-wrapper .menu .menu-option .content {
 	position: relative;
-  	top: 50%;
-  	-webkit-transform: translateY(-50%);
-  	-ms-transform: translateY(-50%);
-  	transform: translateY(-50%);
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
-
-div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option{
+div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option {
 	height: 100%;
 	width: 120px;
 	float: left;
@@ -82,29 +71,26 @@ div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option{
 	color: white;
 	text-align: center;
 }
-
-div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option:hover{
-	
+div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option:hover {
 }
 div.dashboard .container-fluid {
+	padding: 0;
+    padding-top: 250px;
 	width: 100%;
-
 }
-
-div.dashboard .container-fluid::after{
+div.dashboard .container-fluid::after {
 	clear: both;
-    content: "";
-    display: table;
-
+	content: "";
+	display: table;
 }
-div.dashboard .container-fluid .row{
+div.dashboard .container-fluid .row {
 	min-height: calc(100vh - 300px);
 	// height: 100%;
 	// border: 1px black solid;
 	width: 70%;
 	float: left;
 }
-div.dashboard .container-fluid .news-feed{
+div.dashboard .container-fluid .news-feed {
 	// border: 1px black solid;
 	min-height: calc(100vh - 300px);
 	float: right;
