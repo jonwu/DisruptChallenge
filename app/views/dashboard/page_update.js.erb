@@ -45,20 +45,20 @@ function renderMenuOptions(){
  */
 function animateMenu(){
 
-	row = $(".container-fluid .row")
+	row = $(".content-wrapper .row")
 	height = row.height()
 	minHeight = parseInt(row.css('min-height'))
 	
 	<% if @current_page == "dashboard" %>
 		if( $(".menu-wrapper").height() == 100){
 			$(".menu-wrapper").animate({"height": 250}, 400)
-			$(".container-fluid").animate({"padding-top": 250}, 400)
+			$(".content-wrapper").animate({"padding-top": 250}, 400)
 			row.css("min-height", minHeight - 150)
 		}
 	<% else %>
 		if($(".menu-wrapper").height() == 250){
 			$(".menu-wrapper").animate({"height": 100}, 400)
-			$(".container-fluid").animate({"padding-top": 100}, 400)
+			$(".content-wrapper").animate({"padding-top": 100}, 400)
 			row.css("min-height", minHeight + 150)	
 		}
 	<% end  %>

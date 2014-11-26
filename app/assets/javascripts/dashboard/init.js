@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
     checkBoxListener()
-    // fixMenu();
+    setNewsFeedHeight(getContentHeight())
 });
 
 
@@ -34,7 +34,7 @@ function setNewsFeedHeight(h){
   $(".news-feed").height(h)
 }
 function getContentHeight(){
-  return $(".container-fluid .row").height()
+  return $(".content-wrapper .row").height()
 }
 function update_selected(collaborator_id, is_selected){ 
   $.ajax({

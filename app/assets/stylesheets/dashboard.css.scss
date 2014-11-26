@@ -73,29 +73,26 @@ div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option {
 }
 div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option:hover {
 }
-div.dashboard .container-fluid {
+div.dashboard .content-wrapper{
 	padding: 0;
-    padding-top: 250px;
+	padding-top: 250px;
 	width: 100%;
 }
-div.dashboard .container-fluid::after {
+div.dashboard .content-wrapper::after {
 	clear: both;
 	content: "";
 	display: table;
 }
-div.dashboard .container-fluid .row {
+div.dashboard .content-wrapper .row {
+	
 	min-height: calc(100vh - 300px);
-	// height: 100%;
-	// border: 1px black solid;
 	width: 70%;
 	float: left;
 }
-div.dashboard .container-fluid .news-feed {
-	// border: 1px black solid;
-	min-height: calc(100vh - 300px);
+div.dashboard .content-wrapper .news-feed {
+	
 	float: right;
 	width: 30%;
-	background-color: darkgray;
-	position: relative;
-	// position: fixed;
+	background-color: lightgray;
+	position: relative;	
 }
