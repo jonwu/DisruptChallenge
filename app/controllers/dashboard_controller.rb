@@ -62,6 +62,19 @@ class DashboardController < ApplicationController
 		@rfis = current_user.rfis.all
 		@shared_rfis = Collaborator.find_collaborated_rfis(current_user.id)
 		@collaborators = Collaborator.get_collaborators(@current_rfi)
+		@collaborators_scores = []	
+		@collaborators_names = []
+
+		if @current_page == "active_rfis"
+			@sorted_collaborators = @collaborators.order_by_score
+
+			for collaborator in @sorted_collaborators
+				@collaborators_names.push(collaborator.user.email)
+				@collaborators_scores.push(collaborator.total_score)
+			end 
+		end
+
+		
 		
 	end
 
@@ -76,26 +89,37 @@ class DashboardController < ApplicationController
 
 	def load_charts
 		# need all collaborators to render check boxes
-		@collaborators = Collaborator.get_collaborators(get_current_rfi)
+		
+		# p @collaborator_names
+		# p @collaborator_scores
+		# @categories = get_current_rfi.categories
+		# @empty_categories = []
+		# (1..@categories.count).each do |i|
+		# 	@empty_categories.push(0)
+		# end
+		# for collaborator in @collaborators
+		# 	hash = {}
+			
+		# 	# @collaborator_names.push(collaborator.user.email)
+		# 	# @collaborator_scores.push(collaborator.submissions.sum(:score))
+		# 	if (collaborator.selected)
+		# 		collab_scores = Submission.calculate_score_for_all_categories(@categories, collaborator)
+		# 		hash["score"] = collab_scores
+		# 		hash["selected"] = true
+		# 	else
+		# 		hash["selected"] = false
+		# 	end
+		# 	hash["label"] = collaborator.user.email
+		# 	hash["collaborator"] = collaborator
+		# 	@collaborator_scores.push(hash)
+		# end
+		render :nothing => true
+	end
+
+	def load
+		@collaborator_names = []
 		@collaborator_scores = []
-		@categories = get_current_rfi.categories
-		@empty_categories = []
-		(1..@categories.count).each do |i|
-			@empty_categories.push(0)
-		end
-		for collaborator in @collaborators
-			hash = {}
-			if (collaborator.selected)
-				collab_scores = Submission.calculate_score_for_all_categories(@categories, collaborator)
-				hash["score"] = collab_scores
-				hash["selected"] = true
-			else
-				hash["selected"] = false
-			end
-			hash["label"] = collaborator.user.email
-			hash["collaborator"] = collaborator
-			@collaborator_scores.push(hash)
-		end
+
 	end
 
 	def update_selected

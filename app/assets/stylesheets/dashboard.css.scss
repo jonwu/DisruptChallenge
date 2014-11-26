@@ -29,6 +29,7 @@ div.dashboard .menu-wrapper {
 	height: 250px;
 	z-index: 1;
 	width: calc(100% - 250px);
+	min-width: calc(1280px - 250px);
 	position: fixed;
 }
 div.dashboard .menu-wrapper .menu {
@@ -74,8 +75,8 @@ div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option {
 div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option:hover {
 }
 div.dashboard .content-wrapper{
-	padding: 0;
-	padding-top: 250px;
+	padding: 250px 0px 0px 0px;
+
 	width: 100%;
 }
 div.dashboard .content-wrapper::after {
@@ -88,6 +89,7 @@ div.dashboard .content-wrapper .row {
 	min-height: calc(100vh - 300px);
 	width: 70%;
 	float: left;
+	padding: 0px 15px
 }
 div.dashboard .content-wrapper .news-feed {
 	

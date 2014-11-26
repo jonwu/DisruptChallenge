@@ -2,6 +2,9 @@
 renderSidebarMenu()
 renderContent()
 renderMenuOptions()
+<% if @current_page == "active_rfis" %>
+	renderCharts()
+<% end %>
 animateMenu()
 
 function renderSidebarMenu(){
@@ -25,11 +28,34 @@ function renderContent(){
 	$('div.content').html("<%= j (render partial: 'content', object: @current_rfi) %>")
 }
 
+function renderCharts(){
+
+	var ctx = $("#myChart").get(0).getContext("2d");
+	console.log('<%= raw @collaborators_names.as_json %>')
+	console.log('<%= @collaborators_scores.as_json %>')
+	var data = {
+	    labels: <%= raw @collaborators_names.as_json %>,
+	    datasets: [
+	        {
+	            label: "My Second dataset",
+	            fillColor: "rgba(151,187,205,0.5)",
+	            strokeColor: "rgba(151,187,205,0.8)",
+	            highlightFill: "rgba(151,187,205,0.75)",
+	            highlightStroke: "rgba(151,187,205,1)",
+	            data: <%= @collaborators_scores.as_json %>
+	        }
+	    ]
+    };
+    initializeBar(data,ctx)
+}
+
 function renderSharedRfiList(){
 	<% if @shared_rfis != nil %>
 		$('div.rfi-list').html("<%= j (render partial: 'your_rfis', object: @shared_rfis) %>")
 	<% end %>
 }
+
+
 
 /**
  * Render menu options
