@@ -50,17 +50,21 @@ function animateMenu(){
 	minHeight = parseInt(row.css('min-height'))
 	
 	<% if @current_page == "dashboard" %>
-		$(".menu-wrapper").animate({"height": 250}, 500)
-		$(".container-fluid").animate({"padding-top": 250}, 500)
-		row.css("min-height", minHeight - 150)
+		if( $(".menu-wrapper").height() == 100){
+			$(".menu-wrapper").animate({"height": 250}, 400)
+			$(".container-fluid").animate({"padding-top": 250}, 400)
+			row.css("min-height", minHeight - 150)
+		}
 	<% else %>
-		$(".menu-wrapper").animate({"height": 100}, 500)
-		$(".container-fluid").animate({"padding-top": 100}, 500)
-		row.css("min-height", minHeight + 150)	
+		if($(".menu-wrapper").height() == 250){
+			$(".menu-wrapper").animate({"height": 100}, 400)
+			$(".container-fluid").animate({"padding-top": 100}, 400)
+			row.css("min-height", minHeight + 150)	
+		}
 	<% end  %>
 
-	$(".news-feed").animate({"height": getContentHeight()}, 500)
-	
+	$(".news-feed").animate({"height": getContentHeight()}, 400)
+	$('body').animate({"scrollTop":0}, 400)
 
 }
 
