@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>InnovateRFI</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+		
+	</head>
+	<body>
+		<%= render 'layouts/header' %>
+		<div id="wrapper">
+			<!-- Sidebar -->
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
+					<%= render 'layouts/sidebar_menu' %>
+				</ul>
+			</div>
+
+			<!-- Page Content -->
+			<div id="page-content-wrapper" class="dashboard">
+				
+				<!-- Menu -->
+				<div class="menu-wrapper" style="height: <% if @current_page == 'dashboard' %>250px<% else %>100px<% end %>">
+					<div class="menu">
+						<div class="menu-option-wrapper">
+							<%= render 'layouts/menu_options' %>
+						</div>
+						
+					</div>
+					<div class="offset"></div>
+				</div>
+				
+				<!-- Content -->
+				<%= yield %>
+				
+				
+			</div>
+			
+		</div>
+
+	</body>
+</html>

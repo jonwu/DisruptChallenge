@@ -1,0 +1,42 @@
+
+            
+<li <% if @current_page == "dashboard" %> class = active <% end %> role="presentation">
+    <%= link_to dashboard_index_path do%>
+        Dashboard
+    <% end %>        
+</li>
+
+<li <% if @current_page == "active_rfis" %> class = active <% end %>  role="presentation">
+    <%= link_to active_rfis_path, remote: true do%>
+        Active RFIs
+    <% end %>   
+
+    <div class="rfi-list">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            <% @rfis.each do |rfi| %>
+                <li <% if rfi == @current_rfi %> class = active <% end %> role="presentation">
+                    <%= link_to rfi.title, navigate_rfi_path(rfi_id: rfi.id), remote: true%>
+                </li>
+            <% end %>
+        </ul>   
+    </div>
+</li>
+
+
+<li <% if @current_page == "shared_rfis" %> class = active <% end %>  role="presentation">
+    <%= link_to active_rfis_path, remote: true do%>
+        Shared RFIs
+    <% end %>   
+
+    <div class="shared-rfi-list">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            <% @shared_rfis.each do |rfi| %>
+                <li role="presentation">
+                    <%= link_to rfi.title, load_rfi_response_path(rfi_id: rfi.id) %>
+                </li>
+            <% end %>
+        </ul>
+
+    </div>
+</li>
+

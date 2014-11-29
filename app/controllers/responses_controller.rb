@@ -77,9 +77,8 @@ class ResponsesController < ApplicationController
     all_responses = Response.get_all_rfi_responses(get_categories, current_user.id)
     collaborator = get_current_collaborator
     for response in all_responses
-      score = 0
       text = response.text
-      submission = Submission.find_or_create_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id, score: score)
+      submission = Submission.find_or_create_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id)
       submission.update(text: text)
     end
 

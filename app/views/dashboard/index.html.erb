@@ -1,16 +1,12 @@
-<%= javascript_include_tag 'dashboard' %>  
+<%= javascript_include_tag 'dashboard' %>
 <body>
-
     <div id="wrapper">
-
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
-                <%= render partial: "sidebar_menu", object: [@rfis, @current_rfi, @shared_rfis] %> 
+                <%= render partial: "sidebar_menu", object: [@rfis, @current_rfi, @shared_rfis] %>
             </ul>
         </div>
-
-
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div id="page-content-wrapper" class="dashboard">
@@ -19,7 +15,7 @@
             <div class="menu-wrapper">
                 <div class="menu">
                     <div class="menu-option-wrapper">
-                        <%= render partial: "menu_options", object: @current_rfi %> 
+                        <%= render partial: "menu_options", object: @current_rfi %>
                     </div>
                     
                 </div>
@@ -34,18 +30,16 @@
                             <%= render partial: "content", object: @current_rfi %>
                             
                         </div>
-                         
+                        
                     </div>
                 </div>
                 <!-- news-feed -->
                 <div class="news-feed">
-                       
+                    
                 </div>
                 
             </div>
             
-            
-
         </div>
         
     </div>

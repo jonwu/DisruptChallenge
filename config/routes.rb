@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get "evaluation/evaluation_page_update", to: "evaluation#evaluation_page_update", as: 'evaluation_page_update'
   post "evaluation/save_rating", to: "evaluation#save_rating", as: 'save_rating'
   
+
+  get "active/:rfi_id", to: "active#index", as: 'load_active_rfi'
   resources :evaluation
   resources :creations
   resources :dashboard

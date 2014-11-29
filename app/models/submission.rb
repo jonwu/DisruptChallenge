@@ -3,6 +3,7 @@ class Submission < ActiveRecord::Base
   belongs_to :response
   belongs_to :question
   belongs_to :collaborator
+  scope :is_null, -> {select('id').where('score IS null')}
 
   # Given a question and list of collaborators, finds the submissions in descending order by id
   def self.find_submissions_from_collaborators(question, collaborator_list)
