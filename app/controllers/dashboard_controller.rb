@@ -22,8 +22,6 @@ class DashboardController < ApplicationController
 		set_current_rfi(nil)
 		@current_rfi = get_current_rfi
 
-		@collaborators = Collaborator.get_collaborators(@current_rfi)
-
 	end
 
 	def share_rfi
@@ -61,14 +59,19 @@ class DashboardController < ApplicationController
 		@current_page = get_current_page
 		@rfis = current_user.rfis.all
 		@shared_rfis = Collaborator.find_collaborated_rfis(current_user.id)
-		@collaborators = Collaborator.get_collaborators(@current_rfi)
+		@collaborator = nil;
 		@collaborators_scores = []	
 		@collaborators_names = []
 
 		if @current_page == "active_rfis"
+			@collaborators = get_current_rfi.collaborators
 			@sorted_collaborators = @collaborators.order_by_score
-
+			# @new = @sorted_collaborators.order('collaborators.id ASC')
+			# p "=" * 80
+			p @sorted_collaborators
 			for collaborator in @sorted_collaborators
+				p "*" * 80
+				p collaborator.total_score
 				@collaborators_names.push(collaborator.user.name)
 				@collaborators_scores.push(collaborator.total_score)
 			end 
