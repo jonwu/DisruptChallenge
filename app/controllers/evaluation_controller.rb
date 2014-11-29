@@ -51,7 +51,6 @@ class EvaluationController < ApplicationController
   	submission.update(score: rating)
     # need to reset the current submissions to include updated score and then update page.
     @current_submissions = set_current_submissions(Submission.find_submissions_from_collaborators(get_active_question, get_collaborators))
-    redirect_to action: 'evaluation_page_update'
   end
 
 	private
