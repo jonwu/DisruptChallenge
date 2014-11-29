@@ -2,6 +2,7 @@ class Rfi < ActiveRecord::Base
   has_many :categories, dependent: :destroy
   has_many :collaborators, dependent: :destroy
   has_many :questions, through: :categories
+  belongs_to :user
   after_initialize :init
 
   def init

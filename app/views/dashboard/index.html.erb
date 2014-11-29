@@ -35,7 +35,11 @@
                 </div>
                 <!-- news-feed -->
                 <div class="news-feed">
-                    
+                    <% @activities.each do |activity| %>
+                        <% if activity.recipient == current_user %>
+                            <p><%= activity.owner.name %> <%= render_activity activity %>  </p>   
+                        <% end %>
+                    <% end %>
                 </div>
                 
             </div>

@@ -1,7 +1,6 @@
 class DashboardController < ApplicationController
 	respond_to :html, :js
 	before_action :authenticate_user!
-	
 
 	def dashboard
 		set_current_page("dashboard")
@@ -21,6 +20,7 @@ class DashboardController < ApplicationController
 		@current_page = set_current_page("dashboard")
 		set_current_rfi(nil)
 		@current_rfi = get_current_rfi
+		@activities = PublicActivity::Activity.order("created_at desc")
 
 	end
 
