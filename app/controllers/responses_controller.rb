@@ -76,19 +76,23 @@ class ResponsesController < ApplicationController
   def submit
     all_responses = Response.get_all_rfi_responses(get_categories, current_user.id)
     collaborator = get_current_collaborator
-    hasUpdated = false
+    hasSubmitted = false
+
+    if Submission.exists?(collaborator_id: collaborator.id)
+      hasSubmitted = true
+    end
+    
     for response in all_responses
       text = response.text
-      submission = Submission.find_or_create_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id)
+      submission = Submission.create_with(text: text).find_or_create_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id)
       if submission.text != text
-        hasUpdated = true
+        submission.create_activity :update, recipient: get_current_rfi.user, owner: current_user
         submission.update(text: text)
       end
     end
-    if hasUpdated
-      p "*"*80
-      p get_current_rfi.user.name
-      submission.create_activity :update, recipient: get_current_rfi.user, owner: current_user
+
+    if !hasSubmitted
+      submission.create_activity :submit, recipient: get_current_rfi.user, owner: current_user
     end
     
 

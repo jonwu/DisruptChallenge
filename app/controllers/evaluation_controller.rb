@@ -6,15 +6,22 @@ class EvaluationController < ApplicationController
   	@current_rfi = Rfi.find_by_id(params[:rfi_id])
 		
 		# Check if RFI is from current user
-		if @current_rfi.user_id == current_user.id 
+		if @current_rfi != nil && @current_rfi.user_id == current_user.id 
 			set_current_rfi(@current_rfi)
 			@categories = get_categories
 			# defaults when first loading
+      
       @active_category = set_active_category(get_categories.first)
+      if params.has_key?(:category_id)
+        @active_category = set_active_category(@categories.find_by_id(params[:category_id]))
+      else
+      end
+
+      
 			set_collaborators(get_current_rfi.collaborators)
 			render :index
 		else
-			not_found
+			redirect_to dashboard_index_path
 		end
   end
 
