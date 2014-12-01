@@ -33,14 +33,14 @@ div.dashboard .menu-wrapper {
 	position: fixed;
 }
 div.dashboard .menu-wrapper .menu {
-	width: 70%;
+	width: calc(100% - 350px);
 	height: 100%;
 	float: left;
 	background-color: $red;
 	position: relative;
 }
 div.dashboard .menu-wrapper .offset {
-	width: 30%;
+	width: 350px;
 	height: 100%;
 	float: left;
 	background-color: $light_red;
@@ -75,9 +75,7 @@ div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option {
 div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option:hover {
 }
 div.dashboard .content-wrapper{
-	padding: 250px 0px 0px 0px;
-
-	width: 100%;
+	padding: 250px 0px 0px 0px;	
 }
 div.dashboard .content-wrapper::after {
 	clear: both;
@@ -86,15 +84,9 @@ div.dashboard .content-wrapper::after {
 }
 div.dashboard .content-wrapper .row {
 	
-	min-height: calc(100vh - 300px);
+	min-height: calc(100vh - 301px);
 	width: 70%;
 	float: left;
+	// overflow: auto;
 	padding: 0px 15px
-}
-div.dashboard .content-wrapper .news-feed {
-	
-	float: right;
-	width: 30%;
-	background-color: lightgray;
-	position: relative;	
 }

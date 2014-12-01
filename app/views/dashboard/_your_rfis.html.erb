@@ -1,7 +1,7 @@
 <ul class="nav nav-pills nav-stacked" role="tablist">
     <% @rfis.each do |rfi| %>
         <li <% if rfi == @current_rfi %> class = active <% end %> role="presentation">
-            <%= link_to rfi.title, navigate_rfi_path(rfi_id: rfi.id), remote: true%>
+            <%= link_to rfi.title, navigate_rfi_path(rfi_id: rfi.id), remote: true %>
         </li>
     <% end %>
 </ul>   

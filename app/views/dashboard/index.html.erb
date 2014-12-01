@@ -34,13 +34,17 @@
                     </div>
                 </div>
                 <!-- news-feed -->
-                <div class="news-feed">
+                <ul class="news-feed list-group">
+                    
                     <% @activities.each do |activity| %>
                         <% if activity.recipient == current_user %>
-                            <%= render_activity activity %> 
+                            <li class="list-group-item">
+                                <%= render_activity activity %> 
+                            </li>
                         <% end %>
                     <% end %>
-                </div>
+                    
+                </ul>
                 
             </div>
             

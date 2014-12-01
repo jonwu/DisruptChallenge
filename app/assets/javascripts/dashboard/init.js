@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
     checkBoxListener()
-    setNewsFeedHeight(getContentHeight())
+    // setNewsFeedHeight(getContentHeight())
 });
 
 

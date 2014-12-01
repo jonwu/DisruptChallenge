@@ -71,25 +71,26 @@ function renderMenuOptions(){
  */
 function animateMenu(){
 
-	row = $(".content-wrapper .row")
-	height = row.height()
-	minHeight = parseInt(row.css('min-height'))
+	newsHeight = $(window).height(); 
+	// minHeight = parseInt(row.css('min-height'))
 	
 	<% if @current_page == "dashboard" %>
 		if( $(".menu-wrapper").height() == 100){
 			$(".menu-wrapper").animate({"height": 250}, 400)
 			$(".content-wrapper").animate({"padding-top": 250}, 400)
-			row.css("min-height", minHeight - 150)
+			$(".news-feed").animate({"height": newsHeight - 250}, 400)
+			// row.css("min-height", minHeight - 150)
 		}
 	<% else %>
 		if($(".menu-wrapper").height() == 250){
 			$(".menu-wrapper").animate({"height": 100}, 400)
 			$(".content-wrapper").animate({"padding-top": 100}, 400)
-			row.css("min-height", minHeight + 150)	
+			$(".news-feed").animate({"height": newsHeight - 100}, 400)
+			// row.css("min-height", minHeight + 150)	
 		}
 	<% end  %>
 
-	$(".news-feed").animate({"height": getContentHeight()}, 400)
+	// $(".news-feed").animate({"height": getContentHeight()}, 400)
 	$('body').animate({"scrollTop":0}, 400)
 
 }
