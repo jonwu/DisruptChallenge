@@ -95,13 +95,11 @@ class CreationsController < ApplicationController
 
   def delete_question
     question = Question.find_by_id(params[:question_id])
-    @question_category = question.category
-    @question_rfi = question.category.rfi
     collaborators = get_collaborators
-    for collaborator in collaborators
-      question.create_activity :delete, recipient: collaborator.user, owner: current_user, parameters: {category: @question_category, rfi: @question_rfi}
-    end
     Question.destroy(params[:question_id])
+    for collaborator in collaborators
+      question.create_activity :delete, recipient: collaborator.user, owner: current_user, parameters: {rfi: get_current_rfi}
+    end
     redirect_to action: 'update_active_category', category: params[:category_id]
     return
   end

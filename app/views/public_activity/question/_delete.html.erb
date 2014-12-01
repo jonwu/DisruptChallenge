@@ -1,5 +1,4 @@
 <p><b>Deleted RFI Question</b></p>
-<p><%= activity.owner.name %> deleted a question in the
-  <%= link_to activity.parameters[:category].text, load_rfi_evaluation_path(rfi_id: activity.parameters[:rfi].id, category_id: activity.parameters[:category].id) %> section from 
+<p><%= activity.owner.name %> deleted a question in
   <%= link_to activity.parameters[:rfi].title, load_rfi_evaluation_path(rfi_id: activity.parameters[:rfi].id) %></p>
 <p><%= time_ago_in_words(activity.created_at) %> ago</p>
