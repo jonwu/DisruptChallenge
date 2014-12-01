@@ -84,12 +84,23 @@ class CreationsController < ApplicationController
                                   impact: @impact)
     if @question.save
       Response.set_empty_responses([@question], get_current_rfi.collaborators)
+      collaborators = get_collaborators
+      for collaborator in collaborators
+        @question.create_activity :create, recipient: collaborator.user, owner: current_user
+      end
       redirect_to action: 'update_active_category', category: @category_id
       return
     end
   end
 
   def delete_question
+    question = Question.find_by_id(params[:question_id])
+    @question_category = question.category
+    @question_rfi = question.category.rfi
+    collaborators = get_collaborators
+    for collaborator in collaborators
+      question.create_activity :delete, recipient: collaborator.user, owner: current_user, parameters: {category: @question_category, rfi: @question_rfi}
+    end
     Question.destroy(params[:question_id])
     redirect_to action: 'update_active_category', category: params[:category_id]
     return
@@ -111,6 +122,10 @@ class CreationsController < ApplicationController
     def get_current_rfi
       return $rfi
       # return current_user.rfis.first
+    end
+
+    def get_collaborators
+      return $rfi.collaborators
     end
 
     def set_active_category(active_category)
