@@ -65,4 +65,18 @@ class Submission < ActiveRecord::Base
 
     return nil
   end
+
+  # Gets number of unrated questions for each category
+  def self.get_number_unrated(categories, collaborator_list)
+    unrated_by_category = {}
+    collaborator_ids = collaborator_list.pluck(:id)
+    for category in categories
+      count = 0
+      for question in category.questions
+        count += Submission.where("collaborator_id IN (?) AND question_id = " + question.id.to_s + " AND score IS null", collaborator_ids).count
+      end
+      unrated_by_category[category.id] = count
+    end
+    return unrated_by_category
+  end
 end

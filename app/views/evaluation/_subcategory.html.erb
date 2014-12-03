@@ -1,10 +1,22 @@
 <% if @c != @active_category %>
   <li role="presentation" id="<%= @c.id %>">
-    <%= link_to @c.text, toggle_category_path(category: @c.id), remote: true%>
+    <%= link_to toggle_category_path(category: @c.id), remote: true do %>
+      <% if @unrated > 0 %>
+        <%=@c.text%><span class="badge"><%=@unrated%></span>
+      <% else %>
+        <%=@c.text%>
+      <% end %>
+    <% end %>
   </li>
 <% else %>
   <li class="active" role="presentation" id="<%= @c.id %>">
-    <%= link_to @c.text, toggle_category_path(category: @c.id), remote: true%>
+    <%= link_to toggle_category_path(category: @c.id), remote: true do %>
+      <% if @unrated > 0 %>
+        <%=@c.text%><span class="badge"><%=@unrated%></span>
+      <% else %>
+        <%=@c.text%>
+      <% end %>
+    <% end %>
   </li>
 
   <!--  Questions -->

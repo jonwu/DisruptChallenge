@@ -37,9 +37,9 @@ function clickListenerOutsideInput(){
         // e.target gets the element that triggered event
         var submission_id = e.target.id
         var rating = $(e.target).val()
-        if (rating.trim() == "") {
-            rating = 0
-        }
+        // if (rating.trim() == "") {
+        //     rating = 0
+        // }
         saveRating(submission_id, rating)
     });
 }

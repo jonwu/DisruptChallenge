@@ -10,13 +10,13 @@ class EvaluationController < ApplicationController
 			set_current_rfi(@current_rfi)
 			@categories = get_categories
 			# defaults when first loading
-      
       @active_category = set_active_category(get_categories.first)
       if params.has_key?(:category_id)
         @active_category = set_active_category(@categories.find_by_id(params[:category_id]))
       else
       end
-
+      # find number of unrated submissions
+      @num_unrated = Submission.get_number_unrated(get_categories, get_collaborators)
       
 			set_collaborators(get_current_rfi.collaborators)
 			render :index
@@ -38,7 +38,7 @@ class EvaluationController < ApplicationController
   	@active_question = set_active_question(Question.find_by_id(params[:question]))
   	# update current_submissions
   	@current_submissions = set_current_submissions(Submission.find_submissions_from_collaborators(get_active_question, get_collaborators))
-  	redirect_to action: 'evaluation_page_update'
+    redirect_to action: 'evaluation_page_update'
   end
 
   def evaluation_page_update
@@ -46,6 +46,7 @@ class EvaluationController < ApplicationController
     @active_category = get_active_category
     @active_question = get_active_question
     @current_submissions = get_current_submissions
+    @num_unrated = Submission.get_number_unrated(get_categories, get_collaborators)
     # @questions = set_questions(@active_category.questions.all)
     # @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
     # @is_active = get_active_question
@@ -54,10 +55,13 @@ class EvaluationController < ApplicationController
   def save_rating
   	submission_id = params[:submission_id]
   	rating = params[:rating]
+    p '*'*80
+    p rating
   	submission = Submission.find_by_id(submission_id)
   	submission.update(score: rating)
     # need to reset the current submissions to include updated score and then update page.
     @current_submissions = set_current_submissions(Submission.find_submissions_from_collaborators(get_active_question, get_collaborators))
+    @num_unrated = Submission.get_number_unrated(get_categories, get_collaborators)
   end
 
 	private
