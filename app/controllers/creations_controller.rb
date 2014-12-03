@@ -75,7 +75,7 @@ class CreationsController < ApplicationController
     @qual = params[:qual]
     @quant = params[:quant]
     @text = params[:text]
-    @impact = params[:impact]
+    @impact = params[:impact].strip
 
     @question = Question.new( category_id: @category_id,
                                   qual: @qual,

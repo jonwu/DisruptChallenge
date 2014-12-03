@@ -1,5 +1,10 @@
+
 <% if @active_category != nil %>
   <%= link_to make_category_form_path(category: @active_category.id), remote: true do %>
     <h1><%= @active_category.text %></h1>
   <% end %>
+
+  <%= link_to delete_category_path(category_id: @active_category.id), remote: true, class: "btn btn-danger" do %>
+	  Delete Category
+  <% end %> 
 <% end %>

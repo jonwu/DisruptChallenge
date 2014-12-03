@@ -1,7 +1,7 @@
 <%= link_to create_rfi_path, method: :post do%>
     <div class="menu-option">
         <div class="content">
-            <img src="assets/add_rfi.png" class="menu-button" alt="">
+            <img src="<%= asset_path 'add_rfi.png'%>" class="menu-button" alt="">
             <p>Create New</p>        
         </div>
     </div>
@@ -11,7 +11,7 @@
     <%= link_to create_rfi_path, method: :post do %>
         <div class="menu-option">
             <div class="content">   
-                <img src="assets/inbox.png" class="menu-button" alt="">
+                <img src="<%= asset_path 'inbox.png'%>" class="menu-button" alt="">
                 <p>Message Inbox</p>
             </div>
         </div>
@@ -22,7 +22,7 @@
     <%= link_to destroy_user_session_path, method: :delete do %>
         <div class="menu-option">
             <div class="content">   
-                <img src="assets/logout.png" class="menu-button" alt="">
+                <img src="<%= asset_path 'logout.png'%>" class="menu-button" alt="">
                 <p>Logout</p>
             </div>
         </div>
@@ -34,7 +34,7 @@
     <%= link_to load_rfi_evaluation_path(rfi_id: @current_rfi.id) do %>
         <div class="menu-option">
             <div class="content">   
-                <img src="assets/score_rfi.png" class="menu-button" alt="">
+                <img src="<%= asset_path 'score_rfi.png'%>" class="menu-button" alt="">
                 <p>Score RFI</p>
             </div>
         </div>
@@ -45,7 +45,7 @@
     <%= link_to load_rfi_path(rfi_id: @current_rfi.id) do %>
         <div class="menu-option">
             <div class="content">   
-                <img src="assets/add_rfi.png" class="menu-button" alt="">
+                <img src="<%= asset_path 'add_rfi.png'%>" class="menu-button" alt="">
                 <p>Edit RFI</p>
             </div>
         </div>
@@ -56,7 +56,7 @@
     <%= link_to delete_rfi_path(rfi_id: @current_rfi.id), method: :post do %>
         <div class="menu-option">
             <div class="content">   
-                <img src="assets/add_rfi.png" class="menu-button" alt="">
+                <img src="<%= asset_path 'add_rfi.png'%>" class="menu-button" alt="">
                 <p>Delete</p>
             </div>
         </div>

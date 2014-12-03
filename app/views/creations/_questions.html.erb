@@ -1,22 +1,29 @@
 <% if @active_category != nil %>
-  <div class="category_title"><%= render partial: "category_title", object: @active_category %></div>
-  <%= link_to delete_category_path(category_id: @active_category.id), remote: true do %>
-    <p>X</p>
-  <% end %>  
+  	<div class="category_title">
+		<%= render partial: "category_title", object: @active_category %> 
+	</div>
+	<ul class="list-group">
+	  <% @active_category.questions.each do |q| %>
+	    <li class="list-group-item">
+			<span class="left-info">
+	      		<%= q.text.html_safe %> 
+	      	</span>	
+			<span class="right-info">
+			  <span class = "impact impact-<%= q.impact %>">
+			  	<%= q.impact %>
+			  </span>
+			  <%= link_to delete_question_path(question_id: q.id, category_id: @active_category.id), remote: true do %>
+			  	x
+			  <% end %>
+			</span>
+	    </li>
+	  <% end %>
+	</ul>
 
-  <% @active_category.questions.each do |q| %>
-      <p>
-        <h3><span class="label label-default"><%= q.text.html_safe %></span> <%= q.impact %></h3>
-        <%= link_to delete_question_path(question_id: q.id, category_id: @active_category.id), remote: true do %>
-          <p>X</p>
-        <% end %>
-        <br>
-        <br>
-      </p>
-  <% end %>
+
 <% end %>
 
 
 
-		
+
 
