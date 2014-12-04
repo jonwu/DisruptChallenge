@@ -24,18 +24,13 @@
             
             <!-- Content -->
             <div class="content-wrapper">
-                <div class="row">
-                    <div class="col-lg-11">
-                        <div class="content">
-                            <%= render partial: "content", object: @current_rfi %>
-                            
-                        </div>
-                        
-                    </div>
+                
+                <div class="content">
+                    <%= render partial: "content", object: @current_rfi %>
                 </div>
+                       
                 <!-- news-feed -->
                 <ul class="news-feed list-group">
-                    
                     <% @activities.each do |activity| %>
                         <% if activity.recipient == current_user %>
                             <li class="list-group-item">
@@ -43,7 +38,6 @@
                             </li>
                         <% end %>
                     <% end %>
-                    
                 </ul>
                 
             </div>

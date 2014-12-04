@@ -1,6 +1,9 @@
 <div class="panel panel-danger question-panel">
     <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
+        <div class="category_title">
+            <%= render partial: "category_title", object: @active_category %> 
+        </div>
+        <div style="clear: both; content: ""; display: table;"></div>
     </div>
     <form role="form">
         <div class="panel-body">

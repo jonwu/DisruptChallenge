@@ -4,9 +4,6 @@
 			<%= link_to c.text, update_active_category_path(category: c.id), remote: true%>
 		</li>
 	<% end %>
-
-	
-  
 </ul>
 
 <%= link_to add_new_category_path, remote: true, method: :post do %>

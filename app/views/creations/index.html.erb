@@ -17,20 +17,20 @@
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            
+            <% if @active_category != nil %>
                 
-            <div class="questions">
-                <%= render partial: "questions", object: @active_category %>
-            </div>
-
+                <div class="questions">
+                    <%= render partial: "questions", object: @active_category %>
+                </div>
                         
-                 
-            <!-- </div> -->
 
-            <div class="create_section">
-                <%= render partial: "create_section", object: @active_category %>
-            </div>
-            
+                <div class="create_section">
+                    <%= render partial: "create_section", object: @active_category %>
+                </div>
+
+            <% else %>
+                <%= render partial: "empty_questions" %>
+            <% end %>
         </div>
         <!-- /#page-content-wrapper -->
     </div>

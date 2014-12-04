@@ -23,6 +23,7 @@ class CreationsController < ApplicationController
     set_rfi(@rfi)
     @categories = get_categories
     @active_category = set_active_category(get_categories.first)
+    @activities = PublicActivity::Activity.order("created_at desc")
     render :index
   end
 

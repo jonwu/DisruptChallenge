@@ -71,21 +71,22 @@ function renderMenuOptions(){
  */
 function animateMenu(){
 
-	newsHeight = $(window).height(); 
+	newsHeight = $('.news-feed').height(); 
+	
 	// minHeight = parseInt(row.css('min-height'))
 	
 	<% if @current_page == "dashboard" %>
 		if( $(".menu-wrapper").height() == 100){
 			$(".menu-wrapper").animate({"height": 250}, 400)
 			$(".content-wrapper").animate({"padding-top": 250}, 400)
-			$(".news-feed").animate({"height": newsHeight - 250}, 400)
+			$(".news-feed").animate({"height": newsHeight-150}, 400)
 			// row.css("min-height", minHeight - 150)
 		}
 	<% else %>
 		if($(".menu-wrapper").height() == 250){
 			$(".menu-wrapper").animate({"height": 100}, 400)
 			$(".content-wrapper").animate({"padding-top": 100}, 400)
-			$(".news-feed").animate({"height": newsHeight - 100}, 400)
+			$(".news-feed").animate({"height": newsHeight+150}, 400)
 			// row.css("min-height", minHeight + 150)	
 		}
 	<% end  %>

@@ -4,7 +4,6 @@ class EvaluationController < ApplicationController
 
   def load_rfi_evaluation
   	@current_rfi = Rfi.find_by_id(params[:rfi_id])
-		
 		# Check if RFI is from current user
 		if @current_rfi != nil && @current_rfi.user_id == current_user.id 
 			set_current_rfi(@current_rfi)
@@ -17,6 +16,7 @@ class EvaluationController < ApplicationController
       end
 			set_collaborators(get_current_rfi.collaborators)
       # find number of unrated submissions
+			set_collaborators(get_current_rfi.collaborators)
       @num_unrated = Submission.get_number_unrated(get_categories, get_collaborators)
 			render :index
 		else

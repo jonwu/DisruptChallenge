@@ -1,8 +1,8 @@
-div.dashboard .content-wrapper .news-feed .news{	
+.news-feed .news{	
 	overflow: auto;
 	background-color: black;
 }
-div.dashboard .content-wrapper .news-feed {
+.news-feed {
 	
 	position: fixed;
 	right: 0;
