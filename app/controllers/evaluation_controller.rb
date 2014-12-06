@@ -12,8 +12,8 @@ class EvaluationController < ApplicationController
       @active_category = set_active_category(get_categories.first)
       if params.has_key?(:category_id)
         @active_category = set_active_category(@categories.find_by_id(params[:category_id]))
-      else
       end
+      
 			set_collaborators(get_current_rfi.collaborators)
       # find number of unrated submissions
 			set_collaborators(get_current_rfi.collaborators)
