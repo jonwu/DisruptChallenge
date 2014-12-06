@@ -13,7 +13,7 @@
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
-					<%= render 'layouts/sidebar_menu' %>
+					<%= yield :sidebar %>
 				</ul>
 			</div>
 
@@ -32,7 +32,26 @@
 				</div>
 				
 				<!-- Content -->
-				<%= yield :content %>
+
+				<div class="content-wrapper" style="padding-top: <% if @current_page == 'dashboard' %>250px<% else %>100px<% end %>">
+                
+	                <div class="content">
+	                    <%= yield %>
+	                </div>
+	                       
+	                <!-- news-feed -->
+	                <ul class="news-feed list-group" style="height: <% if @current_page == 'dashboard' %>calc(100% - 301px)<% else %>calc(100% - 151px)<% end %>">
+	                    <% @activities.each do |activity| %>
+	                        <% if activity.recipient == current_user %>
+	                            <li class="list-group-item">
+	                                <%= render_activity activity %> 
+	                            </li>
+	                        <% end %>
+	                    <% end %>
+	                </ul>
+                
+            	</div>
+				
 				
 				
 			</div>

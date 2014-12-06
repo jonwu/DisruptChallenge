@@ -1,37 +1,26 @@
 <%= javascript_include_tag 'creations' %>  
-
-<body>
-
-    <div id="wrapper" class="creations">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav ">
-                <div class="categories">
-                    <%= render partial: "categories", object: [@categories, @active_category] %>
-                    
-                </div>
-
-            </ul>
+<% content_for :sidebar do %>
+    <div class="creations">
+        <div class="categories">
+            <%= render partial: "categories", object: [@categories, @active_category] %>
         </div>
-        <!-- /#sidebar-wrapper -->
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <% if @active_category != nil %>
-                
-                <div class="questions">
-                    <%= render partial: "questions", object: @active_category %>
-                </div>
-                        
-
-                <div class="create_section">
-                    <%= render partial: "create_section", object: @active_category %>
-                </div>
-
-            <% else %>
-                <%= render partial: "empty_questions" %>
-            <% end %>
-        </div>
-        <!-- /#page-content-wrapper -->
     </div>
-</body>
+<% end %>
+
+
+<div class="creations">
+
+    <% if @active_category != nil %>
+        <div class="questions">
+            <%= render partial: "questions", object: @active_category %>
+        </div>
+                
+
+        <div class="create_section">
+            <%= render partial: "create_section", object: @active_category %>
+        </div>
+
+    <% else %>
+        <%= render partial: "empty_questions" %>
+    <% end %>
+</div>

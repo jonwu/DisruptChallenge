@@ -19,11 +19,11 @@ div.creations .category_title .btn {
 	
 	float: right;
 }
-#page-content-wrapper .question-panel {
+div.creations .question-panel {
 	position: fixed;
 	bottom: 0;
 	margin-bottom: 0px;
-	width: calc(100% - 550px);
+	width: calc(100% - 600px);
 }
 div.categories .nav li a {
 	line-height: 25px;
@@ -38,7 +38,10 @@ div.questions h3 {
 div.questions p {
 	display: inline;
 }
-.question-panel .panel-footer .content {
+.question-panel .panel-footer .impact {
+	float: left;
+}
+.question-panel .panel-footer .add-question {
 	float: right;
 }
 .question-panel .panel-footer {

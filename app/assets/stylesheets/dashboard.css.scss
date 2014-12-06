@@ -85,8 +85,9 @@ div.dashboard .content-wrapper::after {
 div.dashboard .content-wrapper .content {
 	
 	min-height: calc(100vh - 301px);
-	width: 70%;
+	width: calc(100vw - 600px);
 	float: left;
+	margin: auto;
 	// overflow: auto;
-	padding: 0px 15px
+	// padding: 0px 15px
 }

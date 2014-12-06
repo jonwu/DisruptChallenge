@@ -5,10 +5,20 @@
     height: 100%;
     width: 100%;
     text-decoration: none;
-    color: #3173AF;
+    color:#A94442;
 }
-.questions .panel-info .panel-heading:hover{
-	background-color: #C4E3F3
+
+.questions .panel{
+  -o-transition:.8s;
+  -ms-transition:.8s;
+  -moz-transition:.8s;
+  -webkit-transition:.8s;
+  /* ...and now for the proper property */
+  transition:.8s;
+}
+.questions .panel:hover{
+	border-color: #A94442;
+	
 
 }
 
@@ -27,9 +37,14 @@
 }
 .submit-panel .panel-footer .content{
 	float: right;
+
 }
 .submit-panel .panel-footer .content p{
 	color: red;
 	margin-right: 10px;
 	display: inline-block;
+}
+
+.responses #page-content-wrapper{
+	padding-top: 15px;
 }
