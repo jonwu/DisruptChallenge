@@ -1,49 +1,64 @@
 
+
+
 <% if !@current_rfi.nil? %>
-	<!-- Title of RFI -->
+	
 	<div class="rfi-title">
 		<%= link_to make_title_form_path, remote: true do %>
-			<h1><%= @current_rfi.title %></h1>
+		<h1><%= @current_rfi.title %></h1>
 		<% end %>
 	</div>
+
+
+	<div role="tabpanel">
+
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#vendors" aria-controls="vendors" role="tab" data-toggle="tab">Vendors</a></li>
+			<li role="presentation"><a href="#results" aria-controls="results" role="tab" data-toggle="tab">Results</a></li>
+			
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane fade in active" id="vendors">
+				<br>
+				<%= render partial: "collaborators" %>
+			</div>
+	  		
+	  		<div role="tabpanel" class="tab-pane fade" id="results">
+				<div class="charts">
+					<canvas id="myChart" width="400" height="400"></canvas>
+					<% @collaborators.each do |collaborator| %>
+					<!-- <div class="checkbox">
+						<label>
+							<input type="checkbox" value="">
+							<%= collaborator.user.email %>
+						</label>
+					</div> -->
+					<% end %>
+					
+					<!-- <div id="legend"></div> -->
+				</div>
+	  		</div>
+
+		</div>
+
+	</div>
+
+
+
+
+	
 	<!-- Share with collaborators -->
-	<%= form_tag share_rfi_path, remote: true do %>
-		<%= email_field_tag :email %>
-		<%= submit_tag 'Share', class: 'submit' %>
-	<% end %>
+
+
+
 	
-	
-	
-
-	<h1>Collaborators</h1>
-	<ul>
-		<% if @collaborators != nil %>
-			<% @collaborators.each do |collaborator| %>
-				<li>
-					<%= collaborator.user.name %>
-				</li>
-			<% end %>
-		<% else %>
-		<% end %>
-	</ul>
-
-
-
-	<div class="charts">
-		<canvas id="myChart" width="400" height="400"></canvas>
-		<% @collaborators.each do |collaborator| %>
-
-			<!-- <div class="checkbox">
-			  <label>
-			    <input type="checkbox" value="">
-			    <%= collaborator.user.email %>
-			  </label>
-			</div> -->
-
-		<% end %>
 		
-		<!-- <div id="legend"></div> -->
-	</div> 
+	
 
+
+
+
+	
 <% end %>
-

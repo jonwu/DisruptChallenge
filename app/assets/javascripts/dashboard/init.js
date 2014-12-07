@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
     checkBoxListener()
-    // setNewsFeedHeight(getContentHeight())
+
+    
 });
 
 
@@ -16,13 +17,6 @@ function checkBoxListener() {
     });
 }
 
-function setNewsFeedHeight(h) {
-    $(".news-feed").height(h)
-}
-
-function getContentHeight() {
-    return $(".content-wrapper .row").height()
-}
 
 
 function initializeBar(data, ctx){

@@ -3,7 +3,7 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
+            <ul class="sidebar-nav sidebar-nav-bg nav nav-pills nav-stacked" role="tablist">
                 <%= render partial: "sidebar_menu", object: [@rfis, @current_rfi, @shared_rfis] %>
             </ul>
         </div>
@@ -25,7 +25,7 @@
             <!-- Content -->
             <div class="content-wrapper">
                 
-                <div class="content"  style="padding-left: 15px">
+                <div class="content"  style="padding: 15px">
                     <%= render partial: "content", object: @current_rfi %>
                 </div>
                        

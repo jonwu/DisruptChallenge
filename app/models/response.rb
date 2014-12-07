@@ -3,10 +3,13 @@ class Response < ActiveRecord::Base
   belongs_to :user
   validates_uniqueness_of :user_id, :scope => :question_id
   after_initialize :init
+  scope :not_empty, -> {where.not(text: '')}
 
   def init
     self.text ||= "" #will set the default value only if it's nil
   end
+
+
 
   # Set empty response for each question. Params take ARRAYS of questions and collaborators
   def self.set_empty_responses(questions, collaborators)
@@ -31,5 +34,5 @@ class Response < ActiveRecord::Base
     return user_responses
   end
 
-  
+
 end

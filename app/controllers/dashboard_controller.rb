@@ -22,6 +22,8 @@ class DashboardController < ApplicationController
 		@current_rfi = get_current_rfi
 		@activities = PublicActivity::Activity.order("created_at desc")
 
+
+
 	end
 
 	def share_rfi
@@ -30,12 +32,13 @@ class DashboardController < ApplicationController
 			# Collaborator's user id
 			user_id = collaborator_user.id	
 			rfi_id = get_current_rfi.id
-			collaborator = Collaborator.new_collaborator(user_id,rfi_id)
+			collaborator = Collaborator.find_or_create_by(user_id: user_id , rfi_id: rfi_id)
 			questions = get_current_rfi.questions
 			
 			if !collaborator.nil?
 				Response.set_empty_responses(questions, [collaborator])
 			end
+
 		end
 		redirect_to action: 'page_update'
 	end
@@ -63,16 +66,22 @@ class DashboardController < ApplicationController
 		@collaborators_scores = []	
 		@collaborators_names = []
 
+
+
 		if @current_page == "active_rfis"
-			@collaborators = get_current_rfi.collaborators
+			@collaborators = Collaborator.where(rfi_id: @current_rfi.id).all
+			p "*" *80
+			p @collaborators
 			@sorted_collaborators = @collaborators.order_by_score
-			
+
 			for collaborator in @sorted_collaborators
-				if collaborator.submissions.is_null.count == 0
+			# 	if collaborator.submissions.is_null.count == 0
 					@collaborators_names.push(collaborator.user.name)
 					@collaborators_scores.push(collaborator.total_score)
-				end
+
+				# end
 			end 
+
 		end
 
 		

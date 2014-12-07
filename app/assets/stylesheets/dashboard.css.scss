@@ -16,7 +16,7 @@ div.rfi-list .nav li.active a {
 	color: white;
 }
 .rfi-list .nav > li.active > a, .rfi-list .nav > li.active > a:hover, .rfi-list .nav > li.active > a:focus {
-	background-color: transparent;
+	background-color: transparent !important;
 }
 div.shared-rfi-list .nav li a {
 	line-height: 25px;
@@ -27,7 +27,7 @@ div.shared-rfi-list .nav li a {
 }
 div.dashboard .menu-wrapper {
 	height: 250px;
-	z-index: 1;
+	z-index: 99;
 	width: calc(100% - 250px);
 	min-width: calc(1280px - 250px);
 	position: fixed;
@@ -76,6 +76,7 @@ div.dashboard .menu-wrapper .menu .menu-option-wrapper .menu-option:hover {
 }
 div.dashboard .content-wrapper{
 	padding: 250px 0px 0px 0px;	
+
 }
 div.dashboard .content-wrapper::after {
 	clear: both;
@@ -85,9 +86,11 @@ div.dashboard .content-wrapper::after {
 div.dashboard .content-wrapper .content {
 	
 	min-height: calc(100vh - 301px);
-	width: calc(100vw - 600px);
+	width: calc(100% - 350px);
 	float: left;
 	margin: auto;
 	// overflow: auto;
 	// padding: 0px 15px
 }
+
+
