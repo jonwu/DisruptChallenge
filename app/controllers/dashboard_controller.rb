@@ -15,7 +15,7 @@ class DashboardController < ApplicationController
 	end
 	
 	def index
-		@rfis = current_user.rfis.all
+		@rfis = current_user.rfis.order('id asc')
 		@shared_rfis = Collaborator.find_collaborated_rfis(current_user.id)
 		@current_page = set_current_page("dashboard")
 		set_current_rfi(nil)
@@ -57,7 +57,7 @@ class DashboardController < ApplicationController
 	def page_update 
 		@current_rfi = get_current_rfi
 		@current_page = get_current_page
-		@rfis = current_user.rfis.all
+		@rfis = current_user.rfis.order('id asc');
 		@shared_rfis = Collaborator.find_collaborated_rfis(current_user.id)
 		@collaborator = nil;
 		@collaborators_scores = []	
