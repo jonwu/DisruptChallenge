@@ -1,13 +1,16 @@
 
             
 <li <% if @current_page == "dashboard" %> class = active <% end %> role="presentation">
+    
     <%= link_to dashboard_path, remote: true do%>
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
         Dashboard
     <% end %>        
 </li>
 
 <li <% if @current_page == "active_rfis" %> class = active <% end %>  role="presentation">
     <%= link_to active_rfis_path, remote: true do%>
+        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         Active RFIs
     <% end %>   
 
@@ -19,6 +22,7 @@
 
 <li <% if @current_page == "shared_rfis" %> class = active <% end %>  role="presentation">
     <%= link_to active_rfis_path, remote: true do%>
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
         Shared RFIs
     <% end %>   
 

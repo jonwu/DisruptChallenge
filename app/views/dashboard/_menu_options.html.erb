@@ -45,7 +45,7 @@
     <%= link_to load_rfi_path(rfi_id: @current_rfi.id) do %>
         <div class="menu-option">
             <div class="content">   
-                <img src="<%= asset_path 'add_rfi.png'%>" class="menu-button" alt="">
+                <img src="<%= asset_path 'edit_rfi.png'%>" class="menu-button" alt="">
                 <p>Edit RFI</p>
             </div>
         </div>
@@ -56,7 +56,7 @@
     <%= link_to delete_rfi_path(rfi_id: @current_rfi.id), method: :post do %>
         <div class="menu-option">
             <div class="content">   
-                <img src="<%= asset_path 'add_rfi.png'%>" class="menu-button" alt="">
+                <img src="<%= asset_path 'delete.png'%>" class="menu-button" alt="">
                 <p>Delete</p>
             </div>
         </div>
