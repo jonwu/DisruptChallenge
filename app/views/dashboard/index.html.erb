@@ -14,6 +14,7 @@
             <!-- Menu -->
             <div class="menu-wrapper">
                 <div class="menu">
+                    <h1 class="welcome">Good Morning, <%= current_user.name %>!</h1>
                     <div class="menu-option-wrapper">
                         <%= render partial: "menu_options", object: @current_rfi %>
                     </div>

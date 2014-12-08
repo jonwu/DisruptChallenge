@@ -3,6 +3,7 @@ class Rfi < ActiveRecord::Base
   has_many :collaborators, dependent: :destroy
   has_many :questions, through: :categories
   has_many :responses, through: :questions
+  has_many :submissions, through: :questions
   belongs_to :user
   after_initialize :init
 

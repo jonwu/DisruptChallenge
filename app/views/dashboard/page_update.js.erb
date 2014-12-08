@@ -78,6 +78,9 @@ function animateMenu(){
 	
 	<% if @current_page == "dashboard" %>
 		if( $(".menu-wrapper").height() == 100){
+			$(".welcome").fadeIn('400', function() {
+				
+			});
 			$(".menu-wrapper").animate({"height": 250}, 400)
 			$(".content-wrapper").animate({"padding-top": 250}, 400)
 			$(".news-feed").animate({"height": newsHeight-150}, 400)
@@ -85,6 +88,9 @@ function animateMenu(){
 		}
 	<% else %>
 		if($(".menu-wrapper").height() == 250){
+			$(".welcome").fadeOut('400', function() {
+				
+			});
 			$(".menu-wrapper").animate({"height": 100}, 400)
 			$(".content-wrapper").animate({"padding-top": 100}, 400)
 			$(".news-feed").animate({"height": newsHeight+150}, 400)
