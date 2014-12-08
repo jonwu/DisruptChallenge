@@ -1,5 +1,5 @@
 <% @questions.each do |question| %>
-    <% @current_response = @responses.find_by_question_id(question.id) %>
+    <% @current_response = @responses.create_with(text: '').find_or_create_by(question_id: question.id, user_id: current_user.id) %>
     <% @current_question = question %>
     <div class="panel panel-info panel-danger">
       <div class="panel-heading">

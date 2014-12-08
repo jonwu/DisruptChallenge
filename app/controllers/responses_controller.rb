@@ -16,6 +16,8 @@ class ResponsesController < ApplicationController
       @active_category = set_active_category(get_categories.first)
       @questions = set_questions(@active_category.questions.all)
       @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
+      p "*" *80
+      
       @last_updated = Submission.get_last_updated(get_current_collaborator)
       render :index
     else
