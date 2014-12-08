@@ -84,7 +84,7 @@ class ResponsesController < ApplicationController
     
     for response in all_responses
       text = response.text
-      submission = Submission.create_with(text: text).find_or_create_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id)
+      submission = Submission.create_with(text: '').find_or_create_by(collaborator_id: collaborator.id, response_id: response.id, question_id: response.question.id)
       if submission.text != text
         submission.create_activity :update, recipient: get_current_rfi.user, owner: current_user
         submission.update(text: text)
