@@ -1,5 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BridgeIT</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+</head>
+<body id="homepage">
 
-<nav class="header navbar navbar-static-top navbar-default" role="navigation">
+	<nav class="home-header navbar navbar-static-top navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class=container>
     <div class="navbar-header" >
@@ -24,3 +34,8 @@
     </div> <!-- /.navbar-collapse -->
   </div> <!-- /container -->
 </nav>
+
+	<%= yield %>
+
+</body>
+</html>

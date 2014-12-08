@@ -83,9 +83,9 @@
 							<tbody>
 								<tr>
 									<td><img src="<%= asset_path 'asset1.png'%>"  alt=""> </td>
-									<td><img src="<% if rfi.collaborators.count > 0 %> <%= asset_path 'asset1.png'%><% else %><%= asset_path 'asset_not_1.png'%><% end %>"  alt=""> </td>
-									<td><img src="<% if rfi.submissions.any? && rfi.submissions.is_null == 0 %> <%= asset_path 'asset1.png'%><% else %><%= asset_path 'asset_not_1.png'%><% end %>"  alt=""> </td>
-									<td><img src="<%= asset_path 'asset_not_1.png'%>"  alt=""></td>
+									<td><img src="<% if rfi.collaborators.count > 0 %> <%= asset_path 'asset1.png'%><% end %>"  alt=""> </td>
+									<td><img src="<% if rfi.submissions.any? && rfi.submissions.is_null == 0 %> <%= asset_path 'asset1.png'%><% end %>"  alt=""> </td>
+									<td></td>
 								</tr>
 								
 							</tbody>
