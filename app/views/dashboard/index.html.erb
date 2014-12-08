@@ -34,9 +34,11 @@
                 <ul class="news-feed list-group">
                     <% @activities.each do |activity| %>
                         <% if activity.recipient == current_user %>
-                            <li class="list-group-item">
-                                <%= render_activity activity %> 
-                            </li>
+                            <% if activity.trackable != nil %>
+                                <li class="list-group-item">
+                                    <%= render_activity activity %> 
+                                </li>
+                            <% end %>
                         <% end %>
                     <% end %>
                 </ul>

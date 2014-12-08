@@ -43,9 +43,11 @@
 	                <ul class="news-feed list-group" style="height: <% if @current_page == 'dashboard' %>calc(100% - 301px)<% else %>calc(100% - 151px)<% end %>">
 	                    <% @activities.each do |activity| %>
 	                        <% if activity.recipient == current_user %>
-	                            <li class="list-group-item">
-	                                <%= render_activity activity %> 
-	                            </li>
+	                        	<% if activity.trackable != nil %>
+		                            <li class="list-group-item">
+		                                <%= render_activity activity %> 
+		                            </li>
+	                            <% end %>
 	                        <% end %>
 	                    <% end %>
 	                </ul>

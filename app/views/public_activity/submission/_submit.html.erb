@@ -1,4 +1,7 @@
+
+
 <p><b>RFI Submitted</b></p>
 <p><%= activity.owner.name %> submitted responses to 
 	<%= link_to activity.trackable.question.category.rfi.title, load_rfi_evaluation_path(rfi_id: activity.trackable.question.category.rfi.id) %></p>
 <p><%= time_ago_in_words(activity.created_at) %> ago</p>
+
