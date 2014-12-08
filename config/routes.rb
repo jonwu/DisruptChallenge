@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get "logout", to: "devise/sessions#destroy"
   end
 
+  get "homepage", to: "homepage#index", as: 'homepage'
 
   post "creations/create_rfi", to: "creations#create_rfi", as: 'create_rfi'
   get "creations/load_rfi/:rfi_id", to: "creations#load_rfi", as: 'load_rfi'
