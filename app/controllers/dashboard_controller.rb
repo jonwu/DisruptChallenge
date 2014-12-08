@@ -70,14 +70,16 @@ class DashboardController < ApplicationController
 
 		if @current_page == "active_rfis"
 			@collaborators = Collaborator.where(rfi_id: @current_rfi.id).all
-			p "*" *80
 			p @collaborators
 			@sorted_collaborators = @collaborators.order_by_score
-
+			p "*" *80
+			p @sorted_collaborators
+			p "*" *80
 			for collaborator in @sorted_collaborators
 			# 	if collaborator.submissions.is_null.count == 0
-					@collaborators_names.push(collaborator.user.name)
-					@collaborators_scores.push(collaborator.total_score)
+				@collaborators_names.push(collaborator.user.name)
+				@collaborators_scores.push(collaborator.total_score)
+
 
 				# end
 			end 

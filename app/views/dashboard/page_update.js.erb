@@ -1,10 +1,12 @@
-renderRfiList()
+// renderRfiList()
 renderSidebarMenu()
 renderContent()
 renderMenuOptions()
+
 <% if @current_page == "active_rfis" %>
 	renderCharts()
 <% end %>
+
 animateMenu()
 
 function renderSidebarMenu(){
@@ -71,7 +73,6 @@ function renderMenuOptions(){
  * @return {void} 
  */
 function animateMenu(){
-
 	newsHeight = $('.news-feed').height(); 
 	
 	// minHeight = parseInt(row.css('min-height'))
@@ -87,6 +88,7 @@ function animateMenu(){
 			// row.css("min-height", minHeight - 150)
 		}
 	<% else %>
+
 		if($(".menu-wrapper").height() == 250){
 			$(".welcome").fadeOut('400', function() {
 				

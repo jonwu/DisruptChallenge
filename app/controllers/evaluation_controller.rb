@@ -11,7 +11,7 @@ class EvaluationController < ApplicationController
 			# defaults when first loading
       @active_category = set_active_category(get_categories.first)
       @active_question = set_active_question(Question.find_by_id(@active_category.questions.first.id))
-      @current_submissions = set_current_submissions(Submission.find_submissions_from_collaborators(get_active_question, get_collaborators))
+      @current_submissions = set_current_submissions(@current_rfi.submissions.where(question_id: get_active_question.id).all)
       if params.has_key?(:category_id)
         @active_category = set_active_category(@categories.find_by_id(params[:category_id]))
       end
