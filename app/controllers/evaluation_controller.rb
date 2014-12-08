@@ -10,11 +10,12 @@ class EvaluationController < ApplicationController
 			@categories = get_categories
 			# defaults when first loading
       @active_category = set_active_category(get_categories.first)
+      @active_question = set_active_question(Question.find_by_id(@active_category.questions.first.id))
+      @current_submissions = set_current_submissions(Submission.find_submissions_from_collaborators(get_active_question, get_collaborators))
       if params.has_key?(:category_id)
         @active_category = set_active_category(@categories.find_by_id(params[:category_id]))
       end
       
-			set_collaborators(get_current_rfi.collaborators)
       # find number of unrated submissions
 			set_collaborators(get_current_rfi.collaborators)
       @num_unrated = Submission.get_number_unrated(get_categories, get_collaborators)
