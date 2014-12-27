@@ -7,16 +7,6 @@ class Collaborator < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :rfi_id
   scope :order_by_score, -> {joins(:submissions).select('collaborators.id', 'collaborators.user_id','sum(submissions.score) as total_score').where('submissions.score IS NOT null').group('collaborators.id').order('total_score desc')}
   
-
-  def self.find_collaborated_rfis(user_id)
-    @rfis = []
-    @collaborations = Collaborator.where("user_id = " + user_id.to_s).pluck(:rfi_id)
-    @collaborations.each do |rfi_id|
-      @rfis << Rfi.find_by_id(rfi_id)
-    end
-    return @rfis
-  end
-
   def self.new_collaborator(user_id, rfi_id)
     @collaborator = Collaborator.new(user_id: user_id , rfi_id: rfi_id)
     if @collaborator.save

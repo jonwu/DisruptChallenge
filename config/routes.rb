@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   get "creations/make_category_form", to: "creations#make_category_form", as: 'make_category_form'
   post "creations/add_question", to: "creations#add_question", as: 'add_question'
   get "creations/delete_question", to: "creations#delete_question", as: 'delete_question'
-  get "creations/page_update", to: "creations#page_update", as: 'page_update'
+  get "creations/page_update", to: "creations#page_update", as: 'creations_page_update'
   
 
-  get "dashboard/page_update", to: "dashboard#page_update", as: 'page_update_dashboard'
+  get "dashboard/page_update", to: "dashboard#page_update", as: 'dashboard_page_update'
   post "dashboard/share_rfi", to: "dashboard#share_rfi", as: 'share_rfi'
   post "dashboard/delete_rfi", to: "dashboard#delete_rfi", as: 'delete_rfi'
   get "dashboard/navigate_rfi", to: "dashboard#navigate_rfi", as: 'navigate_rfi'
@@ -28,8 +28,6 @@ Rails.application.routes.draw do
   post "dashboard/update_rfi_title", to: "dashboard#update_rfi_title", as: 'update_rfi_title'
   get "dashboard/home", to: "dashboard#dashboard", as: 'dashboard'
   get "dashboard/active_rfis", to: "dashboard#active_rfis", as: 'active_rfis'
-  get "dashboard/load_charts", to: "dashboard#load_charts", as: 'load_charts'
-  post "dashboard/update_selected", to: "dashboard#update_selected", as: 'update_selected'
 
   get "responses/load_rfi_response/:rfi_id", to: "responses#load_rfi_response", as: 'load_rfi_response'
   get "responses/update_active_category_response", to: "responses#update_active_category_response", as: 'update_active_category_response'
