@@ -4,23 +4,23 @@ class CreationsController < ApplicationController
   layout 'admin'
 
   def create_rfi
-    @rfi = Rfi.new( user_id: current_user.id, 
+    rfi = Rfi.create!( user_id: current_user.id, 
                     title: "default")
-    if @rfi.save
-      category = Category.create( rfi_id: @rfi.id,
-                                  text: "New Category")
-      redirect_to load_rfi_path(@rfi.id)
-      return
-    end
+    Category.create!( rfi_id: rfi.id,
+                      text: "New Category")
+    redirect_to action: 'show', id: rfi.id
   end
 
-  def load_rfi
-    @rfi = Rfi.find_rfi(params[:rfi_id], current_user.id)
+  def index
+    redirect_to dashboard_index_path
+  end
+
+  def show
+    @rfi = Rfi.find_rfi(params[:id], current_user.id)
     if (@rfi == nil)
       redirect_to dashboard_index_path
       return
     end
-
     set_rfi(@rfi)
     @categories = get_categories
     @active_category = set_active_category(get_categories.first)
@@ -28,19 +28,11 @@ class CreationsController < ApplicationController
     render :index
   end
 
-  def index
-    redirect_to dashboard_index_path
-  end
-
   def add_new_category
-    # get current Rfi
-    @rfi = get_current_rfi
-    @categories = get_categories
-    text = find_available_text(@categories, "New Category")
-    @active_category = set_active_category(Category.create!( rfi_id: get_current_rfi.id,
+    text = find_available_text(get_categories, "New Category")
+    set_active_category(Category.create!( rfi_id: get_current_rfi.id,
                   text: text))
     redirect_to action: 'page_update'
-
   end 
 
   def delete_category
@@ -107,6 +99,7 @@ class CreationsController < ApplicationController
   end
 
   def page_update
+    p '*' * 80
     @categories = get_categories
     @active_category = get_active_category
   end

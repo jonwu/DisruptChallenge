@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get "homepage", to: "homepage#index", as: 'homepage'
 
   post "creations/create_rfi", to: "creations#create_rfi", as: 'create_rfi'
-  get "creations/load_rfi/:rfi_id", to: "creations#load_rfi", as: 'load_rfi'
   post "creations/add_new_category", to: "creations#add_new_category", as: 'add_new_category'
   get "creations/delete_category", to: "creations#delete_category", as: 'delete_category'
   get "creations/update_active_category", to: "creations#update_active_category", as: 'update_active_category'

@@ -44,7 +44,7 @@
 <% end %>
 
 <% if !@current_rfi.nil?  %>
-    <%= link_to load_rfi_path(rfi_id: @current_rfi.id) do %>
+    <%= link_to creation_path(id: @current_rfi.id) do %>
         <div class="menu-option">
             <div class="content">   
                 <img src="<%= asset_path 'edit_rfi.png'%>" class="menu-button" alt="">
