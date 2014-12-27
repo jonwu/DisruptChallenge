@@ -1,5 +1,4 @@
 jQuery(document).ready(function($) {
-	// initializeForm()
 	titleListener()
 	addQuestionListener();
 });
@@ -11,13 +10,6 @@ function titleListener(){
       $('#category_title_form').submit();
     }
   });
-}
-
-function initializeForm(){
-	$.fn.wysihtml5.defaultOptions['toolbar']['image'] = false;
-	console.log($.fn.wysihtml5.defaultOptions)
-	$('.question-form').wysihtml5();
-
 }
 
 function addQuestionListener(){
