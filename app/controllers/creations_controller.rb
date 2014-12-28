@@ -17,10 +17,12 @@ class CreationsController < ApplicationController
 
   def show
     @rfi = Rfi.find_rfi(params[:id], current_user.id)
+
     if (@rfi == nil)
       redirect_home
       return
     end
+
     set_rfi(@rfi)
     @categories = get_categories
     @active_category = set_active_category(get_categories.first)

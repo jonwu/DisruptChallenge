@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
 	respond_to :html, :js
 	before_action :authenticate_user!
+	
 
 	def dashboard
 		set_current_page("dashboard")
