@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post "creations/create_rfi", to: "creations#create_rfi", as: 'create_rfi'
   post "creations/add_new_category", to: "creations#add_new_category", as: 'add_new_category'
   get "creations/delete_category", to: "creations#delete_category", as: 'delete_category'
-  get "creations/update_active_category", to: "creations#update_active_category", as: 'update_active_category'
+  get "creations/update_active_category", to: "creations#update_active_category", as: 'creations_update_active_category'
   post "creations/update_category_titles", to: "creations#update_category_titles", as: 'update_category_titles'
   get "creations/make_category_form", to: "creations#make_category_form", as: 'make_category_form'
   post "creations/add_question", to: "creations#add_question", as: 'add_question'
@@ -37,12 +37,11 @@ Rails.application.routes.draw do
   post "responses/collapse_content", to: "responses#collapse_content", as: 'collapse_content'
   post "responses/submit", to: "responses#submit", as: 'submit'
   
-  get "evaluation/load_rfi_evaluation/:rfi_id", to: "evaluation#load_rfi_evaluation", as: 'load_rfi_evaluation'
-  get "evaluation/toggle_category", to: "evaluation#toggle_category", as: 'toggle_category'
-  get "evaluation/update_active_question", to: "evaluation#update_active_question", as: 'update_active_question'
-  get "evaluation/evaluation_page_update", to: "evaluation#evaluation_page_update", as: 'evaluation_page_update'
-  get "evaluation/categories_page_update", to: "evaluation#categories_page_update", as: 'categories_page_update'
-  post "evaluation/save_rating", to: "evaluation#save_rating", as: 'save_rating'
+  get "evaluation/update_active_category", to: "evaluation#update_active_category", as: 'evaluation_update_active_category'
+  get "evaluation/update_active_question", to: "evaluation#update_active_question", as: 'evaluation_update_active_question'
+  get "evaluation/page_update", to: "evaluation#page_update", as: 'evaluation_page_update'
+  get "evaluation/categories_page_update", to: "evaluation#categories_page_update", as: 'evaluation_categories_page_update'
+  post "evaluation/save_rating", to: "evaluation#save_rating", as: 'evaluation_save_rating'
   
 
   get "active/:rfi_id", to: "active#index", as: 'load_active_rfi'

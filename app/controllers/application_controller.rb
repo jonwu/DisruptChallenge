@@ -10,9 +10,14 @@ class ApplicationController < ActionController::Base
     # use exception.path to extract the path information
     # This does not work for partials
   end
+
   def not_found
     raise ActionController::RoutingError.new('Not Found')
 
+  end
+
+  def redirect_home
+    redirect_to dashboard_index_path
   end
 
   def configure_permitted_parameters

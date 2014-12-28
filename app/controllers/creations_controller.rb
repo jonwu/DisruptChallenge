@@ -8,41 +8,41 @@ class CreationsController < ApplicationController
                     title: "default")
     Category.create!( rfi_id: rfi.id,
                       text: "New Category")
-    redirect_to action: 'show', id: rfi.id
+    # redirect_to action: 'show', id: rfi.id
+    redirect_to creation_path(id: rfi_id)
   end
 
   def index
-    redirect_to dashboard_index_path
+    redirect_home
   end
 
   def show
     @rfi = Rfi.find_rfi(params[:id], current_user.id)
     if (@rfi == nil)
-      redirect_to dashboard_index_path
+      redirect_home
       return
     end
     set_rfi(@rfi)
     @categories = get_categories
     @active_category = set_active_category(get_categories.first)
     @activities = PublicActivity::Activity.order("created_at desc")
-    render :index
   end
 
   def add_new_category
     text = Category.find_available_text(get_categories, "New Category")
     set_active_category(Category.create!( rfi_id: get_current_rfi.id, text: text))
-    redirect_to action: 'page_update'
+    redirect_to creations_page_update_path
   end 
 
   def delete_category
     id = params[:category_id]
     set_active_category(Category.find_next_category_and_delete(id))
-    redirect_to action: 'page_update'
+    redirect_to creations_page_update_path
   end
 
   def update_active_category
     set_active_category(Category.find_by_id(params[:category]))
-    redirect_to action: 'page_update'
+    redirect_to creations_page_update_path
   end
 
   def make_category_form
@@ -58,7 +58,7 @@ class CreationsController < ApplicationController
       text = Category.find_available_text(@categories, text)
       @active_category.update_attributes(:text => text)
     end
-    redirect_to action: 'page_update'
+    redirect_to creations_page_update_path
   end
 
   def add_question
@@ -72,7 +72,8 @@ class CreationsController < ApplicationController
     for collaborator in get_collaborators
       question.create_activity :create, recipient: collaborator.user, owner: current_user
     end
-    redirect_to action: 'update_active_category', category: category_id
+    # redirect_to action: 'update_active_category', category: category_id
+    redirect_to creations_update_active_category_path(category: category_id)
     return
   end
 
@@ -82,7 +83,8 @@ class CreationsController < ApplicationController
     for collaborator in get_collaborators
       question.create_activity :delete, recipient: collaborator.user, owner: current_user, parameters: {rfi: get_current_rfi}
     end
-    redirect_to action: 'update_active_category', category: params[:category_id]
+    # redirect_to action: 'update_active_category', category: params[:category_id]
+    redirect_to creations_update_active_category_path(category: params[:category_id])
     return
   end
 

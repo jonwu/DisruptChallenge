@@ -2,46 +2,44 @@ class EvaluationController < ApplicationController
   respond_to :html, :js
   before_action :authenticate_user!
 
-  def load_rfi_evaluation
-  	@current_rfi = Rfi.find_by_id(params[:rfi_id])
+  def show
+  	current_rfi = Rfi.find_by_id(params[:id])
 		# Check if RFI is from current user
-		if @current_rfi != nil && @current_rfi.user_id == current_user.id 
-			set_current_rfi(@current_rfi)
+		if current_rfi != nil && current_rfi.user_id == current_user.id 
+			set_current_rfi(current_rfi)
 			@categories = get_categories
 			# defaults when first loading
       @active_category = set_active_category(get_categories.first)
       @active_question = set_active_question(Question.find_by_id(@active_category.questions.first.id))
-      @current_submissions = set_current_submissions(@current_rfi.submissions.where(question_id: get_active_question.id).all)
+      @current_submissions = set_current_submissions(current_rfi.submissions.where(question_id: @active_question.id).all)
       if params.has_key?(:category_id)
         @active_category = set_active_category(@categories.find_by_id(params[:category_id]))
       end
       
       # find number of unrated submissions
-			set_collaborators(get_current_rfi.collaborators)
+			set_collaborators(current_rfi.collaborators)
       @num_unrated = Submission.get_number_unrated(get_categories, get_collaborators)
-			render :index
 		else
-			redirect_to dashboard_index_path
+			redirect_home
 		end
   end
 
 	def index
+    redirect_home
 	end
 
-	def toggle_category
-		p "*" * 80
-    @active_category = set_active_category(Category.find_by_id(params[:category]))
-    redirect_to action: 'evaluation_page_update'
+	def update_active_category
+    set_active_category(Category.find_by_id(params[:category]))
+    redirect_to evaluation_page_update_path
   end
 
   def update_active_question
-  	@active_question = set_active_question(Question.find_by_id(params[:question]))
-  	# update current_submissions
-  	@current_submissions = set_current_submissions(Submission.find_submissions_from_collaborators(get_active_question, get_collaborators))
-    redirect_to action: 'evaluation_page_update'
+  	set_active_question(Question.find_by_id(params[:question]))
+  	set_current_submissions(Submission.find_submissions_from_collaborators(get_active_question, get_collaborators))
+    redirect_to evaluation_page_update_path
   end
 
-  def evaluation_page_update
+  def page_update
     @categories = get_categories
     @active_category = get_active_category
     @active_question = get_active_question
@@ -54,7 +52,7 @@ class EvaluationController < ApplicationController
   	rating = params[:rating]
   	submission = Submission.find_by_id(submission_id)
   	submission.update(score: rating)
-    redirect_to action: 'categories_page_update'
+    redirect_to evaluation_categories_page_update_path
   end
 
   def categories_page_update

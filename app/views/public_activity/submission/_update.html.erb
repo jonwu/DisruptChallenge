@@ -1,6 +1,6 @@
 
 <p><b>New RFI Submission </b></p>
 <p><%= activity.owner.name %> updated 
-	<%= link_to activity.trackable.question.category.text, load_rfi_evaluation_path(rfi_id: activity.trackable.question.category.rfi.id, category_id: activity.trackable.question.category.id) %> section from 
-	<%= link_to activity.trackable.question.category.rfi.title, load_rfi_evaluation_path(rfi_id: activity.trackable.question.category.rfi.id) %></p>
+	<%= link_to activity.trackable.question.category.text, evaluation_path(id: activity.trackable.question.category.rfi.id, category_id: activity.trackable.question.category.id) %> section from 
+	<%= link_to activity.trackable.question.category.rfi.title, evaluation_path(id: activity.trackable.question.category.rfi.id) %></p>
 <p><%= time_ago_in_words(activity.created_at) %> ago</p>

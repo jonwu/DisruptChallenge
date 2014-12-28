@@ -32,7 +32,6 @@ function renderContent(){
 }
 
 function renderCharts(){
-
 	var ctx = $("#myChart").get(0).getContext("2d");
 	console.log('<%= raw @collaborators_names.as_json %>')
 	console.log('<%= @collaborators_scores.as_json %>')

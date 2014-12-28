@@ -5,13 +5,13 @@ class DashboardController < ApplicationController
 	def dashboard
 		set_current_page("dashboard")
 		set_current_rfi(nil)
-		redirect_to action: 'page_update'
+		redirect_to dashboard_page_update_path
 	end
 
 	def active_rfis
 		set_current_page("active_rfis")
 		set_current_rfi(current_user.rfis.first)
-		redirect_to action: 'page_update'
+		redirect_to dashboard_page_update_path
 	end
 	
 	def index
@@ -35,20 +35,20 @@ class DashboardController < ApplicationController
 				Response.set_empty_responses(questions, [collaborator])
 			end
 		end
-		redirect_to action: 'page_update'
+		redirect_to dashboard_page_update_path
 	end
 
 	def delete_rfi
 		Rfi.delete_rfi(get_current_rfi.id)
 		set_current_rfi(current_user.rfis.first)
-		redirect_to action: 'page_update'
+		redirect_to dashboard_page_update_path
 	end
 
 	def navigate_rfi
 		set_current_page("active_rfis")
 		current_rfi = Rfi.find_rfi(params[:rfi_id], current_user)
 		set_current_rfi(current_rfi)
-		redirect_to action: 'page_update'
+		redirect_to dashboard_page_update_path
 	end
 
 	def page_update 
@@ -76,7 +76,7 @@ class DashboardController < ApplicationController
 
 	def update_rfi_title
 		get_current_rfi.update(:title => params[:rfi_title])
-		redirect_to action: 'page_update'
+		redirect_to dashboard_page_update_path
 	end
 	
 	private

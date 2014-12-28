@@ -1,6 +1,6 @@
 <% if @c != @active_category %>
   <li role="presentation" id="<%= @c.id %>">
-    <%= link_to toggle_category_path(category: @c.id), remote: true do %>
+    <%= link_to evaluation_update_active_category_path(category: @c.id), remote: true do %>
       <% if @unrated > 0 %>
         <%=@c.text%><span class="badge"><%=@unrated%></span>
       <% else %>
@@ -10,7 +10,7 @@
   </li>
 <% else %>
   <li class="active" role="presentation" id="<%= @c.id %>">
-    <%= link_to toggle_category_path(category: @c.id), remote: true do %>
+    <%= link_to evaluation_update_active_category_path(category: @c.id), remote: true do %>
       <% if @unrated > 0 %>
         <%=@c.text%><span class="badge"><%=@unrated%></span>
       <% else %>
@@ -25,11 +25,11 @@
     <% @c.questions.each do |q| %>
       <% if q == @active_question %>
         <li class="active" role="presentation" id="<%= q.id %>">
-          <%= link_to q.text, update_active_question_path(question: q.id), remote: true%>
+          <%= link_to q.text, evaluation_update_active_question_path(question: q.id), remote: true%>
         </li>
       <% else %>
         <li role="presentation" id="<%= q.id %>">
-          <%= link_to q.text, update_active_question_path(question: q.id), remote: true%>
+          <%= link_to q.text, evaluation_update_active_question_path(question: q.id), remote: true%>
         </li>
       <% end %>
     <% end %>
