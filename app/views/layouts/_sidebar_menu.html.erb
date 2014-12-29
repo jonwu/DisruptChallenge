@@ -7,7 +7,7 @@
 </li>
 
 <li <% if @current_page == "active_rfis" %> class = active <% end %>  role="presentation">
-    <%= link_to active_rfis_path, remote: true do%>
+    <%= link_to dashboard_active_rfis_path, remote: true do%>
         Active RFIs
     <% end %>   
 
@@ -15,7 +15,7 @@
         <ul class="nav sidebar-nav-bg nav-pills nav-stacked" role="tablist">
             <% @rfis.each do |rfi| %>
                 <li <% if rfi == @current_rfi %> class = active <% end %> role="presentation">
-                    <%= link_to rfi.title, navigate_rfi_path(rfi_id: rfi.id), remote: true%>
+                    <%= link_to rfi.title, dashboard_navigate_rfi_path(rfi_id: rfi.id), remote: true%>
                 </li>
             <% end %>
         </ul>   
@@ -24,7 +24,7 @@
 
 
 <li <% if @current_page == "shared_rfis" %> class = active <% end %>  role="presentation">
-    <%= link_to active_rfis_path, remote: true do%>
+    <%= link_to dashboard_active_rfis_path, remote: true do%>
         Shared RFIs
     <% end %>   
 

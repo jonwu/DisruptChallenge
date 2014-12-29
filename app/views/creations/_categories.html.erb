@@ -1,11 +1,11 @@
 <ul class="nav nav-pills nav-stacked" role="tablist">
 	<% @categories.each do |c| %>
 		<li class="categories-node <% if c == @active_category %>active<% end %>" role="presentation">
-			<%= link_to c.text, update_active_category_path(category: c.id), remote: true%>
+			<%= link_to c.text, creations_update_active_category_path(category: c.id), remote: true%>
 		</li>
 	<% end %>
 </ul>
 
-<%= link_to add_new_category_path, remote: true, method: :post do %>
+<%= link_to creations_add_new_category_path, remote: true, method: :post do %>
     <h2 class="add-category">+</h2>
 <% end %>

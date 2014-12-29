@@ -1,8 +1,8 @@
 <p><b>New RFI Question</b></p>
 <% if activity.trackable %>
   <p><%= activity.owner.name %> added a question to the
-    <%= link_to activity.trackable.category.text, load_rfi_evaluation_path(rfi_id: activity.trackable.category.rfi.id, category_id: activity.trackable.category.id) %> section from 
-    <%= link_to activity.trackable.category.rfi.title, load_rfi_evaluation_path(rfi_id: activity.trackable.category.rfi.id) %></p>
+    <%= link_to activity.trackable.category.text, evaluation_path(id: activity.trackable.category.rfi.id, category_id: activity.trackable.category.id) %> section from 
+    <%= link_to activity.trackable.category.rfi.title, evaluation_path(id: activity.trackable.category.rfi.id) %></p>
   <p><%= time_ago_in_words(activity.created_at) %> ago</p>
 <% else %>
   <p> which has since been removed </p>

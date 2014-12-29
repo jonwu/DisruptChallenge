@@ -10,7 +10,7 @@
 		  <span class = "impact impact-<%= q.impact %>">
 		  	<%= q.impact %>
 		  </span>
-		  <%= link_to delete_question_path(question_id: q.id, category_id: @active_category.id), remote: true do %>
+		  <%= link_to creations_delete_question_path(question_id: q.id, category_id: @active_category.id), remote: true do %>
 		  	x
 		  <% end %>
 		</span>

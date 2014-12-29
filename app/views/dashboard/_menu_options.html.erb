@@ -1,6 +1,6 @@
 
 
-<%= link_to create_rfi_path, method: :post do%>
+<%= link_to creations_create_rfi_path, method: :post do%>
     <div class="menu-option">
         <div class="content">
             <img src="<%= asset_path 'add_rfi.png'%>" class="menu-button" alt="">
@@ -10,7 +10,7 @@
 <% end %>
 
 <% if @current_page == "dashboard"  %>
-    <%= link_to create_rfi_path, method: :post do %>
+    <%= link_to creations_create_rfi_path, method: :post do %>
         <div class="menu-option">
             <div class="content">   
                 <img src="<%= asset_path 'inbox.png'%>" class="menu-button" alt="">
@@ -55,7 +55,7 @@
 <% end %>
 
 <% if !@current_rfi.nil?  %>
-    <%= link_to delete_rfi_path(rfi_id: @current_rfi.id), method: :post do %>
+    <%= link_to dashboard_delete_rfi_path(rfi_id: @current_rfi.id), method: :post do %>
         <div class="menu-option">
             <div class="content">   
                 <img src="<%= asset_path 'delete.png'%>" class="menu-button" alt="">

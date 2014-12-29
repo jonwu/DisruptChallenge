@@ -3,7 +3,7 @@
     <% @current_question = question %>
     <div class="panel panel-info panel-danger">
       <div class="panel-heading">
-        <%= link_to edit_content_path(question_id: question.id), class: "fill-div", remote: true do %>
+        <%= link_to responses_edit_content_path(question_id: question.id), class: "fill-div", remote: true do %>
           <%= question.text %>
         <% end %>
       </div>

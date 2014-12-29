@@ -1,11 +1,12 @@
 sendPreviousTextArea()
-updateResponsePage()
 
 function sendPreviousTextArea(){
 
 	var response = $(".response-textarea").val()
 	if (response != null){
 		saveContent(response, "<%= @prev_question_id %>")
+	} else {
+		refresh()
 	}
 }
 
@@ -13,7 +14,6 @@ function saveContent(text, qid){
 	$.ajax({
 		url: '/responses/save_content',
 		type: 'POST',
-		async: false,
 		data: {"text": text, "question_id": qid},
 	})
 	.done(function() {
@@ -27,13 +27,13 @@ function saveContent(text, qid){
 	});	
 }
 
-function updateResponsePage(){
+function refresh(){
 	$.ajax({
-		url: '/responses/response_page_update',
+		url: '/responses/page_update',
 		type: 'GET',
 	})
 	.done(function() {
-		console.log("success");
+		console.log("save content");
 	})
 	.fail(function() {
 		console.log("error");

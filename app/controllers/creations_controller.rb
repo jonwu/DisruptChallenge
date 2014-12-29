@@ -8,8 +8,7 @@ class CreationsController < ApplicationController
                     title: "default")
     Category.create!( rfi_id: rfi.id,
                       text: "New Category")
-    # redirect_to action: 'show', id: rfi.id
-    redirect_to creation_path(id: rfi_id)
+    redirect_to creation_path(id: rfi.id)
   end
 
   def index
@@ -72,9 +71,7 @@ class CreationsController < ApplicationController
     for collaborator in get_collaborators
       question.create_activity :create, recipient: collaborator.user, owner: current_user
     end
-    # redirect_to action: 'update_active_category', category: category_id
     redirect_to creations_update_active_category_path(category: category_id)
-    return
   end
 
   def delete_question
@@ -83,9 +80,7 @@ class CreationsController < ApplicationController
     for collaborator in get_collaborators
       question.create_activity :delete, recipient: collaborator.user, owner: current_user, parameters: {rfi: get_current_rfi}
     end
-    # redirect_to action: 'update_active_category', category: params[:category_id]
     redirect_to creations_update_active_category_path(category: params[:category_id])
-    return
   end
 
   def page_update

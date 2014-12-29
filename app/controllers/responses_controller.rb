@@ -2,45 +2,41 @@ class ResponsesController < ApplicationController
   respond_to :html, :js
   before_action :authenticate_user!
   
-  def load_rfi_response
-    @current_rfi = Rfi.find_by_id(params[:rfi_id]) or not_found
-    set_current_rfi(@current_rfi)
-    p"*" *80
-    p @current_rfi
-    @is_active = set_active_question(nil)
-    current_collaborator = @current_rfi.collaborators.find_by(user_id: current_user.id)
-    set_current_collaborator(current_collaborator)
-
-    if !get_current_collaborator.nil?
-      @categories = get_categories
-      @active_category = set_active_category(get_categories.first)
-      @questions = set_questions(@active_category.questions.all)
-      @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
-      @last_updated = Submission.get_last_updated(get_current_collaborator)
-      render :index
-    else
-      not_found
+  def show
+    current_rfi = Rfi.find_by_id(params[:id])
+    if !current_rfi.nil?
+      current_collaborator = current_rfi.collaborators.find_by(user_id: current_user.id)
+      if !current_collaborator.nil?
+        set_current_collaborator(current_collaborator)
+        set_current_rfi(current_rfi)
+        @is_active = set_active_question(nil)
+        @categories = get_categories
+        @active_category = set_active_category(get_categories.first)
+        @questions = set_questions(@active_category.questions.all)
+        @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
+        @last_updated = Submission.get_last_updated(get_current_collaborator)
+        return
+      end
     end
+    redirect_home
   end
 
-  def update_active_category_response
-    @active_category = set_active_category(Category.find_by_id(params[:category]))
-    redirect_to action: 'response_page_update'
+  def update_active_category
+    set_active_category(Category.find_by_id(params[:category]))
+    redirect_to responses_page_update_path
   end
 
-  def response_page_update
+  def page_update
     @categories = get_categories
     @active_category = get_active_category
     @questions = set_questions(@active_category.questions.all)
     @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
     @is_active = get_active_question
     @last_updated = Submission.get_last_updated(get_current_collaborator)
-    
-    
   end
 
   def index
-    
+    redirect_home
   end
 
   def collapse_content
@@ -51,8 +47,9 @@ class ResponsesController < ApplicationController
     end
     
     if !get_active_question.nil?
+      # so text editor doesn't show for ANY question
       set_active_question(nil)
-      redirect_to action: 'response_page_update'
+      redirect_to responses_page_update_path
     else
       render :nothing => true
     end
@@ -60,6 +57,7 @@ class ResponsesController < ApplicationController
   end
 
   def edit_content
+    # this is never used.
     @prev_question_id = params[:prev_question_id]
     @question_id = params[:question_id]
     @is_active = Question.find_by(id: @question_id)
@@ -70,7 +68,7 @@ class ResponsesController < ApplicationController
     question_id = params[:question_id]
     text = params[:text]
     update_text(question_id,text)
-    render :nothing => true
+    redirect_to responses_page_update_path
   end
 
   def submit
@@ -94,9 +92,7 @@ class ResponsesController < ApplicationController
     if !hasSubmitted
       submission.create_activity :submit, recipient: get_current_rfi.user, owner: current_user
     end
-    
-
-    redirect_to action: 'response_page_update'
+    redirect_to responses_page_update_path
   end
 
 
@@ -112,9 +108,11 @@ class ResponsesController < ApplicationController
     $last_updated
 
     def update_text(question_id, text)
-      # Assume @responses comes from current user
+      # Assume get_responses comes from current user
       response = get_responses.find_by_question_id(question_id)
-      response.update(text:text)
+      if (!response.nil?)
+        response.update(text:text)
+      end
     end
 
 
@@ -144,6 +142,7 @@ class ResponsesController < ApplicationController
     def get_active_question
       return $active_question
     end
+
     def set_active_category(active_category)
       $active_category = active_category
       return $active_category

@@ -1,7 +1,7 @@
 <% if !@current_rfi.nil? %>
 
 <div class="rfi-title">
-	<%= link_to make_title_form_path, remote: true do %>
+	<%= link_to dashboard_make_title_form_path, remote: true do %>
 	<h1><%= @current_rfi.title %></h1>
 	<% end %>
 </div>

@@ -1,3 +1,3 @@
-<%= form_tag update_category_titles_path(category_id: @active_category.id), remote: true, id: 'category_title_form' do %>
+<%= form_tag creations_update_category_titles_path(category_id: @active_category.id), remote: true, id: 'category_title_form' do %>
   <%= text_field_tag(:category_title, @active_category.text, {:placeholder => "Category Title", :class=>"form-control input-lg", :id=>"category_title_input"}) %>
 <% end %>

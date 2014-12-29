@@ -20,7 +20,7 @@ class Response < ActiveRecord::Base
     end
   end
 
-  # For a set of questions, most likely form a particular category
+  # For a set of questions, most likely from a particular category
   def self.get_rfi_responses(questions, user_id)
     question_ids = questions.pluck(:id)
     user_responses = Response.where("user_id = " + user_id.to_s + " AND question_id IN (?)", question_ids)
