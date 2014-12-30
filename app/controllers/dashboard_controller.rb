@@ -56,16 +56,15 @@ class DashboardController < ApplicationController
 		@current_page = get_current_page
 		@rfis = current_user.rfis
 		@shared_rfis = Rfi.find_collaborated_rfis(current_user.id)
-		@collaborator = nil;
 		@collaborators_scores = []	
 		@collaborators_names = []
 
 		if @current_page == "active_rfis"
 			@collaborators = Collaborator.where(rfi_id: @current_rfi.id).all
-			@sorted_collaborators = @collaborators.order_by_score
-			for collaborator in @sorted_collaborators
-				@collaborators_names.push(collaborator.user.name)
-				@collaborators_scores.push(collaborator.total_score)
+			sorted_collaborators = Collaborator.sort_by_score(@collaborators)
+			sorted_collaborators.each do |collaborator_id, score|
+				@collaborators_names.push(Collaborator.find_by_id(collaborator_id).user.name)
+				@collaborators_scores.push(score)
 			end 
 		end
 	end
