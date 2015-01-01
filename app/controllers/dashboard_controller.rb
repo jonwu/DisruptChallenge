@@ -34,6 +34,10 @@ class DashboardController < ApplicationController
 				questions = get_current_rfi.questions
 				Response.set_empty_responses(questions, [collaborator])
 			end
+		else
+			# invite new user
+			p '*' * 80
+			User.invite!(:email => params[:email])
 		end
 		redirect_to dashboard_page_update_path
 	end
@@ -59,7 +63,7 @@ class DashboardController < ApplicationController
 		@collaborators_scores = []	
 		@collaborators_names = []
 
-		if @current_page == "active_rfis"
+		if @current_page == "active_rfis" && !@current_rfi.nil? 
 			@collaborators = Collaborator.where(rfi_id: @current_rfi.id).all
 			sorted_collaborators = Collaborator.sort_by_score(@collaborators)
 			sorted_collaborators.each do |collaborator_id, score|

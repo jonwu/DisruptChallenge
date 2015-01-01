@@ -30,6 +30,7 @@ gem 'spring',        group: :development
 
 # Devise
 gem 'devise'
+gem 'devise_invitable'
 
 gem 'chart-js-rails'
 
