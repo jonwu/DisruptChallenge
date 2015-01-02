@@ -25,7 +25,7 @@ class DashboardController < ApplicationController
 
 	def share_rfi
 		collaborator_user = User.find_by(email: params[:email])
-		if collaborator_user != nil
+		if collaborator_user != nil && !collaborator_user.pending_invitation
 			# Collaborator's user id
 			user_id = collaborator_user.id	
 			rfi_id = get_current_rfi.id

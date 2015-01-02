@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :invitable
 
+  def pending_invitation
+    return invitation_created_at != nil && invitation_accepted_at == nil
+  end
 end
