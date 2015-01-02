@@ -70,10 +70,10 @@ div.main-template .menu-wrapper .menu .menu-option-wrapper .menu-option
 div.main-template .content-wrapper
 {
     position: fixed;
-
+    overflow: auto;
     width: calc(100% - 250px);
     height: calc(100% - 51px);
-    
+    min-width: calc(1280px - 250px);
     
 }
 div.main-template .content-wrapper .content
