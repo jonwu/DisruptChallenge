@@ -27,7 +27,7 @@ function renderRfiList(){
  * @return {void} 
  */
 function renderContent(){
-	$('div.content').html("<%= j (render partial: 'content', object: @current_rfi) %>")
+	$('div.content-wrapper .container-fluid').html("<%= j (render partial: 'content', object: @current_rfi) %>")
 	
 }
 

@@ -20,6 +20,7 @@ class DashboardController < ApplicationController
 		@shared_rfis = Rfi.find_collaborated_rfis(current_user.id)
 		set_current_page("dashboard")
 		set_current_rfi(nil)
+		@current_page = get_current_page
 		@current_rfi = get_current_rfi
 		@activities = PublicActivity::Activity.order("created_at desc")
 	end

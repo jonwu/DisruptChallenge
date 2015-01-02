@@ -20,7 +20,7 @@
 			</div>
 
 			<!-- Page Content -->
-			<div id="page-content-wrapper" class="main-template">
+			<div id="page-content-wrapper" class="main-template" >
 				
 				<!-- Menu -->
 				<div class="menu-wrapper" style="height: <% if @current_page == 'dashboard' %>250px<% else %>100px<% end %>">
@@ -28,7 +28,6 @@
 						<div class="menu-option-wrapper">
 							<%= render 'layouts/menu_options' %>
 						</div>
-						
 					</div>
 					<div class="offset"></div>
 				</div>
@@ -36,13 +35,17 @@
 				<!-- Content -->
 
 				<div class="content-wrapper" style="padding-top: <% if @current_page == 'dashboard' %>250px<% else %>100px<% end %>">
-                
+	                
+					<!-- middle content -->
 	                <div class="content">
-	                    <%= yield %>
+		                <div class="container-fluid">
+		                    <%= yield %>
+		                </div>
 	                </div>
-	                       
-	                <!-- news-feed -->
-	                <ul class="news-feed list-group" style="height: <% if @current_page == 'dashboard' %>calc(100% - 301px)<% else %>calc(100% - 151px)<% end %>">
+
+
+					<!-- right content -->
+	                <ul class="news-feed list-group">
 	                    <% @activities.each do |activity| %>
 	                        <% if activity.recipient == current_user %>
 	                        	<% if activity.trackable != nil %>
@@ -53,8 +56,9 @@
 	                        <% end %>
 	                    <% end %>
 	                </ul>
-                
             	</div>
+
+            	
 				
 				
 				
