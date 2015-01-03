@@ -3,8 +3,3 @@ function initializeBar(data, ctx) {
 	// legend(document.getElementById("legend"), colors)
 }
 
-$(document).ready(function() {
-    $('.content-wrapper').scrollToFixed( { marginTop: 10 } );
-});	
-
-

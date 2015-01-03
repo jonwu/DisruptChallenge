@@ -8,17 +8,18 @@
 		
 	</head>
 	<body>
-
 		
 		<%= render 'layouts/header' %>
 		<div id="wrapper">
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">
+				
+				
 				<ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
+
 					<%= yield :sidebar %>
 				</ul>
 			</div>
-
 			<!-- Page Content -->
 			<div id="page-content-wrapper" class="main-template" >
 				
@@ -33,38 +34,34 @@
 				</div>
 				
 				<!-- Content -->
-
 				<div class="content-wrapper" style="padding-top: <% if @current_page == 'dashboard' %>250px<% else %>100px<% end %>">
-	                
+					
 					<!-- middle content -->
-	                <div class="content">
-		                <div class="container-fluid">
-		                    <%= yield %>
-		                </div>
-	                </div>
-
-
+					<div class="content">
+						<div class="container-fluid">
+							
+							<%= yield %>
+						</div>
+					</div>
 					<!-- right content -->
-	                <ul class="news-feed list-group">
-	                    <% @activities.each do |activity| %>
-	                        <% if activity.recipient == current_user %>
-	                        	<% if activity.trackable != nil %>
-		                            <li class="list-group-item">
-		                                <%= render_activity activity %> 
-		                            </li>
-	                            <% end %>
-	                        <% end %>
-	                    <% end %>
-	                </ul>
-            	</div>
-
-            	
+					<ul class="news-feed list-group">
+						<% @activities.each do |activity| %>
+						<% if activity.recipient == current_user %>
+						<% if activity.trackable != nil %>
+						<li class="list-group-item">
+							<%= render_activity activity %>
+						</li>
+						<% end %>
+						<% end %>
+						<% end %>
+					</ul>
+				</div>
+				
 				
 				
 				
 			</div>
 			
 		</div>
-
 	</body>
 </html>

@@ -1,5 +1,4 @@
 <% if !@current_rfi.nil? %>
-
 <div class="rfi-title">
 	<%= link_to dashboard_make_title_form_path, remote: true do %>
 	<h1><%= @current_rfi.title %></h1>
@@ -21,21 +20,13 @@
 		<div role="tabpanel" class="tab-pane fade" id="results">
 			<div class="charts">
 				<canvas id="myChart" width="400" height="400"></canvas>
-				<% @collaborators.each do |collaborator| %>
-				<!-- <div class="checkbox">
-						<label>
-								<input type="checkbox" value="">
-								<%= collaborator.user.email %>
-						</label>
-				</div> -->
-				<% end %>
+				
 				
 				<!-- <div id="legend"></div> -->
 			</div>
 		</div>
 	</div>
 </div>
-
 <% else %>
 <div role="tabpanel">
 	<ul class="nav nav-tabs" role="tablist">
@@ -90,7 +81,6 @@
 								
 							</tbody>
 						</table>
-
 						<h3>What's Next?</h3>
 						<ul>
 							<li>Review & confirm final evaluations</li>

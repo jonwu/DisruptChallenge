@@ -1,7 +1,7 @@
 class CreationsController < ApplicationController
   respond_to :html, :js
   before_action :authenticate_user!
-  layout 'admin'
+  layout 'main_template'
 
   def create_rfi
     rfi = Rfi.create!( user_id: current_user.id, 
