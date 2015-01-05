@@ -32,7 +32,7 @@
     @current_question = set_current_question(nil)
   end
 
-  private
+  protected
     $current_rfi
     $current_category
     $current_question

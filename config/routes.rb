@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get "homepage", to: "homepage#index", as: 'homepage'
 
+
   post "creations/create_rfi", to: "creations#create_rfi", as: 'creations_create_rfi'
   post "creations/add_new_category", to: "creations#add_new_category", as: 'creations_add_new_category'
   get "creations/delete_category", to: "creations#delete_category", as: 'creations_delete_category'
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
   resources :creations
   resources :dashboard
   resources :responses
+  resources :rfi
   root 'homepage#index'
 
 

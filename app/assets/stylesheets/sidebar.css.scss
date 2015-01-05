@@ -5,7 +5,7 @@ body{
 
 
 #wrapper {
-    padding-left: 600px;
+    padding-left: $sidebar_size;
     height: calc(100% - 51px);
     width: 100%;
 }
@@ -123,7 +123,7 @@ body{
 }
 #sidebar{
     position: fixed;
-    width: 600px;
+    width: $sidebar_size;
     left: 0; 
     height: calc(100% - 51px);
     background: $minor;

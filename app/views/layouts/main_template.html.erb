@@ -13,34 +13,34 @@
 		<div id="wrapper">
 			<!-- Sidebar -->
 			<div id="sidebar" >
-
 				<div id="menu"></div>
 				<div id="categories">
-
 					<div id="profile">
 						
 					</div>
-
 					<div class="list-group">
 						<% @current_rfi.categories.each do |category| %>
-							<a class="list-group-item <% if category == @current_category %> active <% end %>" href="#">
-								<%= category.text %>
-							</a>
+						<% if category == @current_category %>
+						<%= link_to category.text, creations_update_active_category_path(category: category.id), class: "list-group-item active" %>
+						<% else %>
+						<%= link_to category.text, creations_update_active_category_path(category: category.id), class: "list-group-item" %>
+						<% end %>
+						<!-- <a class="list-group-item <% if category == @current_category %> active <% end %>" href="#">
+										<%= category.text %>
+						</a> -->
 						<% end %>
 					</div>
-
 					
 				</div>
 				<div id="questions">
 					<div class="list-group">
 						<% @current_category.questions.each do |question| %>
-							<a class="list-group-item <% if question == @current_question %> active <% end %>" href="#">
-								<%= question.text %>
-							</a>
+						<a class="list-group-item <% if question == @current_question %> active <% end %>" href="#">
+							<%= question.text %>
+						</a>
 						<% end %>
 					</div>
-				</div>	
-
+				</div>
 			</div>
 			<div id="sidebar-wrapper">
 				<div class="dropdown btn-group ">
@@ -99,11 +99,11 @@
 							<% @current_rfi.categories.each do |active| %>
 								$(".show-category-<%= active.id%>").click(function(){
 									<% @current_rfi.categories.each do |category| %>
-										<% if active.id != category.id %>											
+																					<% if active.id != category.id %>
 										
 											$("#category-<%= category.id %>").collapse('hide');
 										<% end %>
-									<% end %>	
+										<% end %>
 									$("#category-<%= active.id %>").collapse('show');
 								});
 							<% end %>
@@ -114,41 +114,93 @@
 			<!-- Page Content -->
 			<div id="page-content-wrapper" class="main-template" >
 				
-				<!-- Menu -->
-				<div class="menu-wrapper" style="height: <% if @current_page == 'dashboard' %>250px<% else %>100px<% end %>">
-					<div class="menu">
-						<div class="menu-option-wrapper">
-							<%= render 'layouts/menu_options' %>
-						</div>
-					</div>
-					<div class="offset"></div>
-				</div>
-				
-				<!-- Content -->
-				<div class="content-wrapper" style="padding-top: <% if @current_page == 'dashboard' %>250px<% else %>100px<% end %>">
-					
-					<!-- middle content -->
-					<div class="content">
-						<div class="container-fluid">
+				<div class="container-fluid" >
+					<div class="row">
+						<div class="col-sm-8">
+							<div class="panel panel-default panel-info" style="margin-top: 15px">
+								<div class="panel-heading">
+									<h3 class="panel-title">Amazon</h3>
+								</div>
+								<div class="panel-body">
+									<div class="container-fluid">
+										</br>
+										
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda harum quia iusto tempore suscipit, repellat vel voluptate eaque temporibus laborum debitis beatae voluptates modi, quaerat perferendis. Necessitatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam asperiores est totam quas consequatur non magnam, ipsa atque animi aspernatur esse incidunt expedita excepturi, rerum suscipit distinctio eum odio quisquam.
+										</br>
+										</br>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda harum quia iusto tempore suscipit, repellat vel voluptate eaque temporibus laborum debitis beatae voluptates modi, quaerat perferendis. Necessitatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam asperiores est totam quas consequatur non magnam, ipsa atque animi aspernatur esse incidunt expedita excepturi, rerum suscipit distinctio eum odio quisquam.
+										</br>
+										</br>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda harum quia iusto tempore suscipit, repellat vel voluptate eaque temporibus laborum debitis beatae voluptates modi, quaerat perferendis. Necessitatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam asperiores est totam quas consequatur non magnam, ipsa atque animi aspernatur esse incidunt expedita excepturi, rerum suscipit distinctio eum odio quisquam.
+										</br>
+										</br>
+										
+									</div>
+									
+								</div>
+							</div>
 							
-							<%= yield %>
+						</div>
+
+						<div class="col-sm-4">
+							
+							<div class="container-fluid" >
+								<div class="panel panel-default panel-info" style="margin-top: 15px">
+									<div class="panel-heading">
+										<h3 class="panel-title">Google</h3>
+									</div>
+									<div class="panel-body">
+										<div class="container-fluid">
+											</br>
+											
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda 
+											</br>
+											</br>
+											
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<div class="container-fluid" >
+								<div class="panel panel-default panel-info" style="margin-top: 15px;">
+									<div class="panel-heading">
+										<h3 class="panel-title">Microsoft</h3>
+									</div>
+									<div class="panel-body">
+										<div class="container-fluid">
+											</br>
+											
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda 
+											</br>
+											</br>
+											
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<div class="container-fluid" >
+								<div class="panel panel-default panel-info" style="margin-top: 15px">
+									<div class="panel-heading">
+										<h3 class="panel-title">Panel title</h3>
+									</div>
+									<div class="panel-body">
+										<div class="container-fluid">
+											</br>
+											
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda 
+											</br>
+											</br>
+											
+										</div>
+										
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<!-- right content -->
-					<ul class="news-feed list-group">
-						<% @activities.each do |activity| %>
-						<% if activity.recipient == current_user %>
-						<% if activity.trackable != nil %>
-						<li class="list-group-item">
-							<%= render_activity activity %>
-						</li>
-						<% end %>
-						<% end %>
-						<% end %>
-					</ul>
 				</div>
-				
-				
 				
 				
 			</div>

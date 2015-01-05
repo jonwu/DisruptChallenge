@@ -3,10 +3,78 @@ $navbar-height:                     50px;
 
 
 
+
 @import "bootstrap-sprockets";
 @import 'bootstrap';
+@import 'colors';
+
+.header-bar{
+	background-color: $header;
+	border: 0;
+}
+
+.header-bar .navbar-collapse a{
+	color: white !important; 
+	border-right: 1px solid $light_border;
+
+}
+.header-bar #refresh{
+	color: white !important; 
+	width: $sidebar_size * .16;
+	text-align: center;
+	background-color: $refresh;
+	
+}
+.header-bar #rfis{
+	border-right: 1px solid $light_border;
+
+	min-width: $sidebar_size * .34;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+
+}
+
+.header-bar .open > a{
+	background-color: $refresh;
+}
+.header-bar #rfis .dropdown{
+	list-style-type: none;
+	height: 50px;
+	width: 100%;
+
+	
+
+}
+.header-bar #rfis .menu{
+	display: block;
+	text-decoration: none;
+	min-width: $sidebar_size * .34;
+	color: white; 
+	padding-top: 15px;
+	padding-bottom: 15px;
+	line-height: 20px;
+	
+
+	
+	font-weight: normal;
+	font-size: 14px;
+	
+}
+
+.header-bar #rfis .menu > span{
+	margin-left: 15px;
+}
 
 
+.header-bar #refresh span{
+	margin: 0;
+}
+
+.header-bar .icon-bar{
+	background-color: white !important; 
+
+}
 .navbar-brand {
      font-weight: bold;
 }
