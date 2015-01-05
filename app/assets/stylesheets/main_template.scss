@@ -6,9 +6,9 @@ div.main-template .menu-wrapper
     position: absolute;
     z-index: 2;
 
-    width: calc(100% - 250px);
-    min-width: calc(1280px - 250px);
-    height: 250px;
+    width: calc(100% - 350px);
+    min-width: calc(1280px - 350px);
+    height: 350px;
 }
 div.main-template .menu-wrapper .menu
 {
@@ -71,9 +71,9 @@ div.main-template .content-wrapper
 {
     position: absolute;
     overflow: auto;
-    width: calc(100% - 250px);
+    width: calc(100% - 350px);
     height: calc(100% - 51px);
-    min-width: calc(1280px - 250px);
+    min-width: calc(1280px - 350px);
     
 }
 div.main-template .content-wrapper .content

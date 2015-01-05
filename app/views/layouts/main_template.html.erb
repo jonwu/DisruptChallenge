@@ -12,13 +12,104 @@
 		<%= render 'layouts/header' %>
 		<div id="wrapper">
 			<!-- Sidebar -->
-			<div id="sidebar-wrapper">
-				
-				
-				<ul class="sidebar-nav nav nav-pills nav-stacked" role="tablist">
+			<div id="sidebar" >
 
-					<%= yield :sidebar %>
-				</ul>
+				<div id="menu"></div>
+				<div id="categories">
+
+					<div id="profile">
+						
+					</div>
+
+					<div class="list-group">
+						<% @current_rfi.categories.each do |category| %>
+							<a class="list-group-item <% if category == @current_category %> active <% end %>" href="#">
+								<%= category.text %>
+							</a>
+						<% end %>
+					</div>
+
+					
+				</div>
+				<div id="questions">
+					<div class="list-group">
+						<% @current_category.questions.each do |question| %>
+							<a class="list-group-item <% if question == @current_question %> active <% end %>" href="#">
+								<%= question.text %>
+							</a>
+						<% end %>
+					</div>
+				</div>	
+
+			</div>
+			<div id="sidebar-wrapper">
+				<div class="dropdown btn-group ">
+					<button class="btn btn-default btn-header btn-reload">
+					<%= @current_rfi.title %>
+					</button>
+					<button class="btn btn-default btn-header dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+					
+					<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+						<li role="presentation" class="divider"></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+						<li role="presentation" class="divider"></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+						<li role="presentation" class="divider"></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+					</ul>
+				</div>
+				
+				
+				
+				<% @current_rfi.categories.each do |category| %>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						<a class="show-category-<%= category.id %>" >
+							</span><%= category.text %>
+						</a>
+						
+						</h4>
+					</div>
+					
+					<div id="category-<%= category.id %>" class="panel-collapse collapse">
+						
+						<div class="panel-body">
+							<table class="table">
+								<% category.questions.each do |question| %>
+								<tr>
+									<td>
+										<a href="">
+											<%= question.text %>
+										</a>
+									</td>
+								</tr>
+								<% end %>
+							</table>
+						</div>
+					</div>
+				</div>
+				<% end %>
+				<script>
+						jQuery(document).ready(function($) {
+							// custom accordian
+							<% @current_rfi.categories.each do |active| %>
+								$(".show-category-<%= active.id%>").click(function(){
+									<% @current_rfi.categories.each do |category| %>
+										<% if active.id != category.id %>											
+										
+											$("#category-<%= category.id %>").collapse('hide');
+										<% end %>
+									<% end %>	
+									$("#category-<%= active.id %>").collapse('show');
+								});
+							<% end %>
+						});
+				</script>
+				
 			</div>
 			<!-- Page Content -->
 			<div id="page-content-wrapper" class="main-template" >

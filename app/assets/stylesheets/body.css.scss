@@ -1,0 +1,33 @@
+@font-face {
+    font-family: ProximaNova;
+    src: url("ProximaNova-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: ProximaNova;
+    font-weight: bold;
+    src: url("ProximaNova-Bold") format("opentype");
+}
+
+
+body{
+	padding: 0;
+	margin: 0;	
+	min-width: 1280px;
+	padding-top: 51px;
+	min-height: 720px;
+	font-family: ProximaNova, Helvetica, Arial, sans-serif !important;	
+	
+
+
+}
+
+
+#homepage{
+	background-image: url('/assets/bg.png');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	
+}
+
