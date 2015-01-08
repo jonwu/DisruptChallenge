@@ -45,13 +45,29 @@ Rails.application.routes.draw do
   get "evaluation/categories_page_update", to: "evaluation#categories_page_update", as: 'evaluation_categories_page_update'
   post "evaluation/save_rating", to: "evaluation#save_rating", as: 'evaluation_save_rating'
   
-
-  get "active/:rfi_id", to: "active#index", as: 'load_active_rfi'
+  get "rfis/:rfi_id/categories/:category_id/questions/:question_id", to: 'questions#show', as: 'question'
+  get "rfis/:rfi_id/categories/:category_id", to: 'categories#show', as: 'category'
+  get "rfis/:rfi_id/categories/", to: 'categories#index'
+  get "rfis/:rfi_id", to: 'rfis#show', as: 'rfi'
+  
+  post "rfis/:rfi_id/categories/:category_id", to: 'categories#categories', as: 'update_category'
+  post "rfis/:rfi_id/categories/:category_id/questions/:question_id", to: 'questions#questions', as: 'update_question'
+  
+  post "rfis/share", to: 'rfis#share', as: 'share'
   resources :evaluation
   resources :creations
   resources :dashboard
   resources :responses
-  resources :rfi
+  resources :rfis
+
+  # resources :rfis do
+  #   resources :categories do
+  #     resources :questions
+  #   end
+  # end
+
+  
+
   root 'homepage#index'
 
 

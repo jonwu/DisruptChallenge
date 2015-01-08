@@ -1,0 +1,6 @@
+
+$('#sidebar #questions').html("<%= j (render 'layouts/sidebar/questions') %>")
+$('#content-wrapper').html("<%= j (render 'content') %>")
+
+
+history.pushState(null, "", '<%= @path %>');

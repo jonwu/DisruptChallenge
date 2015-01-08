@@ -5,6 +5,7 @@ class Collaborator < ActiveRecord::Base
   validates :user_id, presence: true
   validates :rfi_id, presence: true
   validates_uniqueness_of :user_id, :scope => :rfi_id
+
   scope :scored_submissions, -> { joins(:submissions).where('submissions.score IS NOT null') }
   scope :order_by_score, -> {scored_submissions.select('collaborators.id', 'collaborators.user_id','sum(score) as total_score').group('collaborators.id').order('total_score desc')}
   
@@ -15,7 +16,7 @@ class Collaborator < ActiveRecord::Base
     end
     return nil
   end
-
+  
   def self.delete_by_rfi_id(rfi_id)
     Collaborator.delete_all(rfi_id: rfi_id)
   end

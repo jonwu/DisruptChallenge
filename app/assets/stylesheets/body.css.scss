@@ -1,3 +1,4 @@
+@import 'colors';
 @font-face {
     font-family: ProximaNova;
     src: url("ProximaNova-Regular.otf") format("opentype");
@@ -16,6 +17,7 @@ body{
 	min-width: 1280px;
 	padding-top: 50px;
 	min-height: 720px;
+	background-color: $background !important;
 	font-family: ProximaNova, Helvetica, Arial, sans-serif !important;	
 	
 

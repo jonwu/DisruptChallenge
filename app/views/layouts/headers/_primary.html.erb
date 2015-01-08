@@ -1,31 +1,38 @@
-<nav class="header-bar navbar navbar-default navbar-fixed-top" role="navigation">
+<nav id="header" class="navbar navbar-default navbar-fixed-top" role="navigation">
   
   
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
+
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
     <span class="sr-only">Toggle navigation</span>
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" id="refresh" href="">
+
+
+    <%= link_to rfis_path(shared: true), id: "refresh", class: "navbar-brand" do%> 
       <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-    </a>
-    
+    <% end %>
+
+
+    <% if !@current_rfi.nil? %>
+
       <div class="dropdown navbar-brand" id="rfis">
-        
         <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-expanded="false">
           <%= @current_rfi.title %><span class="caret"></span>
         </a>
+
         <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
+          <% @rfis.each do |rfi| %>
+            <li><a href="#"><%= rfi.title %></a></li>
+            <li class="divider"></li>
+          <% end %>
         </ul>
       </div>
+
+    <% end %>
     
     
   </div>
@@ -36,15 +43,13 @@
     <ul class="nav navbar-nav navbar-left">
       <% if user_signed_in? %>
       
-      <li><a href="">
-        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-      Publish </a></li>
-      <li><%= link_to 'Dashboard', dashboard_index_path %> </li>
-      <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
-      <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+      <li><a href=""> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Publish </a></li>
+        <li><%= link_to 'Share', share_path(email: "anna@anna.com"), method: :post, remote: true%> </li>
+        <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
       <% else %>
-      <li><%= link_to "Register", new_user_registration_path, :id =>'login'  %> </li>
-      <li><%= link_to "Login", new_user_session_path, :id => 'login'  %></li>
+        <li><%= link_to "Register", new_user_registration_path, :id =>'login'  %> </li>
+        <li><%= link_to "Login", new_user_session_path, :id => 'login'  %></li>
       <% end %>
     </ul>
     

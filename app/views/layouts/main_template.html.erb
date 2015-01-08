@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<base href="/">
 		<title>BridgeIT</title>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -9,202 +10,31 @@
 	</head>
 	<body>
 		
-		<%= render 'layouts/header' %>
+		<%= render 'layouts/headers/primary' %>
 		<div id="wrapper">
 			<!-- Sidebar -->
-			<div id="sidebar" >
-				<div id="menu"></div>
-				<div id="categories">
-					<div id="profile">
-						
-					</div>
-					<div class="list-group">
-						<% @current_rfi.categories.each do |category| %>
-						<% if category == @current_category %>
-						<%= link_to category.text, creations_update_active_category_path(category: category.id), class: "list-group-item active" %>
-						<% else %>
-						<%= link_to category.text, creations_update_active_category_path(category: category.id), class: "list-group-item" %>
-						<% end %>
-						<!-- <a class="list-group-item <% if category == @current_category %> active <% end %>" href="#">
-										<%= category.text %>
-						</a> -->
-						<% end %>
-					</div>
-					
-				</div>
-				<div id="questions">
-					<div class="list-group">
-						<% @current_category.questions.each do |question| %>
-						<a class="list-group-item <% if question == @current_question %> active <% end %>" href="#">
-							<%= question.text %>
-						</a>
-						<% end %>
-					</div>
-				</div>
-			</div>
-			<div id="sidebar-wrapper">
-				<div class="dropdown btn-group ">
-					<button class="btn btn-default btn-header btn-reload">
-					<%= @current_rfi.title %>
-					</button>
-					<button class="btn btn-default btn-header dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-					
-					<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-						<li role="presentation" class="divider"></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-						<li role="presentation" class="divider"></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-						<li role="presentation" class="divider"></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-					</ul>
-				</div>
-				
-				
-				
-				<% @current_rfi.categories.each do |category| %>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-						<a class="show-category-<%= category.id %>" >
-							</span><%= category.text %>
-						</a>
-						
-						</h4>
-					</div>
-					
-					<div id="category-<%= category.id %>" class="panel-collapse collapse">
-						
-						<div class="panel-body">
-							<table class="table">
-								<% category.questions.each do |question| %>
-								<tr>
-									<td>
-										<a href="">
-											<%= question.text %>
-										</a>
-									</td>
-								</tr>
-								<% end %>
-							</table>
-						</div>
-					</div>
-				</div>
-				<% end %>
-				<script>
-						jQuery(document).ready(function($) {
-							// custom accordian
-							<% @current_rfi.categories.each do |active| %>
-								$(".show-category-<%= active.id%>").click(function(){
-									<% @current_rfi.categories.each do |category| %>
-																					<% if active.id != category.id %>
-										
-											$("#category-<%= category.id %>").collapse('hide');
-										<% end %>
-										<% end %>
-									$("#category-<%= active.id %>").collapse('show');
-								});
-							<% end %>
-						});
-				</script>
-				
-			</div>
-			<!-- Page Content -->
-			<div id="page-content-wrapper" class="main-template" >
-				
-				<div class="container-fluid" >
-					<div class="row">
-						<div class="col-sm-8">
-							<div class="panel panel-default panel-info" style="margin-top: 15px">
-								<div class="panel-heading">
-									<h3 class="panel-title">Amazon</h3>
-								</div>
-								<div class="panel-body">
-									<div class="container-fluid">
-										</br>
-										
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda harum quia iusto tempore suscipit, repellat vel voluptate eaque temporibus laborum debitis beatae voluptates modi, quaerat perferendis. Necessitatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam asperiores est totam quas consequatur non magnam, ipsa atque animi aspernatur esse incidunt expedita excepturi, rerum suscipit distinctio eum odio quisquam.
-										</br>
-										</br>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda harum quia iusto tempore suscipit, repellat vel voluptate eaque temporibus laborum debitis beatae voluptates modi, quaerat perferendis. Necessitatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam asperiores est totam quas consequatur non magnam, ipsa atque animi aspernatur esse incidunt expedita excepturi, rerum suscipit distinctio eum odio quisquam.
-										</br>
-										</br>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda harum quia iusto tempore suscipit, repellat vel voluptate eaque temporibus laborum debitis beatae voluptates modi, quaerat perferendis. Necessitatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam asperiores est totam quas consequatur non magnam, ipsa atque animi aspernatur esse incidunt expedita excepturi, rerum suscipit distinctio eum odio quisquam.
-										</br>
-										</br>
-										
-									</div>
-									
-								</div>
-							</div>
-							
-						</div>
 
-						<div class="col-sm-4">
-							
-							<div class="container-fluid" >
-								<div class="panel panel-default panel-info" style="margin-top: 15px">
-									<div class="panel-heading">
-										<h3 class="panel-title">Google</h3>
-									</div>
-									<div class="panel-body">
-										<div class="container-fluid">
-											</br>
-											
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda 
-											</br>
-											</br>
-											
-										</div>
-										
-									</div>
-								</div>
-							</div>
-							<div class="container-fluid" >
-								<div class="panel panel-default panel-info" style="margin-top: 15px;">
-									<div class="panel-heading">
-										<h3 class="panel-title">Microsoft</h3>
-									</div>
-									<div class="panel-body">
-										<div class="container-fluid">
-											</br>
-											
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda 
-											</br>
-											</br>
-											
-										</div>
-										
-									</div>
-								</div>
-							</div>
-							<div class="container-fluid" >
-								<div class="panel panel-default panel-info" style="margin-top: 15px">
-									<div class="panel-heading">
-										<h3 class="panel-title">Panel title</h3>
-									</div>
-									<div class="panel-body">
-										<div class="container-fluid">
-											</br>
-											
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi reprehenderit assumenda 
-											</br>
-											</br>
-											
-										</div>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				
+			<div id="sidebar" >
+				<div id="menu"><%= render 'layouts/sidebar/menu' %></div>
+				<div id="categories"><%= render 'layouts/sidebar/categories' %></div>
+				<div id="questions"><%= render 'layouts/sidebar/questions' %></div>
+			</div>
+			
+			<!-- Page Content -->
+			
+			<div id="content-wrapper" class="container-fluid">
+				<%= yield %>
 			</div>
 			
 		</div>
 	</body>
+
+	<script>
+
+	jQuery(document).ready(function($) {
+		$(window).bind('popstate', function(data){
+			window.location.href = location.href
+		})
+	});
+	</script>
 </html>

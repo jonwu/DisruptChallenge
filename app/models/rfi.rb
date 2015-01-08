@@ -7,6 +7,10 @@ class Rfi < ActiveRecord::Base
   belongs_to :user
   after_initialize :init
 
+  #retreive collaborated rfis
+  scope :shared, ->(user) { joins(:collaborators).where(collaborators: {user_id: user.id}) }
+
+
   def init
     #will set the default value only if it's nil
     self.low ||= 1
@@ -15,7 +19,13 @@ class Rfi < ActiveRecord::Base
   end
 
   def self.find_rfi(id, current_user_id)
-  	@rfi = Rfi.find_by(id: id, user_id: current_user_id)
+    @rfi = Rfi.find_by(id: id, user_id: current_user_id)
+    
+    if @rfi.nil?
+      @rfi = Rfi.find_collaborated_rfis(current_user_id).find_by(id: id)
+    else
+      
+    end
   end
 
   def self.delete_rfi(id)
@@ -23,6 +33,8 @@ class Rfi < ActiveRecord::Base
   end
 
   def self.find_collaborated_rfis(user_id)
+
+
     rfis = []
     collaborations = Collaborator.where("user_id = " + user_id.to_s).pluck(:rfi_id)
     collaborations.each do |rfi_id|
@@ -30,5 +42,7 @@ class Rfi < ActiveRecord::Base
     end
     return rfis
   end
+
+ 
 
 end

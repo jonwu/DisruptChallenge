@@ -1,7 +1,4 @@
 @import 'colors';
-body{
-    // font-family: ProximaNova, sans-serif;
-}
 
 
 #wrapper {
@@ -11,33 +8,12 @@ body{
 }
 
 
-#page-content-wrapper {
-    width: 100%;
-    height: 100%;
-
-}
-
-#page-content-wrapper .container-fluid {
-    // padding-top: 15px;
-}
-#page-content-wrapper .container-fluid .row{
-    // height: 100%;
-}
-
-#categories-bar{
-
-}
-/* Sidebar Styles */
-
-
-
-
-
+/* =================== categories ===================== */
 #sidebar #categories .list-group{
 
     margin: 0;
     border-radius: 0;
-    // border: 0;
+
 }
 
 #sidebar #categories .list-group .list-group-item{
@@ -64,12 +40,14 @@ body{
     color: $primary;
     border-color: $light_border;
 }
-
+/* =================== questions ===================== */
+#sidebar #questions{
+    // background-color: $background !important;
+}
 #sidebar #questions .list-group{
 
     margin: 0;
     border-radius: 0;
-    // border: 0;
 }
 
 #sidebar #questions .list-group .list-group-item{
@@ -79,6 +57,7 @@ body{
     border-left: 0;
     color: $secondary;
     font-size: 14px;
+    background-color: white;
     border-color: $light_border;
 }
 
@@ -92,7 +71,13 @@ body{
     background-color: $minor;
 }
 
+#sidebar #questions .list-group a.active{
+    background-color: $hover;
+    color: $primary;
+    border-color: $light_border;
+}
 
+/* =================== menu ===================== */
 #sidebar #menu{
     height: 100%;
     width: 16%;
@@ -132,110 +117,5 @@ body{
 }
 
 //===================================================================================================================//
-#sidebar-wrapper {
-    visibility: hidden;
-    position: fixed;
-    width: 350px;
-    height: calc(100% - 51px);
-    left: 0;
-    overflow: auto;
-    background: $minor;
-
-    z-index: 99;
-    min-height: 0 !important; 
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-.sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;   
-    color: #999999;
-}
-.sidebar-nav h3{
-    padding-left: 15px;
-}
-
-.sidebar-nav li {
-    text-indent: 0px;
-    line-height: 30px;
-    
-    
-}
-.sidebar-nav li span{
-    padding-right: 10px;
-}
-.sidebar-nav li a {
-    
-    // margin: 0;
-    padding-left: 10px 15px;
-
-    text-decoration: none;
-    color: #999999;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-}
-
-#sidebar-wrapper .nav > li> a:hover, #sidebar-wrapper .nav > li> a:focus{
-    text-decoration: none;
-    background: none;
-    color: white;
-
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-#sidebar-wrapper .nav > li.active > a, #sidebar-wrapper .nav > li.active > a:hover, #sidebar-wrapper .nav > li.active > a:focus{
-    background-color: $active_color;    
-} 
-
-
-.glyphicon { margin-right:10px; }
-.panel-body { padding:0px; }
-.panel-body table tr td { padding-left: 15px }
-.panel-body .table {margin-bottom: 0px; }
-
-#sidebar-wrapper{
-    border-right: 1px solid $dark_border;
-}
-#sidebar-wrapper .panel{
-
-    margin: 0;
-    border-radius: 0;
-
-
-}
-
-#sidebar-wrapper .panel-heading{
-    background: $major;
-    border-radius: 0;
-
-
-}
-#sidebar-wrapper .panel-title{
-    font-size: 14px;
-}
-#sidebar-wrapper .panel-default{
-    font-size: 12px;
-    border: 0;
-    border-bottom: 1px solid $light_border;
-
-}
-
-#sidebar-wrapper .panel-default:nth-of-type(1){
-    border-top: 1px solid $light_border;
-}
-
-
-
 
 

@@ -1,31 +1,26 @@
-$body-bg:                           #ecf0f1;
-$navbar-height:                     50px;
-
-
-
 
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 @import 'colors';
 
-.header-bar{
+#header{
 	background-color: $header;
 	border: 0;
 }
 
-.header-bar .navbar-collapse a{
+#header .navbar-collapse a{
 	color: white !important; 
 	border-right: 1px solid $light_border;
 
 }
-.header-bar #refresh{
+#header #refresh{
 	color: white !important; 
 	width: $sidebar_size * .16;
 	text-align: center;
 	background-color: $refresh;
 	
 }
-.header-bar #rfis{
+#header #rfis{
 	border-right: 1px solid $light_border;
 
 	min-width: $sidebar_size * .34;
@@ -35,10 +30,10 @@ $navbar-height:                     50px;
 
 }
 
-.header-bar .open > a{
+#header .open > a{
 	background-color: $refresh;
 }
-.header-bar #rfis .dropdown{
+#header #rfis .dropdown{
 	list-style-type: none;
 	height: 50px;
 	width: 100%;
@@ -46,7 +41,7 @@ $navbar-height:                     50px;
 	
 
 }
-.header-bar #rfis .menu{
+#header #rfis .menu{
 	display: block;
 	text-decoration: none;
 	min-width: $sidebar_size * .34;
@@ -62,98 +57,20 @@ $navbar-height:                     50px;
 	
 }
 
-.header-bar #rfis .menu > span{
+#header #rfis .menu > span{
 	margin-left: 15px;
 }
 
 
-.header-bar #refresh span{
+#header #refresh span{
 	margin: 0;
 }
 
-.header-bar .icon-bar{
+#header .icon-bar{
 	background-color: white !important; 
 
 }
-.navbar-brand {
-     font-weight: bold;
-}
 
-.header{
-	top: 0px;
-	width: 100%;
-	position: fixed;
-	z-index: 99;
-	box-shadow: 0px 0px 5px #888888;
-	
-}
-.header .content{
-	position: relative;
-	float:right;
-	top: 50%; 
-
-	
-}
-.header a{
-	-o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  
-  transition:.5s;
-}
-
-.home-header{
-	top: 0px;
-	width: 100%;
-	position: fixed;
-	background-color: rgba(0,0,0,0.4);
-	border: 0px;	
-}
-
-.home-header a{
-	color: white !important;
-	-o-transition:.5s;
-	-ms-transition:.5s;
-	-moz-transition:.5s;
-	-webkit-transition:.5s;
-
-	transition:.5s;
-
-}
-
-.home-header a:hover{
-	color: #EB5839 !important;
-}
-
-.home-content{
-	padding-top: 200px;
-	padding-left: 50px;
-	color: white;
-}
-.home-content h1{
-	margin: 0;
-	padding: 0;
-	font-weight: 900;
-	font-size: 50px;
-}
-.home-content h3{
-	margin: 0;
-	font-weight: 100;
-	font-style: italic;
-	padding-bottom: 50px;
-}
-.home-content .home-start{
-	-o-transition:.5s;
-	-ms-transition:.5s;
-	-moz-transition:.5s;
-	-webkit-transition:.5s;
-	transition:.5s;
-	background-color: red;
-	font-weight: 500;
-
-
-}
 
 
 
