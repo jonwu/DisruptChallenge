@@ -8,7 +8,7 @@ class Rfi < ActiveRecord::Base
   after_initialize :init
 
   #retreive collaborated rfis
-  scope :shared, ->(user) { joins(:collaborators).where(collaborators: {user_id: user.id}) }
+  scope :invited, ->(user) { joins(:collaborators).where(collaborators: {user_id: user.id}) }
 
 
   def init

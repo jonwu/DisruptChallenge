@@ -2,6 +2,7 @@ class Category < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   belongs_to :rfi
 
+
   def self.find_available_text(categories, text)
      count = 0
      text = text.strip

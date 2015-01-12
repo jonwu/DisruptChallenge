@@ -1,0 +1,30 @@
+@import 'colors';
+
+#menu{
+	ul{
+		list-style-type: none;
+		padding: 0;
+	}
+
+	ul li{
+		padding-top:20px;
+		text-align: center;
+	}
+	ul li a{
+		color: $secondary;
+		text-decoration: none;
+	}
+
+	ul li a:hover{
+		color: white;
+		text-decoration: none;
+	}
+	.active{
+		color: white;
+	}
+	span{
+		padding-bottom:10px;
+		display: block;
+		font-size: 2em;
+	}
+}

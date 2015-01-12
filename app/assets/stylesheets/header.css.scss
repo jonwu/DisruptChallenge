@@ -1,6 +1,5 @@
 
-@import "bootstrap-sprockets";
-@import 'bootstrap';
+
 @import 'colors';
 
 #header{
@@ -72,6 +71,24 @@
 }
 
 
+//=================================================================
 
+.invited #header{
+	background-color: $b_header;
+}
 
+.invited #header .navbar-collapse a{
+	border-right: 1px solid $b_light_border;
 
+}
+.invited #header #refresh{
+	background-color: $b_refresh;
+	
+}
+.invited #header #rfis{
+	border-right: 1px solid $b_light_border;
+}
+
+.invited #header .open > a{
+	background-color: $b_refresh;
+}

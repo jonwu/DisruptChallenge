@@ -1,2 +1,40 @@
+<ul>
+	<li>
+		<a href="/rfis" <% if controller?("rfis") || (controller?("categories") && @isResponse.nil?) || controller?("questions") %>class="active"<% end %>> 
+			<span class="glyphicon glyphicon-share" aria-hidden="true"></span>	
+			Questions
+		</a>
+
+	</li>
+
+	<li>
+		<a href="/invites" <% if controller?("invites") || (controller?("categories") && !@isResponse.nil?) %>class="active"<% end %>>
+			<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>	
+			Responses
+		</a>
+	</li>
+
+	<li>
+		<a href="">
+			<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>	
+			Messages
+		</a>
+	</li>
+	<li>
+		<a href="">
+			<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>	
+			Settings
+		</a>
+	</li>
+	<li>
+		<a href="">
+			<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>	
+			History
+		</a>
+		
+	</li>
+
+</ul>
+
 
 	
