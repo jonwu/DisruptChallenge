@@ -19,7 +19,7 @@ class BaseController < ActionController::Base
     set_current_category (nil)
     set_current_question(nil)
     set_current_collaborator(nil)
-  end
+  end 
 
   def authenticate_rfi(id)
     current_rfi = Rfi.find_by_id(id) or not_found
@@ -66,44 +66,7 @@ class BaseController < ActionController::Base
     set_current_rfi(current_rfi)
     set_rfis(rfis)
   end
-
-  # def authenticate_rfi
-    
-  #   current_rfi = get_rfis.find_by(id: params[:rfi_id])
-  # 	if current_rfi.nil?
-  # 		# if user does not have permission, proceed with first rfi
-  # 		return redirect_to rfi_path(rfi_id: get_rfis.first)
-  # 	end
-  # 	set_current_rfi(current_rfi) 
-  # end
-
-  # def authenticate_category 
-  # 	if get_current_rfi.nil?
-  # 		return set_current_category(nil)
-  # 	end
-
-  # 	current_category = get_current_rfi.categories.find_by_id(params[:category_id])
-  # 	if current_category.nil?
-  # 		# Redirect to previous rfi if category is invalid
-  # 		return redirect_to rfi_path(rfi_id: get_current_rfi.id)
-  # 	end
-  # 	set_current_category(current_category)
-  # end
-
-
-  # def authenticate_question
-  # 	if get_current_category.nil?
-  # 		return set_current_question(nil)
-  # 	end
-  	
-  # 	current_question = get_current_category.questions.find_by_id(params[:question_id])
-  # 	if current_question.nil?
-  # 		# Redirect to previous category if question is invalid
-  # 		return redirect_to category_path(category_id: get_current_category.id)
-  # 	end
-  # 	set_current_question(current_question)
-  # end
-
+ 
   def initialize_template
     @rfis = get_rfis
     @shared = get_shared

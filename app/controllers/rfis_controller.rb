@@ -1,6 +1,6 @@
 class RfisController < BaseController
 	layout 'main_template'
-	# before_filter :authenticate_rfi
+	before_filter :authenticate_rfi
 	# skip_before_filter :authenticate_question
 
 	def show
