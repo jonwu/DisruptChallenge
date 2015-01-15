@@ -57,6 +57,8 @@ collab6 = Collaborator.create( user_id: user6.id,
                               rfi_id: rfi.id)
 collab7 = Collaborator.create( user_id: user7.id,
                               rfi_id: rfi.id)
+collab8 = Collaborator.create( user_id: user8.id,
+                              rfi_id: rfi.id)
 
 category = Category.create(   rfi_id: rfi.id,
                               text: "Technical")

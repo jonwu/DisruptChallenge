@@ -2,7 +2,7 @@ class InvitesController < BaseController
 	layout 'main_template'
 
 	def show
-		authenticate_rfi(params[:id])
+    authenticate_collaborator(params[:id])
 		initialize_template
 	end
 

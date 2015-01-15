@@ -2,7 +2,7 @@ class BaseController < ActionController::Base
 	
   before_action :authenticate_user!
   before_filter :reset_values
-  before_filter :authenticate_invites
+  # before_filter :authenticate_invites
 	# before_filter :authenticate_rfi, :only => :show
 	# before_filter :authenticate_category, :only => :show
 	# before_filter :authenticate_question, :only => :show
@@ -25,6 +25,7 @@ class BaseController < ActionController::Base
     current_rfi = Rfi.find_by_id(id) or not_found
     status = current_rfi.user == current_user or not_found
     set_current_rfi(current_rfi) 
+    set_rfis(current_user.rfis)
   end
 
 
@@ -52,10 +53,18 @@ class BaseController < ActionController::Base
   end
 
 
-  def authenticate_invites
-      # set_rfis(Rfi.shared(current_user))
-      set_rfis(current_user.rfis)
-      # set_shared(false)    
+  # def authenticate_invites
+  #     # set_rfis(Rfi.shared(current_user))
+  #     set_rfis(current_user.rfis)
+  #     # set_shared(false)    
+  # end
+
+  def authenticate_collaborator(id)
+    current_rfi = Rfi.find_by_id(id) or not_found
+    rfis = Rfi.invited(current_user)
+    rfis.find_by_id(current_rfi.id) or not_found
+    set_current_rfi(current_rfi)
+    set_rfis(rfis)
   end
 
   # def authenticate_rfi
