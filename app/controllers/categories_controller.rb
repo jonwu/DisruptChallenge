@@ -1,5 +1,5 @@
 class CategoriesController < BaseController
-	layout 'main_template'
+	
 	
 	respond_to :html, :js
 

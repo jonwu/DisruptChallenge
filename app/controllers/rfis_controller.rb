@@ -1,6 +1,5 @@
 class RfisController < BaseController
-	layout 'main_template'
-	before_filter :authenticate_rfi
+	
 	# skip_before_filter :authenticate_question
 
 	def show
@@ -9,12 +8,8 @@ class RfisController < BaseController
 	end
 
 	def index
-
-		# if !params[:shared].nil? && params[:shared]
-		# 	redirect_to rfi_path(rfi_id: current_user.rfis.first, shared: true)
-		# else
 		redirect_to rfi_path(id: current_user.rfis.first)
-		# end
+		
 	end
 
 	def share

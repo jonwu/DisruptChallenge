@@ -9,8 +9,9 @@
 
             <div class="panel-body">
                 <%= collaborator.submissions.find_by(question_id: @current_question.id) %>
-
-                <%= collaborator.user.responses.find_by(question_id: @current_question.id).text %>
+                <% if !collaborator.user.responses.find_by(question_id: @current_question.id).nil? %>
+                  <%= collaborator.user.responses.find_by(question_id: @current_question.id).text %>
+                <% end %>
             </div>
     </div>
   

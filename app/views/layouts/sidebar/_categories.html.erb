@@ -3,14 +3,9 @@
 		
 	</div>
 	<div class="list-group">
-		<% @current_rfi.categories.each do |category| %>
-			 <% if @current_category != category %>
-				<%= link_to category.text, category_questions_path(category_id: category.id), class: "list-group-item" %>
-			<% else %>
-				<%= link_to category.text, category_questions_path(category_id: category.id), class: "list-group-item active" %>
-			<% end %>
-			
-		<% end %>
+
+		<%= yield :categories %>
+		
 	</div>
 	
 

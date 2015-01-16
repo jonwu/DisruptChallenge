@@ -71,6 +71,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show, :edit, :update, :destroy] do
     resources :questions, shallow: true
+    resources :responses, shallow: true
   end
 
   # resources :questions

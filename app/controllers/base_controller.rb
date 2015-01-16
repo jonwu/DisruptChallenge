@@ -1,5 +1,5 @@
 class BaseController < ActionController::Base
-	
+	layout 'main_template'
   before_action :authenticate_user!
   before_filter :reset_values
   # before_filter :authenticate_invites
@@ -21,35 +21,28 @@ class BaseController < ActionController::Base
     set_current_collaborator(nil)
   end 
 
-  def authenticate_rfi(id)
-    current_rfi = Rfi.find_by_id(id) or not_found
+
+  def authenticate_rfi(rfi_id)
+    current_rfi = Rfi.find_by_id(rfi_id) or not_found
     status = current_rfi.user == current_user or not_found
     set_current_rfi(current_rfi) 
     set_rfis(current_user.rfis)
   end
 
 
-  def authenticate_question(id)
-    current_question = Question.find_by_id(id) or not_found
+  def authenticate_question(question_id)
+    current_question = Question.find_by_id(question_id) or not_found
     current_category = current_question.category or not_found
-    current_rfi = current_category.rfi or not_found
-    status = current_rfi.user == current_user
-    if(!status)
-      @isResponse = current_rfi.collaborators.exists?(user_id: current_user.id) or not_found
-
-    end
-
+    authenticate_category(current_category.id)
     set_current_question(current_question)
-    set_current_category(current_category)
-    set_current_rfi(current_rfi)
   end
 
-  def authenticate_category(id)
-    current_category = Category.find_by_id(id) or not_found
+  def authenticate_category(category_id)
+    current_category = Category.find_by_id(category_id) or not_found
     current_rfi = current_category.rfi
-    status = current_rfi.user == current_user or not_found
+    authenticate_rfi(current_rfi.id)
     set_current_category(current_category)
-    set_current_rfi(current_rfi)
+
   end
 
 

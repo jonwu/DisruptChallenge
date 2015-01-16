@@ -1,6 +1,4 @@
-class QuestionsController < BaseController
-	layout 'main_template'
-	
+class QuestionsController < BaseController	
 	respond_to :html, :js
 
 	def show
