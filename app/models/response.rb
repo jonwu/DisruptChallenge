@@ -10,6 +10,19 @@ class Response < ActiveRecord::Base
   end
 
 
+  # should only return one response!
+  def self.get_user_response(question_id, user_id)
+    return Response.where("user_id = " + user_id.to_s + " AND question_id = " + question_id.to_s)
+  end
+
+  def self.update_response_text(question_id, text, user_id)
+    response = Response.get_user_response(question_id, user_id)
+    if response.nil?
+      Response.create(question_id: question_id, user_id: user_id, text: text)
+    else
+      response.update_text(text: text)
+    end
+  end
 
   # Set empty response for each question. Params take ARRAYS of questions and collaborators
   def self.set_empty_responses(questions, collaborators)

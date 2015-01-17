@@ -74,6 +74,8 @@ Rails.application.routes.draw do
     resources :responses, shallow: true
   end
 
+  post "responses/save_response", to: 'responses#save_response', as: 'save_response'
+
   # resources :questions
 
 

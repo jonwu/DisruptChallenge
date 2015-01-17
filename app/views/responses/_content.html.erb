@@ -1,0 +1,6 @@
+<% if !@current_response.nil? %>
+  <textarea class="response-textarea form-control" placeholder="Enter text ..."><%= @current_response.text.html_safe %></textarea>
+<% else %>
+  <textarea class="response-textarea form-control" placeholder="Enter text ..."></textarea>
+<% end %>
+

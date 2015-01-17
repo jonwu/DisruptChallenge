@@ -9,7 +9,7 @@
 		
 	</head>
 	<body>
-		
+
 		<%= render 'layouts/headers/primary' %>
 		<div id="wrapper">
 			<!-- Sidebar -->
@@ -22,8 +22,8 @@
 			
 			<!-- Page Content -->
 			
-			<div id="content-wrapper" class="container-fluid">
-				<%= yield %>
+			<div id="content-wrapper" class="container-fluid main-content">
+				<%= yield :main_content %>
 			</div>
 			
 		</div>

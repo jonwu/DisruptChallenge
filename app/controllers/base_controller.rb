@@ -19,6 +19,8 @@ class BaseController < ActionController::Base
     set_current_category (nil)
     set_current_question(nil)
     set_current_collaborator(nil)
+
+    set_current_response(nil)
   end 
 
 
@@ -42,7 +44,6 @@ class BaseController < ActionController::Base
     current_rfi = current_category.rfi
     authenticate_rfi(current_rfi.id)
     set_current_category(current_category)
-
   end
 
 
@@ -66,13 +67,12 @@ class BaseController < ActionController::Base
     @current_rfi = get_current_rfi
     @current_category = get_current_category 
     @current_question = get_current_question
-    
   end
   
-  def initialize_content
-    # should only be called if question is selected
-    @current_collaborator = get_current_collaborator
-  end
+  # def initialize_content
+  #   # should only be called if question is selected
+  #   @current_collaborator = get_current_collaborator
+  # end
 
   protected
     $rfis
@@ -81,6 +81,11 @@ class BaseController < ActionController::Base
     $current_category
     $current_question
     $current_collaborator
+
+    # $questions
+    # # for a certain question?
+    # $responses
+    $current_response
 
     def set_rfis(rfis)
       $rfis = rfis
@@ -138,4 +143,28 @@ class BaseController < ActionController::Base
     def get_current_submissions
       return $current_collaborator
     end
+
+    def set_current_response(response)
+      $current_response = response
+    end
+
+    def get_current_response
+      return $current_response
+    end
+
+    # def set_questions(questions)
+    #   $questions = questions
+    # end
+
+    # def get_questions
+    #   return $questions
+    # end
+
+    # def set_responses(responses)
+    #   $responses = responses
+    # end
+
+    # def get_responses
+    #   return $responses
+    # end
 end

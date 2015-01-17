@@ -1,6 +1,3 @@
-
-
-
 jQuery(document).ready(function($) {
     clickListenerOutsidePanel()
 });
@@ -16,15 +13,15 @@ function clickListenerOutsidePanel(){
               && container.has(e.target).length === 0) // ... nor a descendant of the container
         {
             text = $(".response-textarea").val()
-            collapseContent(text)
+            save_content(text)
         }
     });
 }
 
 
-function collapseContent(text){
+function save_content(text){
   $.ajax({
-    url: '/responses/collapse_content',
+    url: '/responses/save_response',
     type: 'POST',
     data: {"text": text},
   })

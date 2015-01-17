@@ -1,37 +1,11 @@
-<%= javascript_include_tag 'responses' %>  
-
-<body>
-    <div id="wrapper" class="responses">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav ">
-                <div class="categories">
-                    <%= render partial: "categories", object: [@categories, @active_category] %>
-                </div>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-11">
-                        <div class="questions">
-                            <%= render partial: "questions", object: [@questions, @responses, @is_active] %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="submit-section">
-            <%= render partial: "submit_section", object: @last_updated %>
-        </div>
-        <!-- /#page-content-wrapper -->
-        
-    </div>
-</body>
+<%= render 'layouts/invites/responses' %>
+<% content_for :main_content do %>
+    <% if !@current_response.nil? %>
+      <textarea class="response-textarea form-control" placeholder="Enter text ..."><%= @current_response.text.html_safe %></textarea>
+    <% else %>
+      <textarea class="response-textarea form-control" placeholder="Enter text ..."></textarea>
+    <% end %>
+<% end %>
 
 
 
