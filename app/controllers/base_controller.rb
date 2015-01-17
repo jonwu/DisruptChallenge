@@ -1,7 +1,7 @@
 class BaseController < ActionController::Base
 	layout 'main_template'
   before_action :authenticate_user!
-  before_filter :reset_values
+  before_filter :reset_values, :only => [:index, :show]
   # before_filter :authenticate_invites
 	# before_filter :authenticate_rfi, :only => :show
 	# before_filter :authenticate_category, :only => :show
@@ -67,6 +67,7 @@ class BaseController < ActionController::Base
     @current_rfi = get_current_rfi
     @current_category = get_current_category 
     @current_question = get_current_question
+    @current_response = get_current_response
   end
   
   # def initialize_content

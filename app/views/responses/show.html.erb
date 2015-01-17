@@ -1,11 +1,7 @@
 <%= render 'layouts/invites/responses' %>
-<% content_for :main_content do %>
-    <% if !@current_response.nil? %>
-      <textarea class="response-textarea form-control" placeholder="Enter text ..."><%= @current_response.text.html_safe %></textarea>
-    <% else %>
-      <textarea class="response-textarea form-control" placeholder="Enter text ..."></textarea>
-    <% end %>
-<% end %>
+<%= render 'content' %>
+
+<%= javascript_include_tag 'responses' %>  
 
 
 
