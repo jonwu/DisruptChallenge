@@ -11,20 +11,22 @@
 	<body>
 
 		<%= render 'layouts/headers/primary' %>
-		<div id="wrapper">
+		<div id="wrapper" >
+			
 			<!-- Sidebar -->
-
-			<div id="sidebar" >
-				<div id="menu"><%= render 'layouts/sidebar/menu' %></div>
-				<div id="categories"><%= render 'layouts/sidebar/categories' %></div>
-				<div id="questions"><%= render 'layouts/sidebar/questions' %></div>
-			</div>
-			
-			<!-- Page Content -->
-			
-			<div id="content-wrapper" class="container-fluid main-content">
-				<%= yield :main_content %>
-			</div>
+				<div id="sidebar" >
+					<div id="menu"><%= render 'layouts/sidebar/menu' %></div>
+					<div id="categories"><%= render 'layouts/sidebar/categories' %></div>
+					<div id="questions"><%= render 'layouts/sidebar/questions' %></div>
+				</div>
+				
+				<!-- Page Content -->
+				
+				<div id="content-wrapper" class="container-fluid">
+					<!-- <div id="pjax-container"> -->
+					<%= yield %>
+					
+				</div>
 			
 		</div>
 	</body>

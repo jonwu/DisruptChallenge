@@ -1,7 +1,5 @@
 @import 'colors'; 
-#sidebar{
-    @import 'colors'; 
-}
+
 #wrapper {
 
     padding-left: $sidebar_size;
@@ -24,11 +22,19 @@
     border-radius: 0;
     border-right: 0;
     border-left: 0;
-
     font-size: 14px;
-    
     border-color: $light_border;
 
+}
+#sidebar #categories .list-group .list-group-item .badge{
+    background-color: transparent;
+    border: 1px $secondary solid;
+    color: $secondary;
+}
+#sidebar #categories .list-group .active .badge{
+    background-color: $secondary;
+    border: 1px $secondary solid;
+    color: white;
 }
 
 #sidebar #categories .list-group a.list-group-item:hover, a.list-group-item:focus {
@@ -42,9 +48,29 @@
     color: $primary;
     border-color: $light_border;
 }
+#sidebar #categories{
+    width: 34%;
+    height: 100%;
+    float: left;
+    border-right: 1px solid $light_border;
+    overflow: auto;
+    background: $minor;
+}
+#sidebar #categories #profile{
+    height: 120px;
+    width: 100%;
+    background-color: white;
+    
+}
+
 /* =================== questions ===================== */
 #sidebar #questions{
-    // background-color: $background !important;
+    overflow: auto;
+    width: 50%;
+    height: 100%;
+    float: left;
+    border-right: 1px solid $light_border;
+    background-color: white;
 }
 #sidebar #questions .list-group{
 
@@ -53,11 +79,11 @@
 }
 
 #sidebar #questions .list-group .list-group-item{
-    
+    min-height: 70px;
     border-radius: 0;
     border-right: 0;
     border-left: 0;
-    color: $secondary;
+    color: $primary;
     font-size: 14px;
     background-color: white;
     border-color: $light_border;
@@ -79,6 +105,23 @@
     border-color: $light_border;
 }
 
+#sidebar #questions .list-group .text{
+    
+}
+
+#sidebar #questions .list-group .impact{
+    text-align: right;
+    font-size: 12px;
+    color: $secondary;
+
+}
+#sidebar #questions .list-group .n-responses{
+    text-align: right;
+    font-size: 12px;
+    color: $secondary;
+    margin: 0;
+}
+
 /* =================== menu ===================== */
 #sidebar #menu{
     height: 100%;
@@ -86,28 +129,7 @@
     float: left;
     background: $dark;
 }
-#sidebar #categories{
-    width: 34%;
-    height: 100%;
-    float: left;
-    border-right: 1px solid $light_border;
-    overflow: auto;
-    background: $minor;
-}
-#sidebar #categories #profile{
-    height: 120px;
-    width: 100%;
-    background-color: white;
-    
-}
-#sidebar #questions{
-    overflow: auto;
-    width: 50%;
-    height: 100%;
-    float: left;
-    border-right: 1px solid $light_border;
-    background-color: white;
-}
+
 #sidebar{
     position: fixed;
     width: $sidebar_size;
