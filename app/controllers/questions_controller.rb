@@ -4,6 +4,11 @@ class QuestionsController < BaseController
 	def show
 		authenticate_question(params[:id])
 		initialize_template
+		if request.headers['X-PJAX']
+			p "!" *80
+		    render :layout => false
+	  	end
+
 	end
 
 	def index
