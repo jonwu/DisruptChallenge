@@ -6,7 +6,8 @@
 <div id="question-content">
   <h2><%= @current_question.text %></h2>
   <% @current_rfi.collaborators.each do |collaborator| %>
-  
+    
+    
     <div class="panel panel-default panel-info">
             <div class="panel-heading">
               <h3 class="panel-title"><%= collaborator.user.name %></h3>

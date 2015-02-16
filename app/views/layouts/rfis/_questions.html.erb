@@ -1,7 +1,19 @@
+
+
+
 <% content_for :questions do %>
+	
+	<%= link_to new_category_question_path(category_id: @current_category.id), class: "btn btn-primary btn-lg add" do%>
+	  Add
+	<% end %>
+	
+	<div class="list-group">
+
 	<% if !@current_category.nil? %>
 			<% @current_category.questions.each do |question| %>
-				<a href="/questions/<%= question.id %>" class="list-group-item <% if @current_question == question %>active<% end %> <%= question.impact %>">
+				<a href="/questions/<%= question.id %>" class="list-group-item 
+				<% if @current_question == question %> active <% end %> 
+				<%= question.impact %>">
 
 					<p class="impact"><%= question.impact %></p>
 					<p><%= question.text %></p>
@@ -11,6 +23,8 @@
 				
 			<% end %>
 	<% end %>
+	</div>
 <% end %>
+
 <%= render 'layouts/rfis/categories' %>
 

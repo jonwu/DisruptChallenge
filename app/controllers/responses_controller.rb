@@ -7,9 +7,20 @@ class ResponsesController < BaseController
     initialize_template
   end
 
+
   def index
     authenticate_category(params[:category_id])
     initialize_template
+  end
+
+  def response_page_update
+    @categories = get_categories
+    @active_category = get_active_category
+    @questions = set_questions(@active_category.questions.all)
+    @responses = set_responses(Response.get_rfi_responses(@questions, current_user.id))
+    @is_active = get_active_question
+    @last_updated = Submission.get_last_updated(get_current_collaborator)
+
   end
 
   def authenticate_response(question_id)

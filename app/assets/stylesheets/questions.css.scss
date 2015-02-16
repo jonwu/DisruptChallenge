@@ -6,3 +6,11 @@
 	overflow: hidden;
 	-webkit-mask-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 95%);
 }
+
+#questions .add{
+	border-radius: 0px !important;
+	/*position: fixed;*/
+	z-index: 3;
+	width: 100%;
+
+}
