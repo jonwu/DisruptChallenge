@@ -1,8 +1,3 @@
-
-<%= link_to new_category_question_path(category_id: @current_category.id), class: "list-group-item" do%>
-  Add
-<% end %>
-
 <div id="question-content">
   <h2><%= @current_question.text %></h2>
   <% @current_rfi.collaborators.each do |collaborator| %>

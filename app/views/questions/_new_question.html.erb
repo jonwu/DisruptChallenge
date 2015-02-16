@@ -1,7 +1,3 @@
-<%= link_to question_path(id: @current_question.id), class: "list-group-item" do%>
-  View
-<% end %>
-
 <div class="panel panel-primary question-panel">
     <div class="panel-heading">
         <div class="category_title">
@@ -9,29 +5,30 @@
         </div>
         <div style="clear: both; content: ""; display: table;"></div>
     </div>
-    <form role="form">
+    <%= form_for :question, url: category_questions_path do |f| %>
         <div class="panel-body">
-            <input type="text" class="form-control question-form" rows="2" placeholder="Ask a question">
+          <%= f.text_field :text, class: "form-control question-form", placeholder: 'Add a question' %>
         </div>
         
         <div class="panel-footer"> 
             <div class="footer-options">
               
               <div class="impact btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                  <input type="radio" name="low" id="low" autocomplete="off">Low</label>
 
-                <label class="btn btn-primary">
-                  <input type="radio" name="medium" id="medium" autocomplete="off"> Medium</label>
+                <%= f.label :low_label, 'Low', class: 'btn btn-primary active' do %>
+                  <%= radio_button_tag :impact, 'Low'%> Low
+                <% end %>
 
-                <label class="btn btn-primary">
-                  <input type="radio" name="high" id="high" autocomplete="off">High</label>
+                <%= f.label :medium_label, 'Medium', class: 'btn btn-primary' do %>
+                  <%= radio_button_tag :impact, 'Medium'%> Medium
+                <% end %>
+
+                <%= f.label :high_label, 'High', class: 'btn btn-primary' do %>
+                  <%= radio_button_tag :impact, 'High' %> High
+                <% end %>
               </div>  
-
-              <button type="submit" class="btn btn-primary add-question">Add Question</button>
+              <%= f.submit 'Add Question', class: "btn btn-primary add-question"%>
             </div>
-            
-
         </div>
-    </form>
+    <% end %>
 </div>
