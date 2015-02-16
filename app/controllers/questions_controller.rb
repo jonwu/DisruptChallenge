@@ -5,7 +5,6 @@ class QuestionsController < BaseController
 		authenticate_question(params[:id])
 		initialize_template
 		if request.headers['X-PJAX']
-			p "!" *80
 		    render :layout => false
 	  	end
 

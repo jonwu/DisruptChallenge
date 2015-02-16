@@ -100,7 +100,7 @@
 }
 
 #sidebar #questions .list-group a.active{
-    background-color: $hover;
+    background-color: $minor;
     color: $primary;
     border-color: $light_border;
 }
@@ -138,4 +138,15 @@
     background: $minor;
     
     z-index: 99;
+}
+
+/* =================== impact ===================== */
+.High{
+    border-left: 3px #F2784B solid !important;
+}
+.Medium{
+    border-left: 3px #4183D7 solid !important;
+}
+.Low{
+    border-left: 3px #68C3A3 solid !important;
 }

@@ -1,21 +1,14 @@
 <% content_for :questions do %>
 	<% if !@current_category.nil? %>
 			<% @current_category.questions.each do |question| %>
-				
-				<% if @current_question != question %>
-					<%= link_to question_path(id: question.id), class: "list-group-item" do %>
-						<p class="impact"><%= question.impact %></p>
-						<p><%= question.text %></p>
-						<p class="n-responses"><i>no responses</i></p>
-					<% end %>
-				<% else %>
-					<%= link_to question_path(id: question.id), class: "list-group-item active" do %>
-						<p class="impact"><%= question.impact %></p>
-						<p><%= question.text %></p>
-						<p class="n-responses"><i>no responses</i></p>
+				<a href="/questions/<%= question.id %>" class="list-group-item <% if @current_question == question %>active<% end %> <%= question.impact %>">
 
-					<% end %>
-				<% end %>
+					<p class="impact"><%= question.impact %></p>
+					<p><%= question.text %></p>
+					<p class="n-responses"><i>no responses</i></p>
+				
+				</a>
+				
 			<% end %>
 	<% end %>
 <% end %>
