@@ -15,4 +15,9 @@ class QuestionsController < BaseController
 		initialize_template
 	end
 
+	def new
+		authenticate_category(params[:category_id])
+		initialize_template
+	end
+
 end

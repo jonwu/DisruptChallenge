@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     resources :categories, shallow: true
   end
 
-  resources :categories, only: [:show, :edit, :update, :destroy] do
-    resources :questions, shallow: true
-    resources :responses, shallow: true
+  resources :categories, only: [:show, :edit, :update, :destroy], shallow: true do
+    resources :questions
+    resources :responses
   end
 
   post "responses/save_response", to: 'responses#save_response', as: 'save_response'
