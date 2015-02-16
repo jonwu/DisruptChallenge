@@ -1,7 +1,0 @@
-<%= javascript_include_tag 'dashboard' %>
-
-<% content_for :sidebar do %>
-    <%= render partial: "sidebar_menu", object: [@rfis, @current_rfi, @shared_rfis] %>
-<% end %>
-
-<%= render partial: "content", object: @current_rfi %>

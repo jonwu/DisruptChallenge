@@ -1,5 +1,0 @@
-
-$('#sidebar #categories').html("<%= j (render 'layouts/sidebar/categories') %>")
-$('#sidebar #questions').html("<%= j (render 'layouts/sidebar/questions') %>")
-
-history.pushState(null, "", "<%= category_path %>");

@@ -1,8 +1,0 @@
-renderCategories()
-/**
- * Render categories in sidebar
- * @return {void} 
- */
-function renderCategories(){
-  $('div.categories').html("<%= j (render partial: 'categories', object: [@categories, @active_category, @active_question] ) %>")
-}

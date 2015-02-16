@@ -1,6 +1,5 @@
 class CategoriesController < BaseController
 	
-	
 	respond_to :html, :js
 
 	def show

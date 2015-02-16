@@ -75,9 +75,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.assets.precompile += %w( creations.js )
   config.assets.precompile += %w( responses.js )
-  config.assets.precompile += %w( evaluations.js )
-  config.assets.precompile += %w( dashboard.js )
   
 end

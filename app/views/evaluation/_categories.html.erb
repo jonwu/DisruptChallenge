@@ -1,8 +1,0 @@
-<ul class="nav nav-pills nav-stacked" role="tablist">
-  <% @categories.each do |c| %>
-    <% @c = c %>
-    <% @unrated = @num_unrated[c.id] %>
-    <%= render partial: "subcategory", object: [@c, @active_category, @active_question, @unrated] %>
-  <% end %>
-  
-</ul>

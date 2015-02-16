@@ -1,6 +1,4 @@
 class RfisController < BaseController
-	
-	# skip_before_filter :authenticate_question
 
 	def show
 		authenticate_rfi(params[:id])

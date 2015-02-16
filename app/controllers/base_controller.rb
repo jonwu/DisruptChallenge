@@ -2,11 +2,6 @@ class BaseController < ActionController::Base
 	layout 'main_template'
   before_action :authenticate_user!
   before_filter :reset_values, :only => [:index, :show]
-  # before_filter :authenticate_invites
-	# before_filter :authenticate_rfi, :only => :show
-	# before_filter :authenticate_category, :only => :show
-	# before_filter :authenticate_question, :only => :show
-	# before_filter :initialize_template, :only => :show
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')
@@ -46,13 +41,6 @@ class BaseController < ActionController::Base
     set_current_category(current_category)
   end
 
-
-  # def authenticate_invites
-  #     # set_rfis(Rfi.shared(current_user))
-  #     set_rfis(current_user.rfis)
-  #     # set_shared(false)    
-  # end
-
   def authenticate_collaborator(id)
     current_rfi = Rfi.find_by_id(id) or not_found
     rfis = Rfi.invited(current_user)
@@ -69,11 +57,6 @@ class BaseController < ActionController::Base
     @current_question = get_current_question
     @current_response = get_current_response
   end
-  
-  # def initialize_content
-  #   # should only be called if question is selected
-  #   @current_collaborator = get_current_collaborator
-  # end
 
   protected
     $rfis
@@ -82,10 +65,6 @@ class BaseController < ActionController::Base
     $current_category
     $current_question
     $current_collaborator
-
-    # $questions
-    # # for a certain question?
-    # $responses
     $current_response
 
     def set_rfis(rfis)
@@ -152,20 +131,4 @@ class BaseController < ActionController::Base
     def get_current_response
       return $current_response
     end
-
-    # def set_questions(questions)
-    #   $questions = questions
-    # end
-
-    # def get_questions
-    #   return $questions
-    # end
-
-    # def set_responses(responses)
-    #   $responses = responses
-    # end
-
-    # def get_responses
-    #   return $responses
-    # end
 end

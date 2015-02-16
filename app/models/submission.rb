@@ -1,8 +1,6 @@
 class Submission < ActiveRecord::Base
-  include PublicActivity::Common
-  # tracked owner: Proc.new{ |controller, model| controller.current_user }
 
-	validates_uniqueness_of :collaborator_id, :scope => :response_id
+  validates_uniqueness_of :collaborator_id, :scope => :response_id
   belongs_to :response
   belongs_to :question
   belongs_to :collaborator

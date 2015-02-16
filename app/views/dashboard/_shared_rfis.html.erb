@@ -1,8 +1,0 @@
-
-<ul class="nav sidebar-nav-bg nav-pills nav-stacked" role="tablist">
-	<% @shared_rfis.each do |rfi| %>
-		<li role="presentation">
-			<%= link_to rfi.title, response_path(id: rfi.id) %>
-		</li>
-	<% end %>
-</ul>

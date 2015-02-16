@@ -9,58 +9,8 @@ Rails.application.routes.draw do
     get "logout", to: "devise/sessions#destroy"
   end
 
-  get "homepage", to: "homepage#index", as: 'homepage'
-
-
-  # post "creations/create_rfi", to: "creations#create_rfi", as: 'creations_create_rfi'
-  # post "creations/add_new_category", to: "creations#add_new_category", as: 'creations_add_new_category'
-  # get "creations/delete_category", to: "creations#delete_category", as: 'creations_delete_category'
-  # get "creations/update_active_category", to: "creations#update_active_category", as: 'creations_update_active_category'
-  # post "creations/update_category_titles", to: "creations#update_category_titles", as: 'creations_update_category_titles'
-  # get "creations/make_category_form", to: "creations#make_category_form", as: 'creations_make_category_form'
-  # post "creations/add_question", to: "creations#add_question", as: 'creations_add_question'
-  # get "creations/delete_question", to: "creations#delete_question", as: 'creations_delete_question'
-  # get "creations/page_update", to: "creations#page_update", as: 'creations_page_update'
-  
-
-  # get "dashboard/page_update", to: "dashboard#page_update", as: 'dashboard_page_update'
-  # post "dashboard/share_rfi", to: "dashboard#share_rfi", as: 'dashboard_share_rfi'
-  # post "dashboard/delete_rfi", to: "dashboard#delete_rfi", as: 'dashboard_delete_rfi'
-  # get "dashboard/navigate_rfi", to: "dashboard#navigate_rfi", as: 'dashboard_navigate_rfi'
-  # get "dashboard/make_title_form", to: "dashboard#make_title_form", as: 'dashboard_make_title_form'
-  # post "dashboard/update_rfi_title", to: "dashboard#update_rfi_title", as: 'dashboard_update_rfi_title'
-  # get "dashboard/home", to: "dashboard#dashboard", as: 'dashboard_home'
-  # get "dashboard/active_rfis", to: "dashboard#active_rfis", as: 'dashboard_active_rfis'
-
-  # get "responses/update_active_category", to: "responses#update_active_category", as: 'responses_update_active_category'
-  # get "responses/page_update", to: "responses#page_update", as: 'responses_page_update'
-  # get "responses/edit_content", to: "responses#edit_content", as: 'responses_edit_content'
-  # post "responses/save_content", to: "responses#save_content", as: 'responses_save_content'
-  # post "responses/collapse_content", to: "responses#collapse_content", as: 'responses_collapse_content'
-  # post "responses/submit", to: "responses#submit", as: 'responses_submit'
-  
-  # get "evaluation/update_active_category", to: "evaluation#update_active_category", as: 'evaluation_update_active_category'
-  # get "evaluation/update_active_question", to: "evaluation#update_active_question", as: 'evaluation_update_active_question'
-  # get "evaluation/page_update", to: "evaluation#page_update", as: 'evaluation_page_update'
-  # get "evaluation/categories_page_update", to: "evaluation#categories_page_update", as: 'evaluation_categories_page_update'
-  # post "evaluation/save_rating", to: "evaluation#save_rating", as: 'evaluation_save_rating'
-  
-  # get "rfis/:rfi_id/categories/:category_id/questions/:question_id", to: 'questions#show', as: 'question'
-  # get "rfis/:rfi_id/categories/:category_id", to: 'categories#show', as: 'category'
-  # get "rfis/:rfi_id/categories/", to: 'categories#index'
-  # get "rfis/:rfi_id", to: 'rfis#show', as: 'rfi'
-  
-  # post "rfis/:rfi_id/categories/:category_id", to: 'categories#categories', as: 'update_category'
-  # post "rfis/:rfi_id/categories/:category_id/questions/:question_id", to: 'questions#questions', as: 'update_question'
-  
+  get "homepage", to: "homepage#index", as: 'homepage' 
   post "rfis/share", to: 'rfis#share', as: 'share'
-  # resources :evaluation_save_rating
-  # resources :creations
-  # resources :dashboard
-  # resources :responses
-  # resources :rfis
-  # 
-  # match "/dashboard", :to => 'dashboard#index'
   
   resources :rfis do
     resources :categories, shallow: true    
@@ -75,13 +25,6 @@ Rails.application.routes.draw do
   end
 
   post "responses/save_response", to: 'responses#save_response', as: 'save_response'
-
-  # resources :questions
-
-
-
-    
-
   root 'homepage#index'
 
 
