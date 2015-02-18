@@ -3,6 +3,11 @@
 <% end %>
 
 <% content_for :categories do %>
+	<div>
+		<span class="list-group-item">Categories
+			<%= link_to "", new_rfi_category_path(rfi_id: @current_rfi.id), class: "glyphicon glyphicon-plus add" %>
+		</span>
+	</div>
 	<% @current_rfi.categories.each do |category| %>
 		 <% if @current_category != category %>
 			<%= link_to category_questions_path(category_id: category.id), class: "list-group-item" do%>
@@ -16,8 +21,4 @@
 			<% end %>
 		<% end %>
 	<% end %>
-	  <!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#categorySettings">
-	  Launch demo modal
-	</button>
 <% end %>

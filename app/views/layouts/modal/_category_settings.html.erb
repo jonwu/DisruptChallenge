@@ -9,15 +9,45 @@
         <% @current_rfi.categories.each do |category| %>
          <div class="list-group-item">
           <span><%= category.text %></span>
-          <%= link_to category_path(id: category.id), method: :delete do%>
+          <!-- <%= link_to category_path(id: category.id), method: :delete, remote: true do%>
             X
-          <% end %>
+          <% end %> -->
+
+          <a class="delete-category" value="<%= category.id %>">X</a>
+          
+
+
+
          </div>
         <% end %>
         <%= link_to new_rfi_category_path(rfi_id: @current_rfi.id), class: "btn btn-primary btn-lg add" do%>
           New Category
         <% end %>
+
+      
       </div>
     </div>
   </div>
 </div>
+
+<script>
+    $(".delete-category").click(function (e) {
+      var val = $(this).attr('value')
+      var $this = $(this)
+      $.ajax({
+        url: '/categories/'+val,
+        type: 'DELETE',
+      })
+      .done(function() {
+        $this.parent().remove()
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+      
+    });
+  </script>
+

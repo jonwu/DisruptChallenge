@@ -4,10 +4,10 @@
 	<div class="row">
 		
 		<div class="col-sm-8">
-		  <%= link_to question_path(id: @current_question.id), method: :delete, class: "btn btn-primary btn-lg add" do%>
-		    Delete
-		  <% end %>
-			<h2><%= @current_question.text %></h2>
+			<h2>
+				<%= @current_question.text %>
+				<%= link_to "", question_path(id: @current_question.id), method: :delete, class: "glyphicon glyphicon-remove add" %>
+			</h2>
 			<div class="panel panel-default panel-info" style="margin-top: 15px">
 				
 				<div class="panel-heading">
@@ -15,7 +15,9 @@
 				</div>
 				<div class="panel-body">
 					<div class="container-fluid">
-						<%= @current_rfi.collaborators.first.user.responses.find_by(question_id: @current_question.id).text %>
+						<% if !@current_rfi.collaborators.first.user.responses.find_by(question_id: @current_question.id).nil? %>
+							<%= @current_rfi.collaborators.first.user.responses.find_by(question_id: @current_question.id).text %>
+						<% end %>
 					</div>
 				</div>
 			</div>
@@ -43,7 +45,6 @@
 				<% end %>
 				</div>
 		</div>
-
 	</div>
 </div>
 <!-- <div class="row">
