@@ -17,4 +17,5 @@
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales
 //= require Chart
+//= require jquery-ui
 //= require_tree ./global

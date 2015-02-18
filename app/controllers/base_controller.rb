@@ -14,7 +14,6 @@ class BaseController < ActionController::Base
     set_current_category (nil)
     set_current_question(nil)
     set_current_collaborator(nil)
-
     set_current_response(nil)
   end 
 
@@ -56,6 +55,7 @@ class BaseController < ActionController::Base
     @current_category = get_current_category 
     @current_question = get_current_question
     @current_response = get_current_response
+    
   end
 
   protected

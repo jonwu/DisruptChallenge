@@ -4,9 +4,9 @@ class QuestionsController < BaseController
 	def show
 		authenticate_question(params[:id])
 		initialize_template
-		if request.headers['X-PJAX']
-		    render :layout => false
-	  	end
+		# if request.headers['X-PJAX']
+		#     render :layout => false
+	 	#  	end
 	end
 
 	def index
