@@ -21,7 +21,6 @@ class QuestionsController < BaseController
 
 	def create
 		authenticate_category(params[:category_id])
-		p params
 		# TODO: Qualatative and Quantatative.
     question = Question.create( category_id: params[:category_id],
                                 qual: true,
@@ -30,6 +29,14 @@ class QuestionsController < BaseController
                                 impact: params[:impact].strip)
     # Create responses somehow for collaborators?
     initialize_template
+	end
+
+	def destroy 
+		p params
+		authenticate_question(params[:id])
+		question = Question.find_by_id(get_current_question.id)
+    Question.destroy(question.id)
+		initialize_template
 	end
 
 end

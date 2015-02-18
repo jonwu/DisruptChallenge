@@ -12,19 +12,23 @@
 
 		<%= render 'layouts/headers/primary' %>
 		<div id="wrapper" >
-			
 			<!-- Sidebar -->
-				<div id="sidebar" >
-					<div id="menu"><%= render 'layouts/sidebar/menu' %></div>
-					<div id="categories"><%= render 'layouts/sidebar/categories' %></div>
-					<div id="questions"><%= render 'layouts/sidebar/questions' %></div>
-				</div>
+			<div id="sidebar" >
+				<div id="menu"><%= render 'layouts/sidebar/menu' %></div>
+				<div id="categories"><%= render 'layouts/sidebar/categories' %></div>
+				<div id="questions"><%= render 'layouts/sidebar/questions' %></div>
+			</div>
+			
+			<!-- Page Content -->
+			<div id="content-wrapper" class="container-fluid main-content">
+				<%= yield %>
 				
-				<!-- Page Content -->
-				<div id="content-wrapper" class="container-fluid main-content">
-					<%= yield %>
-					
-				</div>
+			</div>
+
+			<!-- Modal Content -->
+			<div id="modal-content">
+				<%= render 'layouts/modal/category_settings' %>
+			</div>
 		</div>
 	</body>
 

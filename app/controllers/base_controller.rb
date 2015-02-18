@@ -131,4 +131,8 @@ class BaseController < ActionController::Base
     def get_current_response
       return $current_response
     end
+
+    def get_categories
+      return $current_rfi.categories
+    end
 end

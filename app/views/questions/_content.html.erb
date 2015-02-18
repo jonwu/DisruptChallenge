@@ -1,4 +1,7 @@
 <div id="question-content">
+  <%= link_to question_path(id: @current_question.id), method: :delete, class: "btn btn-primary btn-lg add" do%>
+    Delete
+  <% end %>
   <h2><%= @current_question.text %></h2>
   <% @current_rfi.collaborators.each do |collaborator| %>
     

@@ -15,6 +15,23 @@ class CategoriesController < BaseController
 		initialize_template
 	end
 
+	def new
+		authenticate_rfi(params[:rfi_id])
+		text = Category.find_available_text(get_categories, "New Category")
+		set_current_category(Category.create!( rfi_id: get_current_rfi.id, text: text))
+		initialize_template
+		redirect_to category_questions_path(category_id: get_current_category.id)
+	end
+
+	def destroy
+		authenticate_category(params[:id])
+		set_current_category(Category.find_next_category_and_delete(get_categories, params[:id]))
+		initialize_template
+		redirect_to category_questions_path(category_id: get_current_category.id)
+	end
+
+
+
 	
 	
 end
