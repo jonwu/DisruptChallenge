@@ -15,9 +15,16 @@
 				<% if @current_question == question %> active <% end %> 
 				<%= question.impact %>">
 
-					<p class="impact"><%= question.impact %></p>
+					<p class="status">
+						<span class="widget impact-<%= question.impact %>"><%= question.impact[0]%></span>
+						<!-- <span class="widget"> -->
+							<!-- <b class="uncompleted-response">12</b> -->
+							<!-- <b class="completed-response">5</b> -->
+						<!-- </span> -->
+						
+					</p>
 					<p><%= question.text %></p>
-					<p class="n-responses"><i>no responses</i></p>
+					<!-- <p class="status n-responses"><i>5 remaining</i></p> -->
 				
 				</a>
 				
@@ -27,4 +34,6 @@
 <% end %>
 
 <%= render 'layouts/rfis/categories' %>
+
+
 

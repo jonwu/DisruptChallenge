@@ -3,6 +3,9 @@
 <% end %>
 
 <% content_for :categories do %>
+	<button type="button" class="btn btn-primary btn-lg add" data-toggle="modal" data-target="#categorySettings">
+	  Add
+	</button>
 	<% @current_rfi.categories.each do |category| %>
 		 <% if @current_category != category %>
 			<%= link_to category_questions_path(category_id: category.id), class: "list-group-item" do%>
@@ -17,7 +20,5 @@
 		<% end %>
 	<% end %>
 	  <!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#categorySettings">
-	  Launch demo modal
-	</button>
+	
 <% end %>

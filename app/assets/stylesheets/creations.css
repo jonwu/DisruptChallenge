@@ -87,12 +87,3 @@ div.creations .questions .left-info {
 div.creations .questions .impact {
 	margin-right: 15px;
 }
-.impact-Medium {
-	color: #428bca;
-}
-.impact-High {
-	color: #d43f3a;
-}
-.impact-Low {
-	color: #f0ad4e;
-}

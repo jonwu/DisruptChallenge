@@ -79,12 +79,12 @@
 }
 
 #sidebar #questions .list-group .list-group-item{
-    min-height: 70px;
+    min-height: 50px;
     border-radius: 0;
     border-right: 0;
     border-left: 0;
     color: $primary;
-    font-size: 14px;
+    font-size: 13.5px;
     background-color: white;
     border-color: $light_border;
 }
@@ -109,18 +109,17 @@
     
 }
 
-#sidebar #questions .list-group .impact{
+#sidebar #questions .list-group .status{
     text-align: right;
     font-size: 12px;
-    color: $secondary;
+    color: red;
+
 
 }
-#sidebar #questions .list-group .n-responses{
-    text-align: right;
-    font-size: 12px;
-    color: $secondary;
-    margin: 0;
+#sidebar #questions p{
+    margin-bottom: 3px;
 }
+
 
 /* =================== menu ===================== */
 #sidebar #menu{
@@ -140,13 +139,62 @@
     z-index: 99;
 }
 
-/* =================== impact ===================== */
+/* =================== widgets ===================== */
 .High{
-    border-left: 3px #F2784B solid !important;
+    border-left: 3px $high solid !important;
 }
 .Medium{
-    border-left: 3px #4183D7 solid !important;
+    border-left: 3px $medium solid !important;
 }
 .Low{
-    border-left: 3px #68C3A3 solid !important;
+    border-left: 3px $low solid !important;
+}
+
+.widget{
+
+    display: inline-block;
+
+    min-width: 18px;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 15%;
+    
+    padding-left: 2px;
+    padding-right: 2px;
+    color: white;
+    margin-right: 1px;
+    
+}
+
+.impact-High {
+    background-color: $high;
+}
+.impact-Medium {
+    background-color: $medium;
+}
+.impact-Low {
+    background-color: $low;
+}
+
+.uncompleted-response{
+    display: inline-block;
+    height: 100%;
+    min-width: 18px;
+    margin-right:-2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #de4040;
+    border-top-left-radius: 15%;
+    border-bottom-left-radius: 15%;
+    
+}
+.completed-response{
+    display: inline-block;
+    height: 100%;
+    min-width: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #67b75a;
+    border-top-right-radius: 15%;
+    border-bottom-right-radius: 15%;
 }

@@ -1,13 +1,17 @@
 <%= render 'layouts/rfis/questions' %>
 
+
 <div id="question-content">
 	<div class="row">
-		
-		<div class="col-sm-8">
-		  <%= link_to question_path(id: @current_question.id), method: :delete, class: "btn btn-primary btn-lg add" do%>
-		    Delete
-		  <% end %>
+		<div class="col-sm-12">
 			<h2><%= @current_question.text %></h2>
+			<!-- <%= link_to question_path(id: @current_question.id), method: :delete, class: "btn btn-primary btn-lg add" do%>
+			    Delete
+	  	    <% end %> -->
+		</div>
+		<div class="col-sm-8">
+		  
+			
 			<div class="panel panel-default panel-info" style="margin-top: 15px">
 				
 				<div class="panel-heading">
