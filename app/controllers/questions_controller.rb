@@ -4,9 +4,6 @@ class QuestionsController < BaseController
 	def show
 		authenticate_question(params[:id])
 		initialize_template
-		# if request.headers['X-PJAX']
-		#     render :layout => false
-	 	#  	end
 	end
 
 	def index
@@ -29,7 +26,6 @@ class QuestionsController < BaseController
                                 impact: params[:impact].strip)
     # Create responses somehow for collaborators?
     initialize_template
-    redirect_to question_path(id: question.id)
 	end
 
 	def destroy 

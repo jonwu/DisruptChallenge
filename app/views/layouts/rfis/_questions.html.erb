@@ -1,32 +1,28 @@
+<span data-id="<%= @current_category.id%>" class="list-group-item header_category_title"><%= best_in_place @current_category, :text %>
+	<%= link_to "", category_path(id: @current_category.id), method: :delete, class: "glyphicon glyphicon-remove add" %>
+</span>
 
-
-
-<% content_for :questions do %>
-	<span data-id="<%= @current_category.id%>" class="list-group-item header_category_title"><%= best_in_place @current_category, :text %>
-		<%= link_to "", category_path(id: @current_category.id), method: :delete, class: "glyphicon glyphicon-remove add" %>
-	</span>
-	<%= link_to new_category_question_path(category_id: @current_category.id), class: "btn btn-primary btn-lg add" do%>
-	  Add
-	<% end %>
-	
-	<div class="list-group">
-
+<div class="list-group">
 	<% if !@current_category.nil? %>
 			<% @current_category.questions.each do |question| %>
 				<a href="/questions/<%= question.id %>" class="list-group-item 
 				<% if @current_question == question %> active <% end %> 
 				<%= question.impact %>">
 
-					<p class="impact"><%= question.impact %></p>
+					<p class="status">
+						<span class="widget impact-<%= question.impact %>"><%= question.impact[0]%></span>
+						<!-- <span class="widget"> -->
+							<!-- <b class="uncompleted-response">12</b> -->
+							<!-- <b class="completed-response">5</b> -->
+						<!-- </span> -->
+						
+					</p>
 					<p><%= question.text %></p>
-					<p class="n-responses"><i>no responses</i></p>
+					<!-- <p class="status n-responses"><i>5 remaining</i></p> -->
 				
 				</a>
 				
 			<% end %>
 	<% end %>
-	</div>
-<% end %>
-
-<%= render partial: 'layouts/rfis/categories.html.erb' %>
+</div>
 

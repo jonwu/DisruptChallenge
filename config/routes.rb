@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   post "responses/save_response", to: 'responses#save_response', as: 'save_response'
+  get "/categories/:category_id/questions/page_update", to: "questions#page_update", as: 'questions_page_update'
   root 'homepage#index'
 
 

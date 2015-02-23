@@ -1,24 +1,18 @@
-<% content_for :rfis_menu do %> 
-	active
-<% end %>
-
-<% content_for :categories do %>
-	<div>
-		<span class="list-group-item">Categories
-			<%= link_to "", new_rfi_category_path(rfi_id: @current_rfi.id), class: "glyphicon glyphicon-plus add" %>
-		</span>
-	</div>
-	<% @current_rfi.categories.each do |category| %>
-		 <% if @current_category != category %>
-			<%= link_to category_questions_path(category_id: category.id), class: "list-group-item" do%>
-				<span class="badge">14</span>
-				<%= category.text %>
-			<% end %>
-		<% else %>
-			<%= link_to category_questions_path(category_id: category.id), class: "list-group-item active" do%>
-				<span class="badge">14</span>
-				<%= category.text %>
-			<% end %>
+<div>
+	<span class="list-group-item">Categories
+		<%= link_to "", new_rfi_category_path(rfi_id: @current_rfi.id), class: "glyphicon glyphicon-plus add" %>
+	</span>
+</div>
+<% @current_rfi.categories.each do |category| %>
+	 <% if @current_category != category %>
+		<%= link_to category_questions_path(category_id: category.id), class: "list-group-item" do%>
+			<span class="badge">14</span>
+			<%= category.text %>
+		<% end %>
+	<% else %>
+		<%= link_to category_questions_path(category_id: category.id), class: "list-group-item active" do%>
+			<span class="badge">14</span>
+			<%= category.text %>
 		<% end %>
 	<% end %>
 <% end %>
