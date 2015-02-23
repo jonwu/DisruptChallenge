@@ -1,9 +1,4 @@
-
-
-
-<% content_for :questions do %>
-	
-	<%= link_to new_category_question_path(category_id: @current_category.id), class: "btn btn-primary btn-lg add" do%>
+<%= link_to new_category_question_path(category_id: @current_category.id), class: "btn btn-primary btn-lg add" do%>
 	  Add
 	<% end %>
 	
@@ -31,9 +26,5 @@
 			<% end %>
 	<% end %>
 	</div>
-<% end %>
-
-<%= render 'layouts/rfis/categories' %>
-
 
 
