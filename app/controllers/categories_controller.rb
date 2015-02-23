@@ -27,7 +27,7 @@ class CategoriesController < BaseController
 		authenticate_category(params[:id])
 		set_current_category(Category.find_next_category_and_delete(get_categories, params[:id]))
 		initialize_template
-		# redirect_to category_questions_path(category_id: get_current_category.id)
+		redirect_to rfis_path
 	end
 
 	def update

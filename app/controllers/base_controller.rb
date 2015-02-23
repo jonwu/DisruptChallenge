@@ -58,6 +58,14 @@ class BaseController < ActionController::Base
     
   end
 
+  def update_questions
+    initialize_template
+  end
+
+  def update_categories
+    initialize_template
+  end
+
   protected
     $rfis
     $shared

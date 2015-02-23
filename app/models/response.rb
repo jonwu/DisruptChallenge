@@ -5,6 +5,8 @@ class Response < ActiveRecord::Base
   after_initialize :init
   scope :not_empty, -> {where.not(text: '')}
 
+  default_scope { order('created_at ASC') } 
+
   def init
     self.text ||= "" #will set the default value only if it's nil
   end

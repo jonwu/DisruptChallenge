@@ -7,6 +7,7 @@ class Submission < ActiveRecord::Base
   scope :is_null, -> {select('id').where('score IS null')}
   scope :scored, -> { where('score IS NOT null') }
   
+  default_scope { order('created_at ASC') } 
 
   # Given a question and list of collaborators, finds the submissions in descending order by id
   def self.find_submissions_from_collaborators(question, collaborator_list)

@@ -7,8 +7,7 @@
 		<div class="col-sm-12">
 			<div>
 				<h2 data-id="<%= @current_question.id%>" class="header_question_title"><%= best_in_place @current_question, :text %></h2>
-				<br/>
-				<%= link_to "", question_path(id: @current_question.id), method: :delete, class: "glyphicon glyphicon-remove add" %>
+				<%= link_to "", question_path(id: @current_question.id), method: :delete, class: "glyphicon glyphicon-remove" %>
 			</div>
 		</div>
 

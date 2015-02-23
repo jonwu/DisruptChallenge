@@ -7,6 +7,8 @@ class Rfi < ActiveRecord::Base
   belongs_to :user
   after_initialize :init
 
+  default_scope { order('created_at ASC') } 
+
   #retreive collaborated rfis
   scope :invited, ->(user) { joins(:collaborators).where(collaborators: {user_id: user.id}) }
 
