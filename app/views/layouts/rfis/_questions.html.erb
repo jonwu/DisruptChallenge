@@ -1,9 +1,11 @@
+<% if !@current_category.nil? %>
 <span data-id="<%= @current_category.id%>" class="list-group-item header_category_title"><%= best_in_place @current_category, :text %>
-	<%= link_to "", category_path(id: @current_category.id), method: :delete, class: "glyphicon glyphicon-remove add" %>
+	<%= link_to "", category_path(id: @current_category.id), method: :delete, class: "glyphicon glyphicon-remove" %>
+	<%= link_to "", new_category_question_path(category_id: @current_category.id), class: "glyphicon glyphicon-plus add"%>
 </span>
 
 <div class="list-group">
-	<% if !@current_category.nil? %>
+
 			<% @current_category.questions.each do |question| %>
 				<a href="/questions/<%= question.id %>" class="list-group-item 
 				<% if @current_question == question %> active <% end %> 
@@ -22,7 +24,7 @@
 				
 				</a>
 				
-			<% end %>
+
 	<% end %>
 </div>
-
+			<% end %>
