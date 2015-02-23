@@ -3,6 +3,14 @@ ready = function() {
   $('h2.header_question_title > .best_in_place').bind("ajax:success", function () {
     update_questions()
   });
+
+  $(document).pjax('a[questions-pjax]', '.main-content-pjax')
+  // if ($.support.pjax) {
+  //   $(document).on('click', 'a[data-pjax]', function(event) {
+  //     var container = $('.main-content, .pjax-container')
+  //     $.pjax.click(event, {container: container})
+  //   })
+  // }
 };
 
 $(document).ready(ready);

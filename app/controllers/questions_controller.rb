@@ -13,9 +13,13 @@ class QuestionsController < BaseController
 	
 
 	def show
+		if request.headers['X-PJAX']
+    	render :layout => false
+  	end
 	end
 
 	def index
+
 	end
 
 	def new
