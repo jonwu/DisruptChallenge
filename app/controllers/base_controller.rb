@@ -3,6 +3,7 @@ class BaseController < ActionController::Base
   before_action :authenticate_user!
   before_filter :reset_values, :only => [:index, :show]
 
+
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
@@ -23,6 +24,7 @@ class BaseController < ActionController::Base
     status = current_rfi.user == current_user or not_found
     set_current_rfi(current_rfi) 
     set_rfis(current_user.rfis)
+    initialize_template
   end
 
 
@@ -41,6 +43,7 @@ class BaseController < ActionController::Base
   end
 
   def authenticate_collaborator(id)
+    
     current_rfi = Rfi.find_by_id(id) or not_found
     rfis = Rfi.invited(current_user)
     rfis.find_by_id(current_rfi.id) or not_found
