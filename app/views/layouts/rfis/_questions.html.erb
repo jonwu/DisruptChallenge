@@ -1,7 +1,7 @@
 <% if !@current_category.nil? %>
-<span data-id="<%= @current_category.id%>" class="list-group-item header_category_title"><%= best_in_place @current_category, :text %>
+<span data-id="<%= @current_category.id%>" class="list-group-item header_category_title add"><%= best_in_place @current_category, :text %>
 	<%= link_to "", category_path(id: @current_category.id), method: :delete, class: "glyphicon glyphicon-remove" %>
-	<%= link_to "", new_category_question_path(category_id: @current_category.id), class: "glyphicon glyphicon-plus add"%>
+	<%= link_to "", new_category_question_path(category_id: @current_category.id), class: "glyphicon glyphicon-plus"%>
 </span>
 
 <div class="list-group">
