@@ -1,13 +1,15 @@
 <%= render 'layouts/rfis/questions' %>
+<%= javascript_include_tag 'questions' %>  
 
 <div id="question-content">
 	<div class="row">
 		
 		<div class="col-sm-8">
-			<h2>
-				<%= @current_question.text %>
+			<div>
+				<h2 data-id="<%= @current_question.id%>" class="header_question_title"><%= best_in_place @current_question, :text %></h2>
+				<br/>
 				<%= link_to "", question_path(id: @current_question.id), method: :delete, class: "glyphicon glyphicon-remove add" %>
-			</h2>
+			</div>
 			<div class="panel panel-default panel-info" style="margin-top: 15px">
 				
 				<div class="panel-heading">
@@ -47,6 +49,13 @@
 		</div>
 	</div>
 </div>
+
+<!-- <% content_for :question_title do %>
+	<h2 id="<%= dom_id @current_question %>">
+	  <span class="rest-in-place" data-attribute="text" ><%= @current_question.text %></span><br/>
+	</h2>
+<% end %> -->
+
 <!-- <div class="row">
 <div class="col-sm-8">
 	<div class="panel panel-default panel-info" style="margin-top: 15px">

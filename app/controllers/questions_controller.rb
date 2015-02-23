@@ -29,13 +29,18 @@ class QuestionsController < BaseController
                                 impact: params[:impact].strip)
     # Create responses somehow for collaborators?
     initialize_template
+    redirect_to question_path(id: question.id)
 	end
 
 	def destroy 
-		p params
 		authenticate_question(params[:id])
-		question = Question.find_by_id(get_current_question.id)
-    Question.destroy(question.id)
+    Question.destroy(get_current_question.id)
+		initialize_template
+	end
+
+	def update
+		authenticate_question(params[:id])
+		get_current_question.update_attributes!(text: params[:question][:text])
 		initialize_template
 	end
 

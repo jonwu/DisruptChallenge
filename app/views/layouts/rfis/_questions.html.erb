@@ -2,7 +2,7 @@
 
 
 <% content_for :questions do %>
-	<span class="list-group-item"><%= @current_category.text %>
+	<span data-id="<%= @current_category.id%>" class="list-group-item header_category_title"><%= best_in_place @current_category, :text %>
 		<%= link_to "", category_path(id: @current_category.id), method: :delete, class: "glyphicon glyphicon-remove add" %>
 	</span>
 	<%= link_to new_category_question_path(category_id: @current_category.id), class: "btn btn-primary btn-lg add" do%>
@@ -28,5 +28,5 @@
 	</div>
 <% end %>
 
-<%= render 'layouts/rfis/categories' %>
+<%= render partial: 'layouts/rfis/categories.html.erb' %>
 

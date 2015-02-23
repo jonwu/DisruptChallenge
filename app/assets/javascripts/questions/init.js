@@ -1,12 +1,10 @@
-$(document).ready(function() {
-	$('.submissions').click(function(event) {
-		
-		$(this).appendTo('#question-content .col-sm-8')
-		$('.submissions').not(this).each(function(){
-        	$(this).appendTo('#question-content .col-sm-4')
-        	
-     	});
+var ready;
+ready = function() {
+  $('.best_in_place').bind("ajax:success", function () {
+    var id = $('.header_question_title').attr('data-id')
+    // refresh the two sidebar layouts
+  });
+};
 
-     
-	});
-});
+$(document).ready(ready);
+$(document).on('page:load', ready);

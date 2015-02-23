@@ -36,6 +36,8 @@ gem 'chart-js-rails'
 
 gem 'public_activity'
 
+gem 'best_in_place'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

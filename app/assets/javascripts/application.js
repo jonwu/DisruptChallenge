@@ -19,3 +19,4 @@
 //= require Chart
 //= require jquery-ui
 //= require_tree ./global
+//= require best_in_place

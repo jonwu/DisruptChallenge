@@ -12,11 +12,10 @@ $(document).on('page:load', ready);
  */
 function onTextAreaFocusOut(){
     // Delegation pattern. Submissions is guaranteed to exist. Ajax listener will still work.
-    $("div.main-content").on('focusout', ".response-textarea", function(e) {
-        // e.target gets the element that triggered event
-        text = $(".response-textarea").val()
-        save_response(text)
-    });
+    $("div.main-content").bindWithDelay("keyup", ".response-textarea", function(){
+      text = $(".response-textarea").val()
+      save_response(text)
+    }, 250);
 }
 
 function save_response(text){

@@ -30,6 +30,14 @@ class CategoriesController < BaseController
 		# redirect_to category_questions_path(category_id: get_current_category.id)
 	end
 
+	def update
+		p '*' * 80
+		p params
+		authenticate_category(params[:id])
+		get_current_category.update_attributes!(text: params[:category][:text])
+		initialize_template
+	end
+
 
 
 	
