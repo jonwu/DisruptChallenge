@@ -6,6 +6,11 @@ ready = function() {
 
   $(document).pjax('a[questions-pjax]', '.main-content-pjax')
   $(document).pjax('a.category-pjax', '.questions-pjax')
+
+  // clear main-content page when re-rendering questions container
+  $('#sidebar').on('pjax:beforeReplace', '.questions-pjax', function(){
+    $('.main-content-pjax').html('')
+  })
 };
 
 $(document).ready(ready);

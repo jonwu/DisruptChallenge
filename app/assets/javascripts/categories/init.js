@@ -1,6 +1,5 @@
 var ready;
 ready = function() {
-  console.log("HELLOOO")
   $(document).pjax('a.category-pjax', '.questions-pjax')
 };
 
