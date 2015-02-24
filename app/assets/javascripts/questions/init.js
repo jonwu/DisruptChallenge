@@ -5,12 +5,7 @@ ready = function() {
   });
 
   $(document).pjax('a[questions-pjax]', '.main-content-pjax')
-  // if ($.support.pjax) {
-  //   $(document).on('click', 'a[data-pjax]', function(event) {
-  //     var container = $('.main-content, .pjax-container')
-  //     $.pjax.click(event, {container: container})
-  //   })
-  // }
+  $(document).pjax('a.category-pjax', '.questions-pjax')
 };
 
 $(document).ready(ready);

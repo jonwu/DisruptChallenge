@@ -4,7 +4,6 @@ class CategoriesController < BaseController
 
 	def show
 		authenticate_category(params[:id])
-		
 		initialize_template
 	end
 
