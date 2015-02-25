@@ -1,6 +1,7 @@
+<%= javascript_include_tag 'questions' %>
 <%= render 'layouts/rfis/content' %>
 
-<script>
-	$("#question-content").html("");
-
-</script>
+<!-- Content for pjax -->
+<%= content_for_or_pjax :questions do %>
+	<%= render 'layouts/rfis/questions' %>  
+<% end %>

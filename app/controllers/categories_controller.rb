@@ -38,7 +38,7 @@ class CategoriesController < BaseController
 	end
 
 
-
+	
 	
 	
 end
