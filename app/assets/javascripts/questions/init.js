@@ -31,16 +31,4 @@ function update_questions(){
   
 }
 
-jQuery(document).ready(function($) {
-  toggleActive()
-});
 
-function toggleActive(){
-  //Prevent double listeners
-  $("#questions .list-group-item").unbind('click');
-  // alert(1);
-  $("#questions .list-group-item").click(function(event) {
-    $('#questions .active').removeClass('active');
-    $(this).addClass('active');
-  });
-}
