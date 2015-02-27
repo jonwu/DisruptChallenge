@@ -1,4 +1,4 @@
-class Collaborator < ActiveRecord::Base
+class Vendor < ActiveRecord::Base
   belongs_to :user
   belongs_to :rfi 
   has_many :submissions
@@ -8,16 +8,16 @@ class Collaborator < ActiveRecord::Base
 
   default_scope { order('created_at ASC') } 
   
-  def self.new_collaborator(user_id, rfi_id)
-    @collaborator = Collaborator.new(user_id: user_id , rfi_id: rfi_id)
-    if @collaborator.save
-      return @collaborator
+  def self.new_vendor(user_id, rfi_id)
+    @vendor = Vendor.new(user_id: user_id , rfi_id: rfi_id)
+    if @vendor.save
+      return @vendor
     end
     return nil
   end
   
   def self.delete_by_rfi_id(rfi_id)
-    Collaborator.delete_all(rfi_id: rfi_id)
+    Vendor.delete_all(rfi_id: rfi_id)
   end
 
 end

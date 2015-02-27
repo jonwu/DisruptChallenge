@@ -1,6 +1,7 @@
 class Rfi < ActiveRecord::Base
   has_many :categories, dependent: :destroy
-  has_many :collaborators, dependent: :destroy
+  has_many :vendors, dependent: :destroy
+  # has_many :collaborators, dependent: :destroy
   has_many :questions, through: :categories
   has_many :responses, through: :questions
   has_many :submissions, through: :questions
@@ -9,8 +10,9 @@ class Rfi < ActiveRecord::Base
 
   default_scope { order('created_at ASC') } 
 
-  #retreive collaborated rfis
-  scope :invited, ->(user) { joins(:collaborators).where(collaborators: {user_id: user.id}) }
+  #retreive invited (vendor) rfis
+  scope :invited, ->(user) { joins(:vendors).where(vendors: {user_id: user.id}) }
+  # scope :invited, ->(user) { joins(:collaborators).where(collaborators: {user_id: user.id}) }
 
 
   def init
