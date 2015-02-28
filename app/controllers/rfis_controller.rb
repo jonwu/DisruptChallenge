@@ -3,6 +3,9 @@ class RfisController < BaseController
 	def show
 		authenticate_rfi(params[:id])
 		initialize_template
+		if request.headers['X-PJAX']
+    	render :layout => false
+  	end
 	end
 
 	def index

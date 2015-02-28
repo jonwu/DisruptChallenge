@@ -1,12 +1,7 @@
-<% content_for :invites_menu do %> 
-	active
-<% end %>
-<% content_for :categories do %>
-	<% @current_rfi.categories.each do |category| %>
-		 <% if @current_category != category %>
-			<%= link_to category.text, category_responses_path(category_id: category.id), class: "list-group-item" %>
-		<% else %>
-			<%= link_to category.text, category_responses_path(category_id: category.id), class: "list-group-item active" %>
-		<% end %>
+<% @current_rfi.categories.each do |category| %>
+	 <% if @current_category != category %>
+		<%= link_to category.text, category_responses_path(category_id: category.id), class: "list-group-item category-pjax" %>
+	<% else %>
+		<%= link_to category.text, category_responses_path(category_id: category.id), class: "list-group-item active category-pjax" %>
 	<% end %>
 <% end %>

@@ -1,16 +1,28 @@
 class ResponsesController < BaseController
 
   respond_to :html, :js
+  before_filter :authenticate_params
+    
+  def authenticate_params
+    if params.has_key?(:category_id)
+      authenticate_category(params[:category_id])
+    elsif params.has_key?(:id)
+      authenticate_response(params[:id])
+    end
+    initialize_template
+  end
 
   def show
-    authenticate_response(params[:id])
-    initialize_template
+    if request.headers['X-PJAX']
+      render :layout => false
+    end
   end
 
 
   def index
-    authenticate_category(params[:category_id])
-    initialize_template
+    if request.headers['X-PJAX']
+      render :layout => false
+    end
   end
 
   def response_page_update

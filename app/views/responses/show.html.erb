@@ -1,7 +1,13 @@
-<%= render 'layouts/invites/responses' %>
-<%= render 'content' %>
-
+<% if !is_pjax %>
+  <%= render 'layouts/invites/content' %>
+<% end %>
 <%= javascript_include_tag 'responses' %>  
+
+
+<!-- Content for show_responses -->
+<%= content_for_or_pjax :main_content do %>
+  <%= render 'layouts/invites/show_responses' %>  
+<% end %>
 
 
 

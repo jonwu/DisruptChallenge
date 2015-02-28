@@ -10,19 +10,27 @@
 	</head>
 	<body>
 
-		<%= render 'layouts/headers/primary' %>
+		<%= render 'layouts/headers/header_template' %>
 		<div id="wrapper" >
 			<!-- Sidebar -->
 			<div id="sidebar" >
 				<div id="menu" class="menu-pjax"><%= render 'layouts/sidebar/menu' %></div>
-				<div id="categories" class="categories-pjax"><%= render 'layouts/sidebar/categories' %></div>
+				<div id="categories">
+					<div id="profile">
+						
+					</div>
+					<div class="list-group">
+						<div class="categories-pjax">
+							<%= render 'layouts/sidebar/categories' %>
+						</div>
+					</div>
+				</div>
 				<div id="questions" class="questions-pjax"><%= render 'layouts/sidebar/questions' %></div>
 			</div>
 			
 			<!-- Page Content -->
 			<div id="content-wrapper" class="container-fluid main-content main-content-pjax">
-				<%= yield %>
-				
+				<%= render 'layouts/sidebar/main_content' %>
 			</div>
 		</div>
 	</body>

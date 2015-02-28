@@ -1,1 +1,6 @@
-<%= render 'layouts/invites/responses' %>
+<%= render 'layouts/invites/content' %>
+
+<!-- Content for questions -->
+<%= content_for_or_pjax :questions do %>
+  <%= render 'layouts/invites/questions' %>  
+<% end %>

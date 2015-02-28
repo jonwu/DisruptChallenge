@@ -1,0 +1,9 @@
+<% if !@current_category.nil? %>
+		<% @current_category.questions.each do |question| %>
+			<% if @current_question != question %>
+				<%= link_to question.text, response_path(id: question.id), class: "list-group-item question-pjax" %>
+			<% else %>
+				<%= link_to question.text, response_path(id: question.id), class: "list-group-item active question-pjax" %>
+			<% end %>
+		<% end %>
+<% end %>

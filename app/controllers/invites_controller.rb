@@ -1,8 +1,7 @@
 class InvitesController < BaseController
-	layout 'main_template'
 
 	def show
-    authenticate_collaborator(params[:id])
+    authenticate_vendor(params[:id])
 		initialize_template
 	end
 

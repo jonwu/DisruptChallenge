@@ -42,7 +42,7 @@ class BaseController < ActionController::Base
     set_current_category(current_category)
   end
 
-  def authenticate_collaborator(id)
+  def authenticate_vendor(id)
     
     current_rfi = Rfi.find_by_id(id) or not_found
     rfis = Rfi.invited(current_user)

@@ -8,7 +8,7 @@
 		<% @current_category.questions.each do |question| %>
 			<a href="/questions/<%= question.id %>" class="list-group-item 
 			<% if @current_question == question %> active <% end %> 
-			<%= question.impact %>" questions-pjax>
+			<%= question.impact %>" question-pjax>
 
 				<p class="status">
 					<span class="widget impact-<%= question.impact %>"><%= question.impact[0]%></span>

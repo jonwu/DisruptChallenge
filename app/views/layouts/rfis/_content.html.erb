@@ -1,16 +1,17 @@
+<%= content_for :header do %>
+  <%= render 'layouts/headers/analyze' %>
+<% end %>
 
-<% if not is_pjax %>
-  <%= content_for :questions do %>
-  	<%= render 'layouts/rfis/questions' %>	
-  <% end %>
+<%= content_for :questions do %>
+	<%= render 'layouts/rfis/questions' %>	
+<% end %>
 
-  <%= content_for :categories do %>
-  	<%= render 'layouts/rfis/categories' %>
-  <% end %>
+<%= content_for :categories do %>
+	<%= render 'layouts/rfis/categories' %>
+<% end %>
 
-  <%= content_for :rfis_menu do %> 
-  	active
-  <% end %>
+<%= content_for :rfis_menu do %> 
+	active
 <% end %>
 
 
