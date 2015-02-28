@@ -1,6 +1,6 @@
 var ready;
 ready = function() {
-  onTextAreaFocusOut()
+  onTextAreaKeyUp()
 };
 
 $(document).ready(ready);
@@ -10,7 +10,7 @@ $(document).on('page:load', ready);
  * Click listener for out of rating input
  * @return {void} 
  */
-function onTextAreaFocusOut(){
+function onTextAreaKeyUp(){
     // Delegation pattern. Submissions is guaranteed to exist. Ajax listener will still work.
     $("div.main-content").bindWithDelay("keyup", ".response-textarea", function(){
       text = $(".response-textarea").val()

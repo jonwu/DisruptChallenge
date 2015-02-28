@@ -21,7 +21,7 @@
 
       <ul class="dropdown-menu" role="menu">
         <% @rfis.each do |rfi| %>
-          <li><a href="#"><%= rfi.title %></a></li>
+          <li><%= link_to rfi.title, rfi_path(id: rfi.id) %></li>
           <li class="divider"></li>
         <% end %>
       </ul>
@@ -37,6 +37,22 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
   <ul class="nav navbar-nav navbar-left">
     <% if user_signed_in? %>
+      <li><%= link_to 'New', new_rfi_path %> </li>
+      <!-- Settings dropdown -->
+      <% if !@current_rfi.nil? %>
+        <div class="dropdown navbar-brand" id="rfis">
+          <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-expanded="false">
+            Settings<span class="caret"></span>
+          </a>
+
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" data-toggle="modal" data-target=".settings-rename">Rename</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Delete</a></li>
+            <li class="divider"></li>
+          </ul>
+        </div>
+      <% end %>
       <li><%= link_to 'Share', share_path(email: "anna@anna.com"), method: :post, remote: true%> </li>
       <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>

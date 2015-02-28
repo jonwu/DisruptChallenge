@@ -54,6 +54,13 @@
 	
 }
 
+#header #rfis .dropdown-menu a{
+	display: block;
+	text-decoration: none;
+	min-width: $sidebar_size * .34;
+	color: #000000 !important; 
+}
+
 #header #rfis .menu > span{
 	margin-left: 15px;
 }
