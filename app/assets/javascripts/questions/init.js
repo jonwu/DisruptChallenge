@@ -6,8 +6,8 @@ ready = function() {
 
   // clear main-content page when re-rendering questions container
   $('#sidebar').on('pjax:beforeReplace', '.questions-pjax', function(){
-    $('.main-content-pjax').html('')
-  })
+    $(  '.main-content-pjax').html('')
+  })  
 };
 
 $(document).ready(ready);

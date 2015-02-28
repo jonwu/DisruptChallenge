@@ -29,14 +29,14 @@ function initFormValidation() {
 }
 
 function toggleQuestionActive(){
-  $('#questions').on('click', ".list-group-item", function(event) {
+  $(document).on('click', "#questions .list-group-item", function(event) {
     $('#questions .active').removeClass('active');
     $(this).addClass('active');
   });
 }
 
 function toggleCategoryActive(){
-  $('#categories').on('click', ".list-group-item", function(event) {
+  $(document).on('click', "#categories .list-group-item", function(event) {
     $('#categories .active').removeClass('active');
     $(this).addClass('active');
   });
