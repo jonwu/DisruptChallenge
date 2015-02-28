@@ -1,7 +1,8 @@
 $(document).ready(function() {
   initBestInPlace()
   initPjax()
-  toggleActive()
+  toggleQuestionActive()
+  toggleCategoryActive()
   initFormValidation()
 });
 
@@ -27,9 +28,16 @@ function initFormValidation() {
   });
 }
 
-function toggleActive(){
+function toggleQuestionActive(){
   $('#questions').on('click', ".list-group-item", function(event) {
     $('#questions .active').removeClass('active');
+    $(this).addClass('active');
+  });
+}
+
+function toggleCategoryActive(){
+  $('#categories').on('click', ".list-group-item", function(event) {
+    $('#categories .active').removeClass('active');
     $(this).addClass('active');
   });
 }
