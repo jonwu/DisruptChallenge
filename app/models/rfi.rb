@@ -47,22 +47,4 @@ class Rfi < ActiveRecord::Base
     return rfis
   end
 
-  def self.find_available_name(rfis, text)
-     count = 0
-     text = text.strip
-
-     if rfis.find_by(title: text) != nil
-        count = 1
-        while rfis.find_by(title: text +" ("+count.to_s+")") != nil do
-         count = count + 1
-       end  
-     else
-       return text
-     end
-       
-     return text +" ("+count.to_s+")"
-  end
-
- 
-
 end

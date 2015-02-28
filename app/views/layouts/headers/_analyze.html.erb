@@ -37,7 +37,7 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
   <ul class="nav navbar-nav navbar-left">
     <% if user_signed_in? %>
-      <li><%= link_to 'New', new_rfi_path %> </li>
+      <li><a href="#" data-toggle="modal" data-target=".add-new">Add New</a></li>
       <!-- Settings dropdown -->
       <% if !@current_rfi.nil? %>
         <div class="dropdown navbar-brand" id="rfis">

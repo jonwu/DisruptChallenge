@@ -13,22 +13,20 @@ class RfisController < BaseController
 		
 	end
 
-	def new
-    rfi = Rfi.create!( user_id: current_user.id, title: "Default")
+	def create
+    # rfi = Rfi.create!( user_id: current_user.id, title: "Default")
+    rfi = Rfi.create!( user_id: current_user.id, title: params[:rfi_title]) 
     Category.create!( rfi_id: rfi.id,
-                  text: "New Category")
+                  		text: "New Category")
     redirect_to rfi_path(id: rfi.id)
 	end
 
 	def update
-		p '*' * 80
-		p params
 		new_name = params[:rfi_title]
 		@current_rfi = get_current_rfi
     # only update if the name actually changed
     if @current_rfi.title.to_s != new_name.to_s
-      text = Rfi.find_available_name(get_rfis, new_name)
-      @current_rfi.update_attributes(:title => text)
+      @current_rfi.update_attributes(:title => new_name)
     end
     redirect_to rfi_path(id: @current_rfi.id)
 	end

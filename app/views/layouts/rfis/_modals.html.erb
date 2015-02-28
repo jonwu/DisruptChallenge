@@ -3,8 +3,20 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <%= form_tag rfi_path(id: @current_rfi.id), method: :put do %>
-        <%= text_field_tag(:rfi_title, @current_rfi.title, {:placeholder => "New Name...", :class=>"form-control input-lg", :id=>"category_title_input"}) %>
+        <%= text_field_tag(:rfi_title, @current_rfi.title, {:autocomplete => :off, :placeholder => "New Name...", :class=>"form-control input-lg"}) %>
         <%= submit_tag("Submit") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Add New modal -->
+<div class="modal fade add-new" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <%= form_tag rfis_path, method: :post, id: 'new_rfi_form' do %>
+        <%= text_field_tag(:rfi_title, '', {:autocomplete => :off, :placeholder => "Project Name", :class=>"form-control input-lg"}) %>
+        <%= submit_tag("Create Blank RFI") %>
       <% end %>
     </div>
   </div>

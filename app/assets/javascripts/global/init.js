@@ -2,6 +2,7 @@ $(document).ready(function() {
   initBestInPlace()
   initPjax()
   toggleActive()
+  initFormValidation()
 });
 
 function initBestInPlace(){
@@ -16,6 +17,14 @@ function initPjax() {
   $(document).pjax('a[question-pjax]', '.main-content-pjax')
   $(document).pjax('a.question-pjax', '.main-content-pjax')
   $(document).pjax('a.category-pjax', '.questions-pjax')
+}
+
+function initFormValidation() {
+  $('#new_rfi_form').validate({
+    rules: {
+      "rfi_title": {required: true},
+    }
+  });
 }
 
 function toggleActive(){
