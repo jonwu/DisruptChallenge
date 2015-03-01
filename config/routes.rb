@@ -24,11 +24,13 @@ Rails.application.routes.draw do
     resources :responses
   end
 
+  
+
   get 'base/update_questions'
   get 'base/update_categories'
 
   post "responses/save_response", to: 'responses#save_response', as: 'save_response'
-  get "/categories/:category_id/questions/page_update", to: "questions#page_update", as: 'questions_page_update'
+  post "/comment", to: "questions#comment", as: 'comment'
   root 'homepage#index'
 
 

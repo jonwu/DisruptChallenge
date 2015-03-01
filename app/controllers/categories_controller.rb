@@ -30,7 +30,6 @@ class CategoriesController < BaseController
 	end
 
 	def update
-		p '*' * 80
 		p params
 		authenticate_category(params[:id])
 		get_current_category.update_attributes!(text: params[:category][:text])
