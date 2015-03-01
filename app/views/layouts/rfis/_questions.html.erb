@@ -1,6 +1,6 @@
 <% if !@current_category.nil? %>
 	<span data-id="<%= @current_category.id%>" class="add"><%= best_in_place @current_category, :text %>
-		<%= link_to "", new_category_question_path(category_id: @current_category.id), class: "glyphicon glyphicon-plus"%>
+		<%= link_to "", new_category_question_path(category_id: @current_category.id), class: "glyphicon glyphicon-plus question-pjax"%>
 		<%= link_to "", category_path(id: @current_category.id), method: :delete, class: "glyphicon glyphicon-remove" %>
 	</span>
 

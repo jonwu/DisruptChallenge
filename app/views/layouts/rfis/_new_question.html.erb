@@ -1,0 +1,34 @@
+<div class="panel panel-primary question-panel">
+    <div class="panel-heading">
+        <div class="category_title">
+            New question for <%= @current_category.text %>
+        </div>
+        <div style="clear: both; content: ""; display: table;"></div>
+    </div>
+    <%= form_for :question, url: category_questions_path, remote: true do |f|%>
+        <div class="panel-body">
+          <%= f.text_field :text, class: "form-control question-form", placeholder: 'Add a question', autocomplete: :off %>
+        </div>
+        
+        <div class="panel-footer"> 
+            <div class="footer-options">
+              
+              <div class="impact btn-group" data-toggle="buttons">
+
+                <%= f.label :low_label, 'Low', class: 'btn btn-primary active' do %>
+                  <%= radio_button_tag :impact, 'Low', checked: true%> Low
+                <% end %>
+
+                <%= f.label :medium_label, 'Medium', class: 'btn btn-primary' do %>
+                  <%= radio_button_tag :impact, 'Medium'%> Medium
+                <% end %>
+
+                <%= f.label :high_label, 'High', class: 'btn btn-primary' do %>
+                  <%= radio_button_tag :impact, 'High' %> High
+                <% end %>
+              </div>  
+              <%= f.submit 'Add Question', class: "btn btn-primary add-question"%>
+            </div>
+        </div>
+    <% end %>
+</div>
