@@ -1,22 +1,59 @@
 <!-- Settings modal for rename -->
 <div class="modal fade settings-rename" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_tag rfi_path(id: @current_rfi.id), method: :put do %>
-        <%= text_field_tag(:rfi_title, @current_rfi.title, {:autocomplete => :off, :placeholder => "New Name...", :class=>"form-control input-lg"}) %>
-        <%= submit_tag("Submit") %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Rename <%= @current_rfi.title %> RFI?</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag rfi_path(id: @current_rfi.id), method: :put do %>
+          <%= text_field_tag(:rfi_title, @current_rfi.title, {:autocomplete => :off, :placeholder => "New Name...", :class=>"form-control input-lg"}) %>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Submit", class: "btn btn-primary" %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
       <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Settings modal for delete -->
+<div class="modal fade settings-delete" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete the <%= @current_rfi.title %> RFI?</h4>
+      </div>
+      <div class="modal-body">
+        This will delete the RFI and all categories and questions associated with this RFI.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Delete <%= @current_rfi.title%></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Add New modal -->
 <div class="modal fade add-new" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_tag rfis_path, method: :post, id: 'new_rfi_form' do %>
-        <%= text_field_tag(:rfi_title, '', {:autocomplete => :off, :placeholder => "Project Name", :class=>"form-control input-lg"}) %>
-        <%= submit_tag("Create Blank RFI") %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add new RFI?</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag rfis_path, method: :post, id: 'new_rfi_form' do %>
+          <%= text_field_tag(:rfi_title, '', {:autocomplete => :off, :placeholder => "Project Name", :class=>"form-control input-lg"}) %>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Create Blank RFI", class: "btn btn-primary" %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
       <% end %>
     </div>
   </div>

@@ -37,7 +37,7 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
   <ul class="nav navbar-nav navbar-left">
     <% if user_signed_in? %>
-      <li><a href="#" class="" data-toggle="modal" data-target=".add-new">Add New</a></li>
+      <li><a href="#" class="" data-toggle="modal" data-target=".add-new" data-backdrop="static" data-keyboard='false'>Add New</a></li>
       <!-- Settings dropdown -->
       <% if !@current_rfi.nil? %>
         <li class="dropdown">
@@ -46,10 +46,9 @@
           </a>
 
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#" data-toggle="modal" data-target=".settings-rename">Rename</a></li>
+            <li><a href="#" data-toggle="modal" data-target=".settings-rename" data-backdrop="static" data-keyboard='false'>Rename</a></li>
             <li class="divider"></li>
-            <li><a href="#">Delete</a></li>
-            <li class="divider"></li>
+            <li><a href="#" data-toggle="modal" data-target=".settings-delete" data-backdrop="static" data-keyboard='false'>Delete</a></li>
           </ul>
         </li>
       <% end %>
