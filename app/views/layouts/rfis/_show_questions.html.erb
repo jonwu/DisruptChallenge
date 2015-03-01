@@ -15,11 +15,11 @@
           <h3 class="panel-title"><%= @current_rfi.vendors.first.user.name %></h3>
         </div>
         <div class="panel-body">
-          <div class="container-fluid">
+          
             <% if !@current_rfi.vendors.first.user.responses.find_by(question_id: @current_question.id).nil? %>
               <%= @current_rfi.vendors.first.user.responses.find_by(question_id: @current_question.id).text %>
             <% end %>
-          </div>
+          
         </div>
       </div>
       <%= render 'layouts/rfis/comments' %>    
