@@ -6,7 +6,7 @@
 }
 
 #header .navbar-collapse a{
-	color: white !important; 
+	color: white;
 	border-right: 1px solid $light_border;
 
 }
@@ -54,7 +54,7 @@
 	
 }
 
-#header #rfis .dropdown-menu a{
+#header .dropdown-menu a{
 	display: block;
 	text-decoration: none;
 	min-width: $sidebar_size * .34;
