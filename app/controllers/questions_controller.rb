@@ -11,7 +11,7 @@ class QuestionsController < BaseController
     	initialize_template
   	end
 	
-
+  	
 	def show
 		if request.headers['X-PJAX']
     	render :layout => false
@@ -22,7 +22,7 @@ class QuestionsController < BaseController
 	def index
 		if request.headers['X-PJAX']
     	render :layout => false
-  	end
+  		end
 	end
 
 	def new
@@ -52,6 +52,14 @@ class QuestionsController < BaseController
 	def update
 		get_current_question.update_attributes!(text: params[:question][:text])
 		
+	end
+
+	def comment
+		
+		Comment.create(text: params[:comment][:text], user_id: current_user.id, question_id: get_current_question.id)
+
+		render :nothing=>true
+
 	end
 
 end

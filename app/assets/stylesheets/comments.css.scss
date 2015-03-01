@@ -1,0 +1,17 @@
+@import 'colors'; 
+.comments{
+	> .panel-body{
+		
+	}
+
+	.content > .panel{
+		margin: 0;
+	}
+	.content .media-body > span{
+		font-size: 11px;
+		color: $secondary;
+	}
+	.content .media-body > p{
+		margin: 0;
+	}
+}

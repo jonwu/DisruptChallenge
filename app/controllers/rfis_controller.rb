@@ -4,9 +4,10 @@ class RfisController < BaseController
 		authenticate_rfi(params[:id])
 		initialize_template
 		if request.headers['X-PJAX']
-    	render :layout => false
+    		render :layout => false
+    	end
   	end
-	end
+	
 
 	def index
 		redirect_to rfi_path(id: current_user.rfis.first)
@@ -24,11 +25,11 @@ class RfisController < BaseController
     authenticate_rfi(params[:id])
 		new_name = params[:rfi_title]
 		@current_rfi = get_current_rfi
-    # only update if the name actually changed
-    if @current_rfi.title.to_s != new_name.to_s
-      @current_rfi.update_attributes(:title => new_name)
-    end
-    redirect_to rfi_path(id: @current_rfi.id)
+    	# only update if the name actually changed
+	    if @current_rfi.title.to_s != new_name.to_s
+	      @current_rfi.update_attributes(:title => new_name)
+	    end
+    	redirect_to rfi_path(id: @current_rfi.id)
 	end
 
   def destroy
