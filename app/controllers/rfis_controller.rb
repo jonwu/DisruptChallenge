@@ -14,7 +14,6 @@ class RfisController < BaseController
 	end
 
 	def create
-    # rfi = Rfi.create!( user_id: current_user.id, title: "Default")
     rfi = Rfi.create!( user_id: current_user.id, title: params[:rfi_title]) 
     Category.create!( rfi_id: rfi.id,
                   		text: "New Category")
@@ -22,6 +21,7 @@ class RfisController < BaseController
 	end
 
 	def update
+    authenticate_rfi(params[:id])
 		new_name = params[:rfi_title]
 		@current_rfi = get_current_rfi
     # only update if the name actually changed
@@ -30,6 +30,13 @@ class RfisController < BaseController
     end
     redirect_to rfi_path(id: @current_rfi.id)
 	end
+
+  def destroy
+    authenticate_rfi(params[:id])
+    Rfi.destroy(get_current_rfi.id)
+    current_rfi = get_rfis.first
+    redirect_to rfi_path(id: current_rfi.id)
+  end
 
 	def share
 
