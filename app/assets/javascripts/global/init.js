@@ -23,7 +23,13 @@ function initPjax() {
 function initFormValidation() {
   $('#new_rfi_form').validate({
     rules: {
-      "rfi_title": {required: true},
+      "rfi_title": {required: true}
+    }
+  });
+
+  $('#send_rfi_form').validate({
+    rules: {
+      "vendor_email": {required: true, email: true}
     }
   });
 }

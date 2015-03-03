@@ -58,3 +58,24 @@
     </div>
   </div>
 </div>
+
+<!-- Share modal -->
+<div class="modal fade share-rfi" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Share RFI with New Candidate</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag share_path, method: :post, id: 'send_rfi_form' do %>
+          <%= text_field_tag(:vendor_email, '', {:autocomplete => :off, :placeholder => "Candidate email", :class=>"form-control input-lg"}) %>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Add candidate", class: "btn btn-primary" %>
+        <% end %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

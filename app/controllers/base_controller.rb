@@ -21,7 +21,8 @@ class BaseController < ActionController::Base
 
   def authenticate_rfi(rfi_id)
     current_rfi = Rfi.find_by_id(rfi_id) or not_found
-    status = current_rfi.user == current_user or not_found
+    # Either owner of rfi, or a vendor that has the rfi shared
+    status = (current_rfi.user == current_user) or (current_rfi.find_vendor(current_user.id)) or not_found
     set_current_rfi(current_rfi) 
     set_rfis(current_user.rfis)
     initialize_template

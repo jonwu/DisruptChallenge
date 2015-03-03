@@ -47,4 +47,10 @@ class Rfi < ActiveRecord::Base
     return rfis
   end
 
+  def find_vendor(vendor_id)
+    if vendors.where("user_id = " + vendor_id.to_s) != nil
+      return true
+    end
+    return false
+  end
 end

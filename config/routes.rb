@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get "homepage", to: "homepage#index", as: 'homepage' 
   post "rfis/share", to: 'rfis#share', as: 'share'
+  get "rfis/check_vendor", to: 'rfis#check_vendor', as: 'check_vendor'
   
   resources :rfis do
     resources :categories, shallow: true    

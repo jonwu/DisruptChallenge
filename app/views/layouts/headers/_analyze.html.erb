@@ -26,6 +26,12 @@
         <% end %>
       </ul>
     </div>
+  <% else %>
+    <div class="dropdown navbar-brand" id="rfis">
+      <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-expanded="false">
+        No RFIs!<span class="caret"></span>
+      </a>
+    </div>
 
   <% end %>
   
@@ -46,16 +52,18 @@
 
           <ul class="dropdown-menu" role="menu">
             <li><a href="#" data-toggle="modal" data-target=".settings-rename" data-backdrop="static" data-keyboard='false'>Rename</a></li>
-            <li class="divider"></li>
+            
             <li><a href="#" data-toggle="modal" data-target=".settings-delete" data-backdrop="static" data-keyboard='false'>Delete</a></li>
-            <li class="divider"></li>
+            
             <li class="divider"></li>
             <li><a href="#" class="" data-toggle="modal" data-target=".add-new" data-backdrop="static" data-keyboard='false'>Add New</a></li>
           </ul>
         </li>
+        <li><a href="#" class="" data-toggle="modal" data-target=".share-rfi" data-backdrop="static" data-keyboard='false'>Share</a></li>
+      <% else %>
+        <li><a href="#" class="" data-toggle="modal" data-target=".add-new" data-backdrop="static" data-keyboard='false'>Add New</a></li>
       <% end %>
-      <li><%= link_to 'Share', share_path(email: "anna@anna.com"), method: :post, remote: true%> </li>
-      <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
+      <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
     <% else %>
       <li><%= link_to "Register", new_user_registration_path, :id =>'login'  %> </li>
