@@ -3,7 +3,7 @@
 #wrapper {
 
     padding-left: $sidebar_size;
-    height: calc(100% - 51px);
+
     width: 100%;
 }
 
@@ -131,7 +131,7 @@
 }
 
 #sidebar{
-    position: fixed;
+    position: absolute;
     width: $sidebar_size;
     left: 0; 
     height: calc(100% - 51px);
