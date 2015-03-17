@@ -1,6 +1,6 @@
-<div class="panel panel-default comments">
+<div class="panel panel-default">
   <div class="panel-body">
-    <ul class="media-list">
+    <ul class="media-list comments-wrapper">
       <% if !@current_question.comments.any? %>
         
           <span> No comments yet..</span>
@@ -8,6 +8,7 @@
       <% end %>
 
       <% @current_question.comments.each do |comment| %>
+    
       <li class="media content">
         
 
@@ -17,7 +18,9 @@
                 <%= comment.text %></p>
               <span>
                 <%= local_time(comment.created_at) %>
-                <a href="">delete</a>
+                <a href="">edit</a>
+                -
+                <a href="">reply</a>
               </span>
               
 
@@ -30,7 +33,7 @@
   </div>
   <div class="panel-footer">
     <%= form_for :comment, url: {action: "comment"}, remote: true do |f|%>
-    <%= f.text_field :text, class: "form-control question-form", placeholder: 'Write a comment...' %>
+      <%= f.text_field :text, class: "form-control question-form", placeholder: 'Write a comment...' %>
     <% end %>
   </div>
 </div>

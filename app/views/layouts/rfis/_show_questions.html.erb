@@ -3,12 +3,33 @@
 
     <div class="col-sm-12">
       <div>
-        <h2 data-id="<%= @current_question.id%>" class="header_question_title"><%= best_in_place @current_question, :text %></h2>
+        <h3 data-id="<%= @current_question.id%>" class="header_question_title"><%= best_in_place @current_question, :text %></h3>
         <!-- <%= link_to "", question_path(id: @current_question.id), method: :delete, class: "glyphicon glyphicon-remove" %> -->
+
+        <div class="btn-group">
+        <button type="button" class="btn btn-danger">Action</button>
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <% @current_rfi.vendors.each do |vendor| %>
+            <li><%= link_to vendor.user.name, rfi_path(id: vendor.id), remote: true %></li>
+            
+          
+          <% end %>
+        </ul>
+      </div>
       </div>
     </div>
 
-    <div class="col-sm-8">
+      <div class="col-sm-8">
+
+
+      
+
+
+
       <div class="panel panel-default panel-info" style="margin-top: 15px">
         
         <div class="panel-heading">
@@ -22,7 +43,10 @@
           
         </div>
       </div>
-      <%= render 'layouts/rfis/comments' %>    
+
+      <div id="comments">
+        <%= render 'layouts/rfis/comments'%>    
+      </div>
         
 
     </div>

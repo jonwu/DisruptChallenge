@@ -9,32 +9,33 @@ class QuestionsController < BaseController
     		authenticate_question(params[:id])
     	end
     	initialize_template
+
   	end
 	
   	
 	def show
 		if request.headers['X-PJAX']
-    	render :layout => false
-  	end
+    		render :layout => false
+  		end
 
 	end
 
 	def index
 		if request.headers['X-PJAX']
-    	render :layout => false
+    		render :layout => false
   		end
 	end
 
 	def new
-    if request.headers['X-PJAX']
-      render :layout => false
-    end
+	    if request.headers['X-PJAX']
+	      render :layout => false
+	    end
 	end
 
 	def create
 		
 		# TODO: Qualatative and Quantatative.
-	    question = Question.create( category_id: params[:category_id],
+	    question = @current_category.questions.create(
 	                                qual: true,
 	                                quant: true,
 	                                text: params[:question][:text],
@@ -56,9 +57,10 @@ class QuestionsController < BaseController
 
 	def comment
 		
-		Comment.create(text: params[:comment][:text], user_id: current_user.id, question_id: get_current_question.id)
+		comment = @current_question.comments.create(text: params[:comment][:text], user_id: current_user.id)
+		
 
-		render :nothing=>true
+		
 
 	end
 
