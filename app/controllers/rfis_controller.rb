@@ -6,11 +6,14 @@ class RfisController < BaseController
 		if request.headers['X-PJAX']
     		render :layout => false
     	end
-  	end
+  end
 	
 
 	def index
-		
+		rfis = current_user.rfis
+    if rfis.exists?
+      redirect_to rfi_path(id: rfis.first.id)
+    end
 	end
 
 	def create
@@ -36,6 +39,7 @@ class RfisController < BaseController
     Rfi.destroy(get_current_rfi.id)
     if get_rfis != nil
       current_rfi = get_rfis.first
+    end
     
     redirect_to rfi_path(id: current_rfi.id)
   end
@@ -51,8 +55,6 @@ class RfisController < BaseController
 				# questions = get_current_rfi.questions
 				# Response.set_empty_responses(questions, [collaborator])
 			# end
-		else
-			
 		end
 		redirect_to rfi_path(id: get_current_rfi.id)
 	end

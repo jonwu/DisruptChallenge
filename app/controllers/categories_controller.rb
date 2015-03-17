@@ -35,9 +35,5 @@ class CategoriesController < BaseController
 		get_current_category.update_attributes!(text: params[:category][:text])
 		initialize_template
 	end
-
-
-	
-	
 	
 end

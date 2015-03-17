@@ -43,21 +43,21 @@ user8 = User.create(    email: 'anna@anna.com',
 rfi = Rfi.create( user_id: user8.id,
                   title: "Big Data Solution")
 
-collab = Collaborator.create( user_id: user.id,
+vendor = Vendor.create( user_id: user.id,
                               rfi_id: rfi.id)
-collab2 = Collaborator.create( user_id: user2.id,
+vendor2 = Vendor.create( user_id: user2.id,
                               rfi_id: rfi.id)
-collab3 = Collaborator.create( user_id: user3.id,
+vendor3 = Vendor.create( user_id: user3.id,
                               rfi_id: rfi.id)
-collab4 = Collaborator.create( user_id: user4.id,
+vendor4 = Vendor.create( user_id: user4.id,
                               rfi_id: rfi.id)
-collab5 = Collaborator.create( user_id: user5.id,
+vendor5 = Vendor.create( user_id: user5.id,
                               rfi_id: rfi.id)
-collab6 = Collaborator.create( user_id: user6.id,
+vendor6 = Vendor.create( user_id: user6.id,
                               rfi_id: rfi.id)
-collab7 = Collaborator.create( user_id: user7.id,
+vendor7 = Vendor.create( user_id: user7.id,
                               rfi_id: rfi.id)
-collab8 = Collaborator.create( user_id: user8.id,
+vendor8 = Vendor.create( user_id: user8.id,
                               rfi_id: rfi.id)
 
 category = Category.create(   rfi_id: rfi.id,
